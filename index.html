@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>客户优爆品数据看板</title>
+<style>
+:root{
+  --bg:#050a12;
+  --panel:rgba(14,24,38,.82);
+  --panel-2:rgba(10,19,31,.72);
+  --line:rgba(120,190,255,.14);
+  --line-2:rgba(120,190,255,.28);
+  --txt:#e9f2fc;
+  --dim:#93a9c1;
+  --muted:#63798f;
+  --cyan:#3fd0ff;
+  --gold:#ffc857;
+  --green:#3ddc97;
+  --red:#ff6f7d;
+  --font:"HarmonyOS Sans SC","Source Han Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  min-height:100dvh;
+  background:
+    radial-gradient(1100px 520px at 12% -12%, rgba(63,208,255,.16), transparent 62%),
+    radial-gradient(900px 480px at 92% 0%, rgba(255,200,87,.09), transparent 60%),
+    radial-gradient(800px 600px at 60% 110%, rgba(63,208,255,.07), transparent 65%),
+    var(--bg);
+  color:var(--txt);
+  font-family:var(--font);
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:36px;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(120,190,255,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120,190,255,.045) 1px, transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(circle at 50% 20%, #000 0%, transparent 78%);
+}
+.num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+
+/* ---------- 顶栏 ---------- */
+.top{
+  position:sticky;top:0;z-index:20;
+  display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;
+  padding:14px clamp(14px,2.4vw,34px);
+  background:linear-gradient(180deg, rgba(6,12,20,.96), rgba(6,12,20,.82));
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(14px);
+}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.logo{
+  width:38px;height:38px;flex:none;border-radius:11px;
+  display:grid;place-items:center;font-weight:700;font-size:17px;color:#04121a;
+  background:linear-gradient(145deg,#7ee3ff,#25b3e6 60%,#1f7fb0);
+  box-shadow:0 0 22px rgba(63,208,255,.45), inset 0 1px 0 rgba(255,255,255,.5);
+}
+.brand h1{font-size:16.5px;margin:0;letter-spacing:.5px;font-weight:650;white-space:nowrap}
+.brand .sub{font-size:11.5px;color:var(--muted);letter-spacing:.3px;margin-top:2px;white-space:nowrap}
+.brand .sub b{color:var(--cyan);font-weight:600}
+
+.tabs{display:flex;gap:6px;align-items:center;overflow-x:auto;scrollbar-width:none;flex:1 1 420px;min-width:0}
+.tabs::-webkit-scrollbar{display:none}
+.tab{
+  position:relative;flex:none;display:flex;align-items:baseline;gap:6px;
+  padding:8px 13px;border-radius:9px;border:1px solid transparent;
+  color:var(--dim);font-size:13px;text-decoration:none;cursor:pointer;
+  transition:.18s;white-space:nowrap;background:transparent;
+}
+.tab:hover{color:var(--txt);background:rgba(63,208,255,.07);border-color:var(--line)}
+.tab.on{
+  color:#eaf9ff;border-color:rgba(63,208,255,.5);
+  background:linear-gradient(180deg,rgba(63,208,255,.22),rgba(63,208,255,.08));
+  box-shadow:0 0 0 1px rgba(63,208,255,.1), 0 6px 18px -8px rgba(63,208,255,.7);
+}
+.tab .tv{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.tab.on .tv{color:rgba(234,249,255,.72)}
+.tab.home{font-weight:600}
+
+main{position:relative;z-index:1;padding:clamp(14px,2vw,26px) clamp(14px,2.4vw,34px) 0;max-width:1680px;margin:0 auto}
+section[hidden]{display:none !important}
+
+/* ---------- 通用块 ---------- */
+.block{
+  background:var(--panel);border:1px solid var(--line);border-radius:16px;
+  padding:clamp(14px,1.6vw,20px);margin-bottom:16px;
+  box-shadow:0 18px 44px -30px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.03);
+}
+.block-h{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:baseline;margin-bottom:14px}
+.block-h h2{margin:0;font-size:14.5px;letter-spacing:.6px;font-weight:650;display:flex;align-items:center;gap:9px}
+.block-h h2::before{content:"";width:3px;height:14px;border-radius:2px;background:linear-gradient(180deg,var(--cyan),transparent)}
+.block-h .meta{font-size:11.5px;color:var(--muted);letter-spacing:.3px}
+.block-h .meta b{color:var(--dim);font-weight:600}
+
+/* ---------- 首页 KPI ---------- */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(184px,1fr));gap:12px}
+.kpi{
+  position:relative;border:1px solid var(--line);border-radius:13px;padding:14px 15px 13px;
+  background:linear-gradient(160deg,rgba(63,208,255,.075),rgba(255,255,255,.012) 55%);
+  overflow:hidden;min-width:0;
+}
+.kpi::after{content:"";position:absolute;inset:auto -30% -60% auto;width:120px;height:120px;border-radius:50%;
+  background:radial-gradient(circle,rgba(63,208,255,.18),transparent 70%);pointer-events:none}
+.kpi .k{font-size:11.5px;color:var(--dim);letter-spacing:.4px;display:flex;align-items:center;gap:6px}
+.kpi .v{font-size:clamp(22px,2.5vw,29px);font-weight:680;letter-spacing:-.5px;margin-top:7px;line-height:1.1}
+.kpi .v small{font-size:12px;font-weight:500;color:var(--dim);margin-left:3px;letter-spacing:0}
+.kpi .f{font-size:11.5px;color:var(--muted);margin-top:7px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.kpi .f b{color:var(--dim);font-weight:600}
+.kpi.gold{background:linear-gradient(160deg,rgba(255,200,87,.1),rgba(255,255,255,.012) 55%);border-color:rgba(255,200,87,.22)}
+.kpi.gold .v{color:var(--gold)}
+.kpi.gold::after{background:radial-gradient(circle,rgba(255,200,87,.2),transparent 70%)}
+
+.bar{display:block;height:5px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:9px}
+.bar > i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#25b3e6,#7ee3ff)}
+.bar.gold > i{background:linear-gradient(90deg,#d99b1f,#ffc857)}
+.bar.sm{margin-top:6px;height:4px}
+
+/* ---------- 挑战赛 ---------- */
+.ch-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:14px}
+.ch-panel{border:1px solid var(--line);border-radius:13px;background:var(--panel-2);overflow:hidden;min-width:0}
+.ch-head{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:11px 14px;border-bottom:1px solid var(--line);
+  background:linear-gradient(90deg,rgba(255,200,87,.1),transparent 70%);
+}
+.ch-head .t{font-size:13px;font-weight:640;letter-spacing:.5px;display:flex;align-items:center;gap:8px}
+.ch-head .t em{font-style:normal;font-size:10.5px;color:var(--gold);border:1px solid rgba(255,200,87,.35);
+  border-radius:99px;padding:1px 7px;letter-spacing:.4px}
+.ch-head .s{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.ch-cols,.ch-row{display:grid;grid-template-columns:24px minmax(58px,1fr) 74px 70px 74px 96px;gap:6px;align-items:center}
+.ch-cols{padding:7px 12px;font-size:10.5px;color:var(--muted);letter-spacing:.4px;border-bottom:1px solid rgba(120,190,255,.08)}
+.ch-body{overflow:visible}
+.ch-row{padding:7px 12px;font-size:12.5px;border-bottom:1px solid rgba(120,190,255,.05)}
+.ch-row:hover{background:rgba(63,208,255,.055)}
+.ch-row .rk{font-size:10.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.ch-row .who{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#dcebf9}
+.ch-row .rv{text-align:right;font-variant-numeric:tabular-nums;color:#cfe2f4}
+.ch-row .rv.add{color:var(--green)}
+.ch-row .rv.add.neg{color:var(--red)}
+.ch-row .rv.na{color:var(--muted)}
+.ch-row .pv{text-align:right;font-variant-numeric:tabular-nums;font-size:11.5px;color:var(--dim)}
+.ch-row .pv .bar{margin-top:4px}
+.ch-row.top1 .rk{color:var(--gold)}
+.ch-row.top1 .who{color:#fff}
+.ch-body.kf2{display:grid;grid-template-columns:1fr 1fr;gap:0 26px}
+.ch-body.kf2 > div{min-width:0}
+.ch-panel.kf .ch-cols,.ch-panel.kf .ch-row{grid-template-columns:22px minmax(52px,1fr) 66px 64px 78px 62px}
+
+/* ---------- 人物页 ---------- */
+.p-head{
+  display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;justify-content:space-between;
+  margin-bottom:14px;
+}
+.p-title{display:flex;align-items:center;gap:12px;min-width:0}
+.p-avatar{
+  width:46px;height:46px;border-radius:13px;flex:none;display:grid;place-items:center;
+  font-size:18px;font-weight:650;color:#04121a;
+  background:linear-gradient(145deg,#ffe0a3,#ffc857 65%,#c98f1a);
+  box-shadow:0 0 20px rgba(255,200,87,.3), inset 0 1px 0 rgba(255,255,255,.55);
+}
+.p-title h2{margin:0;font-size:20px;letter-spacing:.6px;font-weight:650}
+.p-title .ps{font-size:11.5px;color:var(--muted);margin-top:4px;letter-spacing:.3px}
+.p-title .ps b{color:var(--dim);font-weight:600}
+
+.p-kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px}
+.pk{
+  border:1px solid var(--line);border-radius:12px;padding:11px 13px;background:var(--panel-2);min-width:0;
+}
+.pk .k{font-size:11px;color:var(--dim);letter-spacing:.4px}
+.pk .v{font-size:clamp(18px,2vw,23px);font-weight:670;margin-top:5px;font-variant-numeric:tabular-nums;letter-spacing:-.3px}
+.pk.hl .v{color:var(--cyan)}
+.pk.gold .v{color:var(--gold)}
+
+.note{
+  display:flex;gap:9px;align-items:flex-start;
+  border:1px dashed rgba(255,200,87,.34);background:rgba(255,200,87,.055);
+  color:#e8d5a9;border-radius:11px;padding:10px 13px;font-size:12px;line-height:1.6;margin-bottom:14px;
+}
+.note i{font-style:normal;color:var(--gold);font-weight:700}
+
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:10px}
+.search{position:relative;flex:0 1 260px;min-width:160px}
+.search input{
+  width:100%;padding:8px 12px 8px 30px;border-radius:9px;font-size:12.5px;font-family:inherit;
+  border:1px solid var(--line);background:rgba(6,12,20,.7);color:var(--txt);outline:none;
+}
+.search input:focus{border-color:rgba(63,208,255,.5);box-shadow:0 0 0 3px rgba(63,208,255,.1)}
+.search::before{content:"⌕";position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:14px}
+.hint{font-size:11.5px;color:var(--muted)}
+
+.tbl-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--line);background:rgba(6,12,20,.42)}
+table{width:100%;border-collapse:collapse;min-width:620px}
+thead th{
+  position:sticky;top:0;z-index:2;text-align:left;font-weight:600;font-size:11.5px;letter-spacing:.4px;
+  color:var(--dim);padding:10px 13px;background:#0a1421;border-bottom:1px solid var(--line-2);
+  white-space:nowrap;cursor:pointer;user-select:none;
+}
+thead th.r{text-align:right}
+thead th .ar{font-size:9px;color:var(--cyan);margin-left:4px;opacity:.9}
+thead th:hover{color:var(--txt)}
+tbody td{padding:10px 13px;font-size:13px;border-bottom:1px solid rgba(120,190,255,.06);font-variant-numeric:tabular-nums}
+tbody tr:hover{background:rgba(63,208,255,.055)}
+tbody tr:last-child td{border-bottom:none}
+td.r,th.r{text-align:right}
+td.cust{font-variant-numeric:normal;max-width:420px}
+td.cust .cn{color:#e4f0fb;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+td.cust .cs{font-size:10.5px;color:var(--muted);margin-top:2px}
+td .rk2{font-size:11px;color:var(--muted)}
+.v-you{color:#eaf9ff;font-weight:600;font-size:13.5px}
+.v-trade{color:#c9dcee}
+.dl{display:inline-flex;align-items:center;gap:2px;padding:1px 7px;border-radius:99px;font-size:12px;font-weight:600}
+.dl.up{color:var(--green);background:rgba(61,220,151,.12)}
+.dl.dn{color:var(--red);background:rgba(255,111,125,.12)}
+.dl.z{color:var(--dim);background:rgba(120,190,255,.09)}
+.dl.na{color:var(--muted);background:transparent;font-weight:500}
+.empty{padding:26px 14px;text-align:center;color:var(--muted);font-size:12.5px}
+
+footer{
+  position:relative;z-index:1;max-width:1680px;margin:0 auto;padding:16px clamp(14px,2.4vw,34px) 0;
+  font-size:11.5px;color:var(--muted);line-height:1.75;
+}
+footer b{color:var(--dim);font-weight:600}
+footer .sep{color:rgba(120,190,255,.3);margin:0 7px}
+
+@media (max-width:880px){
+  .top{gap:10px}
+  .brand h1{font-size:15px}
+  .tabs{flex-basis:100%;order:3}
+  .ch-cols,.ch-row{grid-template-columns:20px minmax(46px,1fr) 62px 58px 62px 78px;gap:4px}
+  .p-title h2{font-size:18px}
+}
+@media (max-width:560px){
+  .kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .p-kpi{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ch-body.kf2{grid-template-columns:1fr;gap:0}
+  .ch-cols,.ch-row{font-size:11.5px;grid-template-columns:18px minmax(40px,1fr) 52px 54px 64px;gap:4px}
+  .ch-panel:not(.kf) .ch-cols span:nth-child(5),.ch-panel:not(.kf) .ch-row > *:nth-child(5){display:none}
+  .ch-panel.kf .ch-cols,.ch-panel.kf .ch-row{grid-template-columns:16px minmax(30px,1fr) 44px 48px 44px;gap:3px;padding-left:8px;padding-right:8px}
+  .ch-panel.kf .ch-cols span:nth-child(4),.ch-panel.kf .ch-row > *:nth-child(4){display:none}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="logo">优</div>
+    <div>
+      <h1>客户优爆品数据看板</h1>
+      <div class="sub">数据日 <b id="mDs">--</b> · <span id="mCnt">--</span></div>
+    </div>
+  </div>
+  <nav class="tabs" id="nav" aria-label="销售导航"></nav>
+</header>
+
+<main>
+  <section id="view-home"></section>
+  <section id="view-person" hidden></section>
+</main>
+
+<footer id="foot"></footer>
+
+<script>
+const BOARD = {"meta":{"data_ds":"2026-11-01","captured_at":"2026-11-03 15:56","month":"2026-11","prev_ds":null,"month_base_ds":null,"snapshot_dates":["2026-11-01"],"person_count":8,"customer_count":88,"home_source":"D:\\AWB\\公司数据管理大屏Agent\\project\\build\\data_cur.json","home_update":"2026-11-03 11:24"},"persons":[{"name":"蒋汶桃","file":"蒋汶桃.xlsx","ds":"2026-11-01","title":"蒋汶桃 · CGS 客户优爆品明细（数据日期 2026-11-01）","count":13,"you":2309.0,"trade":9658.0,"boom":184.0,"online":16158.0,"customers":[{"key":"2|深圳市易沅科技有限公司","seq":"2","name":"深圳市易沅科技有限公司","stars":1.0,"online":2377.0,"you":375.0,"boom":12.0,"trade":2070.0,"you_pct":null,"kefu":"陈宇","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"1|深圳市金亿佰科技有限公司","seq":"1","name":"深圳市金亿佰科技有限公司","stars":4.0,"online":2293.0,"you":860.0,"boom":129.0,"trade":1640.0,"you_pct":null,"kefu":"古慧华","has_goods":"有","p4p30":11027.97,"day_add":null,"month_add":null},{"key":"61|深圳市迈洛克实业有限公司","seq":"61","name":"深圳市迈洛克实业有限公司","stars":2.0,"online":2518.0,"you":43.0,"boom":0.0,"trade":1040.0,"you_pct":null,"kefu":"方琼","has_goods":"有","p4p30":4324.3,"day_add":null,"month_add":null},{"key":"9|深圳市贤林电子科技有限公司","seq":"9","name":"深圳市贤林电子科技有限公司","stars":4.0,"online":1502.0,"you":249.0,"boom":15.0,"trade":677.0,"you_pct":null,"kefu":"曹丽","has_goods":"有","p4p30":19210.43,"day_add":null,"month_add":null},{"key":"47|深圳市华特朗科技有限公司","seq":"47","name":"深圳市华特朗科技有限公司","stars":4.0,"online":847.0,"you":58.0,"boom":1.0,"trade":603.0,"you_pct":null,"kefu":"古慧华","has_goods":"有","p4p30":45359.37,"day_add":null,"month_add":null},{"key":"38|深圳市贤林电子科技有限公司","seq":"38","name":"深圳市贤林电子科技有限公司","stars":2.0,"online":1065.0,"you":73.0,"boom":0.0,"trade":569.0,"you_pct":null,"kefu":"曹丽","has_goods":"有","p4p30":6060.93,"day_add":null,"month_add":null},{"key":"10|深圳市若星科技有限公司","seq":"10","name":"深圳市若星科技有限公司","stars":1.0,"online":625.0,"you":240.0,"boom":2.0,"trade":566.0,"you_pct":null,"kefu":"李岩","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"54|深圳市鑫赛科科技发展有限公司","seq":"54","name":"深圳市鑫赛科科技发展有限公司","stars":0.0,"online":1136.0,"you":51.0,"boom":0.0,"trade":540.0,"you_pct":null,"kefu":"曹丽","has_goods":"有","p4p30":45461.1,"day_add":null,"month_add":null},{"key":"41|研凌工控电脑科技（深圳）有限公司","seq":"41","name":"研凌工控电脑科技（深圳）有限公司","stars":0.0,"online":1667.0,"you":67.0,"boom":0.0,"trade":536.0,"you_pct":null,"kefu":"罗洋清","has_goods":"有","p4p30":51453.23,"day_add":null,"month_add":null},{"key":"19|深圳市迈尔运动用品有限公司","seq":"19","name":"深圳市迈尔运动用品有限公司","stars":3.0,"online":998.0,"you":147.0,"boom":23.0,"trade":523.0,"you_pct":null,"kefu":"庞婷婷","has_goods":"有","p4p30":15893.47,"day_add":null,"month_add":null},{"key":"51|深圳市奔马电子科技有限公司","seq":"51","name":"深圳市奔马电子科技有限公司","stars":1.0,"online":617.0,"you":55.0,"boom":0.0,"trade":452.0,"you_pct":null,"kefu":"陈宇","has_goods":"有","p4p30":17199.77,"day_add":null,"month_add":null},{"key":"31|深圳市黄昏科技有限公司","seq":"31","name":"深圳市黄昏科技有限公司","stars":2.0,"online":371.0,"you":91.0,"boom":2.0,"trade":306.0,"you_pct":null,"kefu":"罗洋清","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"152|深圳市安缤悦电子科技有限公司","seq":"152","name":"深圳市安缤悦电子科技有限公司","stars":0.0,"online":142.0,"you":0.0,"boom":0.0,"trade":136.0,"you_pct":null,"kefu":"苏梓梦","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null}],"day_add":null,"month_add":null},{"name":"邓晓东","file":"邓晓东.xlsx","ds":"2026-11-01","title":"邓晓东 · CGS 客户优爆品明细（数据日期 2026-11-01）","count":13,"you":1462.0,"trade":7666.0,"boom":85.0,"online":12880.0,"customers":[{"key":"75|裕柔实业（深圳）有限公司","seq":"75","name":"裕柔实业（深圳）有限公司","stars":0.0,"online":2297.0,"you":7.0,"boom":0.0,"trade":975.0,"you_pct":null,"kefu":"苏梓梦","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"3|深圳市星印电子设备有限公司","seq":"3","name":"深圳市星印电子设备有限公司","stars":2.0,"online":1013.0,"you":426.0,"boom":42.0,"trade":914.0,"you_pct":null,"kefu":"曹丽","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"18|深圳漫友科技有限公司","seq":"18","name":"深圳漫友科技有限公司","stars":2.0,"online":971.0,"you":140.0,"boom":12.0,"trade":896.0,"you_pct":null,"kefu":"庞婷婷","has_goods":"有","p4p30":12657.2,"day_add":null,"month_add":null},{"key":"23|裕丰体育用品(深圳)有限公司","seq":"23","name":"裕丰体育用品(深圳)有限公司","stars":1.0,"online":905.0,"you":118.0,"boom":6.0,"trade":816.0,"you_pct":null,"kefu":"苏梓梦","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"8|深圳市晨洲科技有限公司","seq":"8","name":"深圳市晨洲科技有限公司","stars":2.0,"online":1336.0,"you":245.0,"boom":15.0,"trade":743.0,"you_pct":null,"kefu":"李岩","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"33|深圳市晟耀科技有限公司","seq":"33","name":"深圳市晟耀科技有限公司","stars":2.0,"online":1358.0,"you":79.0,"boom":0.0,"trade":721.0,"you_pct":null,"kefu":"汤青芬","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"21|深圳市吉特达科技有限公司","seq":"21","name":"深圳市吉特达科技有限公司","stars":3.0,"online":973.0,"you":127.0,"boom":9.0,"trade":616.0,"you_pct":null,"kefu":"庞婷婷","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"20|深圳市恒展时代科技有限公司","seq":"20","name":"深圳市恒展时代科技有限公司","stars":3.0,"online":1613.0,"you":127.0,"boom":1.0,"trade":587.0,"you_pct":null,"kefu":"曹丽","has_goods":"有","p4p30":29527.3,"day_add":null,"month_add":null},{"key":"58|深圳梦智谷科技有限公司","seq":"58","name":"深圳梦智谷科技有限公司","stars":0.0,"online":607.0,"you":27.0,"boom":0.0,"trade":413.0,"you_pct":null,"kefu":"方琼","has_goods":"有","p4p30":777.5,"day_add":null,"month_add":null},{"key":"41|深圳诺翔发进出口有限公司","seq":"41","name":"深圳诺翔发进出口有限公司","stars":1.0,"online":587.0,"you":47.0,"boom":0.0,"trade":346.0,"you_pct":null,"kefu":"农路源","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"49|深圳力维模型科技有限公司","seq":"49","name":"深圳力维模型科技有限公司","stars":1.0,"online":284.0,"you":37.0,"boom":0.0,"trade":258.0,"you_pct":null,"kefu":"曹丽","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"36|深圳市唐彩照明科技有限公司","seq":"36","name":"深圳市唐彩照明科技有限公司","stars":2.0,"online":764.0,"you":62.0,"boom":0.0,"trade":248.0,"you_pct":null,"kefu":"罗洋清","has_goods":"有","p4p30":31600.63,"day_add":null,"month_add":null},{"key":"64|深圳市艾森国际供应链管理有限公司","seq":"64","name":"深圳市艾森国际供应链管理有限公司","stars":0.0,"online":172.0,"you":20.0,"boom":0.0,"trade":133.0,"you_pct":null,"kefu":"苏梓梦","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null}],"day_add":null,"month_add":null},{"name":"谢承杰","file":"谢承杰.xlsx","ds":"2026-11-01","title":"谢承杰 · CGS 客户优爆品明细（数据日期 2026-11-01）","count":7,"you":711.0,"trade":6503.0,"boom":21.0,"online":8810.0,"customers":[{"key":"21|深圳市柏诺瑞科技有限公司","seq":"21","name":"深圳市柏诺瑞科技有限公司","stars":1.0,"online":1627.0,"you":86.0,"boom":1.0,"trade":1414.0,"you_pct":null,"kefu":"农路源","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"18|深圳市高贝电子有限公司","seq":"18","name":"深圳市高贝电子有限公司","stars":1.0,"online":1679.0,"you":87.0,"boom":0.0,"trade":1335.0,"you_pct":null,"kefu":"庞婷婷","has_goods":"有","p4p30":18232.4,"day_add":null,"month_add":null},{"key":"2|深圳市爱唯尔镭射工艺礼品有限公司","seq":"2","name":"深圳市爱唯尔镭射工艺礼品有限公司","stars":2.0,"online":1011.0,"you":315.0,"boom":18.0,"trade":990.0,"you_pct":null,"kefu":"李岩","has_goods":"有","p4p30":9589.0,"day_add":null,"month_add":null},{"key":"66|深圳市峰辉顺科技发展有限公司","seq":"66","name":"深圳市峰辉顺科技发展有限公司","stars":0.0,"online":1065.0,"you":19.0,"boom":0.0,"trade":961.0,"you_pct":null,"kefu":"农路源","has_goods":"有","p4p30":2026.37,"day_add":null,"month_add":null},{"key":"30|深圳礼格科技有限公司","seq":"30","name":"深圳礼格科技有限公司","stars":2.0,"online":1104.0,"you":64.0,"boom":1.0,"trade":804.0,"you_pct":null,"kefu":"邢欢欢","has_goods":"有","p4p30":28793.87,"day_add":null,"month_add":null},{"key":"11|深圳市伊斯特尔科技有限公司","seq":"11","name":"深圳市伊斯特尔科技有限公司","stars":3.0,"online":1729.0,"you":138.0,"boom":1.0,"trade":669.0,"you_pct":null,"kefu":"庞婷婷","has_goods":"有","p4p30":20510.37,"day_add":null,"month_add":null},{"key":"89|深圳市艾高普斯电子有限公司","seq":"89","name":"深圳市艾高普斯电子有限公司","stars":1.0,"online":595.0,"you":2.0,"boom":0.0,"trade":330.0,"you_pct":null,"kefu":"邢欢欢","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null}],"day_add":null,"month_add":null},{"name":"张伟志","file":"张伟志.xlsx","ds":"2026-11-01","title":"张伟志 · CGS 客户优爆品明细（数据日期 2026-11-01）","count":10,"you":661.0,"trade":4768.0,"boom":6.0,"online":8143.0,"customers":[{"key":"2|深圳市陆洋电子科技有限公司","seq":"2","name":"深圳市陆洋电子科技有限公司","stars":2.0,"online":1930.0,"you":326.0,"boom":4.0,"trade":1911.0,"you_pct":null,"kefu":"邢欢欢","has_goods":"有","p4p30":2249.97,"day_add":null,"month_add":null},{"key":"33|深圳市精钻智能制造有限公司","seq":"33","name":"深圳市精钻智能制造有限公司","stars":0.0,"online":1086.0,"you":13.0,"boom":0.0,"trade":894.0,"you_pct":null,"kefu":"陆晓菲","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"48|深圳市美莱芙贸易有限公司","seq":"48","name":"深圳市美莱芙贸易有限公司","stars":0.0,"online":858.0,"you":2.0,"boom":0.0,"trade":633.0,"you_pct":null,"kefu":"陆晓菲","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"16|深圳市华科百誉科技有限公司","seq":"16","name":"深圳市华科百誉科技有限公司","stars":0.0,"online":402.0,"you":39.0,"boom":0.0,"trade":400.0,"you_pct":null,"kefu":"陈宇","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"18|深圳市盟迪科技有限公司","seq":"18","name":"深圳市盟迪科技有限公司","stars":1.0,"online":1200.0,"you":36.0,"boom":0.0,"trade":363.0,"you_pct":null,"kefu":"陈宇","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"12|深圳市芯家科技有限公司","seq":"12","name":"深圳市芯家科技有限公司","stars":0.0,"online":234.0,"you":71.0,"boom":0.0,"trade":233.0,"you_pct":null,"kefu":"庞婷婷","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"7|深圳市百昌科技有限公司","seq":"7","name":"深圳市百昌科技有限公司","stars":3.0,"online":825.0,"you":129.0,"boom":2.0,"trade":142.0,"you_pct":null,"kefu":"方琼","has_goods":"有","p4p30":86442.8,"day_add":null,"month_add":null},{"key":"32|深圳市博创域视讯科技有限公司","seq":"32","name":"深圳市博创域视讯科技有限公司","stars":0.0,"online":196.0,"you":14.0,"boom":0.0,"trade":87.0,"you_pct":null,"kefu":"陆晓菲","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"23|深圳市威图医疗科技有限公司","seq":"23","name":"深圳市威图医疗科技有限公司","stars":1.0,"online":1243.0,"you":31.0,"boom":0.0,"trade":75.0,"you_pct":null,"kefu":"陈宇","has_goods":"有","p4p30":15142.37,"day_add":null,"month_add":null},{"key":"56|深圳随意触摸电脑有限公司","seq":"56","name":"深圳随意触摸电脑有限公司","stars":0.0,"online":169.0,"you":0.0,"boom":0.0,"trade":30.0,"you_pct":null,"kefu":"方琼","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null}],"day_add":null,"month_add":null},{"name":"何尧玲","file":"何尧玲.xlsx","ds":"2026-11-01","title":"何尧玲 · CGS 客户优爆品明细（数据日期 2026-11-01）","count":14,"you":613.0,"trade":6077.0,"boom":14.0,"online":9439.0,"customers":[{"key":"6|深圳市醍偲瑞科技有限公司","seq":"6","name":"深圳市醍偲瑞科技有限公司","stars":1.0,"online":1807.0,"you":184.0,"boom":3.0,"trade":1107.0,"you_pct":null,"kefu":"汤青芬","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"9|深圳市安睿信科技有限公司","seq":"9","name":"深圳市安睿信科技有限公司","stars":3.0,"online":1015.0,"you":143.0,"boom":9.0,"trade":1007.0,"you_pct":null,"kefu":"苏梓梦","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"35|深圳市爱芯品科技有限公司","seq":"35","name":"深圳市爱芯品科技有限公司","stars":0.0,"online":1822.0,"you":27.0,"boom":0.0,"trade":967.0,"you_pct":null,"kefu":"农路源","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"26|深圳市艾甫森科技有限公司","seq":"26","name":"深圳市艾甫森科技有限公司","stars":0.0,"online":489.0,"you":36.0,"boom":0.0,"trade":450.0,"you_pct":null,"kefu":"曹丽","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"60|深圳市永成胶粘科技有限公司","seq":"60","name":"深圳市永成胶粘科技有限公司","stars":0.0,"online":457.0,"you":8.0,"boom":0.0,"trade":433.0,"you_pct":null,"kefu":"李岩","has_goods":"有","p4p30":5120.63,"day_add":null,"month_add":null},{"key":"42|深圳市芮熙智能科技有限公司","seq":"42","name":"深圳市芮熙智能科技有限公司","stars":1.0,"online":449.0,"you":22.0,"boom":0.0,"trade":418.0,"you_pct":null,"kefu":"邢欢欢","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"46|深圳市源铭科技有限公司","seq":"46","name":"深圳市源铭科技有限公司","stars":1.0,"online":523.0,"you":16.0,"boom":0.0,"trade":325.0,"you_pct":null,"kefu":"曹丽","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"13|深圳市宝安区松岗顺利线业加工厂","seq":"13","name":"深圳市宝安区松岗顺利线业加工厂","stars":0.0,"online":297.0,"you":74.0,"boom":0.0,"trade":291.0,"you_pct":null,"kefu":"苏梓梦","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"74|深圳市威安士科技有限公司","seq":"74","name":"深圳市威安士科技有限公司","stars":0.0,"online":309.0,"you":4.0,"boom":0.0,"trade":263.0,"you_pct":null,"kefu":"汤青芬","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"41|深圳市海康威普科技有限公司","seq":"41","name":"深圳市海康威普科技有限公司","stars":1.0,"online":538.0,"you":23.0,"boom":2.0,"trade":248.0,"you_pct":null,"kefu":"李岩","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"66|深圳市金盟自行车贸易有限公司","seq":"66","name":"深圳市金盟自行车贸易有限公司","stars":0.0,"online":413.0,"you":7.0,"boom":0.0,"trade":183.0,"you_pct":null,"kefu":"罗洋清","has_goods":"有","p4p30":8326.8,"day_add":null,"month_add":null},{"key":"20|深圳市协力美电子有限公司","seq":"20","name":"深圳市协力美电子有限公司","stars":0.0,"online":769.0,"you":54.0,"boom":0.0,"trade":167.0,"you_pct":null,"kefu":"方琼","has_goods":"有","p4p30":10467.4,"day_add":null,"month_add":null},{"key":"59|深圳市悦为光电科技有限公司","seq":"59","name":"深圳市悦为光电科技有限公司","stars":0.0,"online":334.0,"you":9.0,"boom":0.0,"trade":165.0,"you_pct":null,"kefu":"庞婷婷","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"69|深圳市维力谷无线技术股份有限公司","seq":"69","name":"深圳市维力谷无线技术股份有限公司","stars":0.0,"online":217.0,"you":6.0,"boom":0.0,"trade":53.0,"you_pct":null,"kefu":"邢欢欢","has_goods":"有","p4p30":5873.77,"day_add":null,"month_add":null}],"day_add":null,"month_add":null},{"name":"夏锐","file":"夏锐.xlsx","ds":"2026-11-01","title":"夏锐 · CGS 客户优爆品明细（数据日期 2026-11-01）","count":11,"you":571.0,"trade":6235.0,"boom":34.0,"online":9591.0,"customers":[{"key":"19|深圳市爱科思光电技术有限公司","seq":"19","name":"深圳市爱科思光电技术有限公司","stars":2.0,"online":1657.0,"you":136.0,"boom":11.0,"trade":1487.0,"you_pct":null,"kefu":"汤青芬","has_goods":"有","p4p30":763.5,"day_add":null,"month_add":null},{"key":"52|深圳凯士威科技有限公司","seq":"52","name":"深圳凯士威科技有限公司","stars":2.0,"online":1886.0,"you":43.0,"boom":1.0,"trade":1393.0,"you_pct":null,"kefu":"曹丽","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"50|深圳环亚东升科技有限公司","seq":"50","name":"深圳环亚东升科技有限公司","stars":4.0,"online":2010.0,"you":49.0,"boom":3.0,"trade":824.0,"you_pct":null,"kefu":"李岩","has_goods":"有","p4p30":27634.67,"day_add":null,"month_add":null},{"key":"76|深圳市富饶世纪电子有限公司","seq":"76","name":"深圳市富饶世纪电子有限公司","stars":0.0,"online":795.0,"you":31.0,"boom":2.0,"trade":637.0,"you_pct":null,"kefu":"方琼","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"27|深圳市贝莱仕科技有限公司","seq":"27","name":"深圳市贝莱仕科技有限公司","stars":1.0,"online":556.0,"you":96.0,"boom":9.0,"trade":525.0,"you_pct":null,"kefu":"农路源","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"71|深圳市三嘉达电子科技有限公司","seq":"71","name":"深圳市三嘉达电子科技有限公司","stars":2.0,"online":382.0,"you":33.0,"boom":2.0,"trade":345.0,"you_pct":null,"kefu":"庞婷婷","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"93|深圳利登环保工程有限公司","seq":"93","name":"深圳利登环保工程有限公司","stars":0.0,"online":382.0,"you":15.0,"boom":0.0,"trade":294.0,"you_pct":null,"kefu":"李岩","has_goods":"有","p4p30":21795.63,"day_add":null,"month_add":null},{"key":"88|深圳市哈娜电子商务有限公司","seq":"88","name":"深圳市哈娜电子商务有限公司","stars":1.0,"online":248.0,"you":19.0,"boom":1.0,"trade":248.0,"you_pct":null,"kefu":"邢欢欢","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"48|深圳市爱优宝科技有限公司","seq":"48","name":"深圳市爱优宝科技有限公司","stars":2.0,"online":673.0,"you":52.0,"boom":0.0,"trade":232.0,"you_pct":null,"kefu":"古慧华","has_goods":"有","p4p30":10628.17,"day_add":null,"month_add":null},{"key":"64|深圳市晨光飞达科技有限公司","seq":"64","name":"深圳市晨光飞达科技有限公司","stars":1.0,"online":745.0,"you":36.0,"boom":0.0,"trade":136.0,"you_pct":null,"kefu":"陈宇","has_goods":"有","p4p30":16793.5,"day_add":null,"month_add":null},{"key":"44|深圳市艾迪饵科技有限公司","seq":"44","name":"深圳市艾迪饵科技有限公司","stars":2.0,"online":257.0,"you":61.0,"boom":5.0,"trade":114.0,"you_pct":null,"kefu":"邢欢欢","has_goods":"有","p4p30":18586.53,"day_add":null,"month_add":null}],"day_add":null,"month_add":null},{"name":"高国权","file":"高国权.xlsx","ds":"2026-11-01","title":"高国权 · CGS 客户优爆品明细（数据日期 2026-11-01）","count":10,"you":567.0,"trade":2080.0,"boom":23.0,"online":5646.0,"customers":[{"key":"20|东莞市哈二爷宠物用品有限公司","seq":"20","name":"东莞市哈二爷宠物用品有限公司","stars":2.0,"online":1414.0,"you":126.0,"boom":3.0,"trade":726.0,"you_pct":null,"kefu":"苏梓梦","has_goods":"有","p4p30":19868.93,"day_add":null,"month_add":null},{"key":"52|深圳市创力讯光电设备有限公司","seq":"52","name":"深圳市创力讯光电设备有限公司","stars":1.0,"online":575.0,"you":38.0,"boom":0.0,"trade":529.0,"you_pct":null,"kefu":"陈宇","has_goods":"有","p4p30":8880.07,"day_add":null,"month_add":null},{"key":"22|深圳市创造力电子商务有限公司","seq":"22","name":"深圳市创造力电子商务有限公司","stars":2.0,"online":407.0,"you":117.0,"boom":15.0,"trade":387.0,"you_pct":null,"kefu":"庞婷婷","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"30|深圳鑫生力科技有限公司","seq":"30","name":"深圳鑫生力科技有限公司","stars":2.0,"online":1006.0,"you":96.0,"boom":4.0,"trade":252.0,"you_pct":null,"kefu":"陈宇","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"48|深圳市巨扬达科技有限公司","seq":"48","name":"深圳市巨扬达科技有限公司","stars":2.0,"online":418.0,"you":42.0,"boom":0.0,"trade":74.0,"you_pct":null,"kefu":"陆晓菲","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"60|深圳市宝安区坤源商务中心","seq":"60","name":"深圳市宝安区坤源商务中心","stars":1.0,"online":79.0,"you":31.0,"boom":1.0,"trade":46.0,"you_pct":null,"kefu":"邢欢欢","has_goods":"有","p4p30":9110.27,"day_add":null,"month_add":null},{"key":"70|深圳市云大成科技有限公司","seq":"70","name":"深圳市云大成科技有限公司","stars":0.0,"online":130.0,"you":20.0,"boom":0.0,"trade":41.0,"you_pct":null,"kefu":"农路源","has_goods":"有","p4p30":10580.87,"day_add":null,"month_add":null},{"key":"65|深圳鑫大瀛科技有限公司","seq":"65","name":"深圳鑫大瀛科技有限公司","stars":0.0,"online":249.0,"you":23.0,"boom":0.0,"trade":21.0,"you_pct":null,"kefu":"庞婷婷","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"37|深圳市力鑫实业有限公司","seq":"37","name":"深圳市力鑫实业有限公司","stars":2.0,"online":1262.0,"you":74.0,"boom":0.0,"trade":4.0,"you_pct":null,"kefu":"邢欢欢","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"99|东莞市点策自动化科技有限公司","seq":"99","name":"东莞市点策自动化科技有限公司","stars":0.0,"online":106.0,"you":0.0,"boom":0.0,"trade":0.0,"you_pct":null,"kefu":"农路源","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null}],"day_add":null,"month_add":null},{"name":"李怡萍","file":"李怡萍.xlsx","ds":"2026-11-01","title":"李怡萍 · CGS 客户优爆品明细（数据日期 2026-11-01）","count":10,"you":236.0,"trade":5439.0,"boom":10.0,"online":8338.0,"customers":[{"key":"70|深圳市凌志链接系统有限公司","seq":"70","name":"深圳市凌志链接系统有限公司","stars":1.0,"online":2668.0,"you":19.0,"boom":0.0,"trade":2655.0,"you_pct":null,"kefu":"古慧华","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"43|深圳市飞卡思实业有限公司","seq":"43","name":"深圳市飞卡思实业有限公司","stars":2.0,"online":945.0,"you":50.0,"boom":0.0,"trade":834.0,"you_pct":null,"kefu":"苏梓梦","has_goods":"有","p4p30":15786.53,"day_add":null,"month_add":null},{"key":"81|深圳市鸿彩印刷有限公司","seq":"81","name":"深圳市鸿彩印刷有限公司","stars":0.0,"online":1200.0,"you":13.0,"boom":0.0,"trade":681.0,"you_pct":null,"kefu":"汤青芬","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"71|深圳市点晨科技有限公司","seq":"71","name":"深圳市点晨科技有限公司","stars":1.0,"online":543.0,"you":18.0,"boom":0.0,"trade":374.0,"you_pct":null,"kefu":"曹丽","has_goods":"有","p4p30":24020.37,"day_add":null,"month_add":null},{"key":"38|深圳市孚森科技有限公司","seq":"38","name":"深圳市孚森科技有限公司","stars":2.0,"online":352.0,"you":56.0,"boom":5.0,"trade":324.0,"you_pct":null,"kefu":"方琼","has_goods":"有","p4p30":15213.97,"day_add":null,"month_add":null},{"key":"97|深圳市鑫道为科技有限公司","seq":"97","name":"深圳市鑫道为科技有限公司","stars":0.0,"online":529.0,"you":2.0,"boom":0.0,"trade":224.0,"you_pct":null,"kefu":"邢欢欢","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"93|深圳晨科流体技术有限公司","seq":"93","name":"深圳晨科流体技术有限公司","stars":1.0,"online":451.0,"you":4.0,"boom":0.0,"trade":181.0,"you_pct":null,"kefu":"苏梓梦","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"83|深圳市阿贝丝化妆用具有限公司","seq":"83","name":"深圳市阿贝丝化妆用具有限公司","stars":0.0,"online":252.0,"you":13.0,"boom":0.0,"trade":103.0,"you_pct":null,"kefu":"汤青芬","has_goods":"有","p4p30":0.0,"day_add":null,"month_add":null},{"key":"53|深圳新概念箱包有限公司","seq":"53","name":"深圳新概念箱包有限公司","stars":2.0,"online":762.0,"you":35.0,"boom":5.0,"trade":47.0,"you_pct":null,"kefu":"庞婷婷","has_goods":"有","p4p30":4183.53,"day_add":null,"month_add":null},{"key":"64|深圳市轩达电子有限公司","seq":"64","name":"深圳市轩达电子有限公司","stars":1.0,"online":636.0,"you":26.0,"boom":0.0,"trade":16.0,"you_pct":null,"kefu":"庞婷婷","has_goods":"有","p4p30":1712.7,"day_add":null,"month_add":null}],"day_add":null,"month_add":null}],"home":{"goods":{"current":126253.0,"target":175561.0,"pct":71.91403557737766,"structure":[{"name":"在线品数","count":2594920.0,"unit":"个","pct":4.865390840565411,"pct_label":"优爆品占比"},{"name":"当前有优爆品的客户数","count":2134.0,"unit":"家","pct":89.06510851419031,"pct_label":"占服务中客户"}],"date":"2026-11-01","p4p_products":33732.0,"p4p_pct":26.71778096362067},"youpin_company":{"structure":[{"name":"在线品数","count":2594920.0,"unit":"个","pct":4.865390840565411,"pct_label":"优爆品占比"},{"name":"当前有优爆品的客户数","count":2134.0,"unit":"家","pct":89.06510851419031,"pct_label":"占服务中客户"}],"date":"2026-11-01","value":126253.0,"target":175561.0,"pct":71.91403557737766,"p4p_products":33732.0,"p4p_pct":26.71778096362067,"cols":31,"rows":1,"complete":true},"goods_sales":[{"name":"漆螯童","value":10422.0,"base_ds":"2026-10-18","late_join":false,"target":12404.0,"pct":84.02128345694936,"pct_p4p":30.65630397236615,"ch_base":10375.0,"ch_add":47.0,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":-24.0},{"name":"郭龙耀","value":914.0,"base_ds":"2026-10-22","late_join":true,"target":null,"pct":null,"pct_p4p":31.400437636761485,"ch_base":325.0,"ch_add":589.0,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":-3.0},{"name":"王钢","value":879.0,"base_ds":"2026-10-22","late_join":true,"target":29.0,"pct":30.310344827586206,"pct_p4p":11.604095563139932,"ch_base":798.0,"ch_add":81.0,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":-3.0},{"name":"王子豪","value":11556.0,"base_ds":"2026-10-18","late_join":false,"target":15553.0,"pct":74.30077798495466,"pct_p4p":31.377639321564555,"ch_base":11437.0,"ch_add":119.0,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":-1.0},{"name":"舒媛丹","value":794.0,"base_ds":"2026-10-22","late_join":true,"target":123.0,"pct":6.455284552845528,"pct_p4p":16.876574307304786,"ch_base":747.0,"ch_add":47.0,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":1.0},{"name":"梁诗琪","value":2191.0,"base_ds":"2026-10-18","late_join":false,"target":3580.0,"pct":61.20111731843575,"pct_p4p":26.517571884984026,"ch_base":1553.0,"ch_add":638.0,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":4.0},{"name":"王金国","value":2456.0,"base_ds":"2026-10-18","late_join":false,"target":4093.0,"pct":60.00488639139995,"pct_p4p":23.004885993485342,"ch_base":2506.0,"ch_add":-50.0,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":-12.0},{"name":"程碧瑶","value":2482.0,"base_ds":"2026-10-18","late_join":false,"target":4950.0,"pct":50.141414141414145,"pct_p4p":16.921837228041902,"ch_base":2442.0,"ch_add":40.0,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":10.0},{"name":"牛群","value":1468.0,"base_ds":"2026-10-18","late_join":false,"target":2882.0,"pct":50.936849410131856,"pct_p4p":30.858310626702995,"ch_base":1527.0,"ch_add":-59.0,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":0.0},{"name":"邓晓东","value":7766.0,"base_ds":"2026-10-18","late_join":false,"target":9803.0,"pct":79.22064674079363,"pct_p4p":14.318825650270409,"ch_base":7985.0,"ch_add":-219.0,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":-47.0},{"name":"高国权","value":6652.0,"base_ds":"2026-10-18","late_join":false,"target":8165.0,"pct":81.46968769136559,"pct_p4p":17.874323511725795,"ch_base":6692.0,"ch_add":-40.0,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":-44.0},{"name":"李彬","value":6926.0,"base_ds":"2026-10-18","late_join":false,"target":7954.0,"pct":87.0756851898416,"pct_p4p":40.745018769852734,"ch_base":7194.0,"ch_add":-268.0,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":-35.0},{"name":"蒋汶桃","value":9388.0,"base_ds":"2026-10-18","late_join":false,"target":13361.0,"pct":70.2642017813038,"pct_p4p":32.435023434171285,"ch_base":10316.0,"ch_add":-928.0,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":-107.0},{"name":"罗金填","value":1818.0,"base_ds":"2026-10-18","late_join":false,"target":3498.0,"pct":51.97255574614065,"pct_p4p":24.312431243124312,"ch_base":1797.0,"ch_add":21.0,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":5.0},{"name":"张伟志","value":2613.0,"base_ds":"2026-10-22","late_join":true,"target":null,"pct":null,"pct_p4p":17.106773823191734,"ch_base":2617.0,"ch_add":-4.0,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":-43.0},{"name":"李金城","value":928.0,"base_ds":"2026-10-22","late_join":true,"target":23.0,"pct":40.34782608695652,"pct_p4p":39.008620689655174,"ch_base":593.0,"ch_add":335.0,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":1.0},{"name":"何尧玲","value":4280.0,"base_ds":"2026-10-18","late_join":false,"target":5350.0,"pct":80.0,"pct_p4p":11.962616822429908,"ch_base":4369.0,"ch_add":-89.0,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":-55.0},{"name":"刘蓝琳","value":2311.0,"base_ds":"2026-10-18","late_join":false,"target":3517.0,"pct":65.70941143019618,"pct_p4p":15.447858070099524,"ch_base":2343.0,"ch_add":-32.0,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":3.0},{"name":"李怡萍","value":6866.0,"base_ds":"2026-10-18","late_join":false,"target":10360.0,"pct":66.27413127413128,"pct_p4p":18.074570346635596,"ch_base":6908.0,"ch_add":-42.0,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":-23.0},{"name":"汤子豪","value":5179.0,"base_ds":"2026-10-18","late_join":false,"target":6821.0,"pct":75.92728338953233,"pct_p4p":35.18053678316277,"ch_base":5225.0,"ch_add":-46.0,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":-3.0},{"name":"谢承杰","value":5631.0,"base_ds":"2026-10-18","late_join":false,"target":7062.0,"pct":79.73661852166525,"pct_p4p":23.796838927366366,"ch_base":5664.0,"ch_add":-33.0,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":8.0},{"name":"夏锐","value":9619.0,"base_ds":"2026-10-18","late_join":false,"target":14228.0,"pct":67.60612876019117,"pct_p4p":25.823890217278304,"ch_base":10284.0,"ch_add":-665.0,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":-40.0},{"name":"王凡","value":8276.0,"base_ds":"2026-10-18","late_join":false,"target":9185.0,"pct":90.10342950462712,"pct_p4p":37.5302078298695,"ch_base":7241.0,"ch_add":1035.0,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":-28.0},{"name":"陈建国","value":8701.0,"base_ds":"2026-10-18","late_join":false,"target":11133.0,"pct":78.15503458187371,"pct_p4p":30.31835421215952,"ch_base":8654.0,"ch_add":47.0,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":0.0}],"goods_kefu":[{"name":"陈宇","value":15826.0,"target":21960.0,"pct":72.06739526411657,"pct_p4p":37.160369013016556,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":-61.0},{"name":"邢欢欢","value":11996.0,"target":16907.0,"pct":70.95285976222866,"pct_p4p":15.688562854284763,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":-28.0},{"name":"古慧华","value":6351.0,"target":9735.0,"pct":65.23882896764252,"pct_p4p":26.090379467800346,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":9.0},{"name":"苏梓梦","value":7697.0,"target":11202.0,"pct":68.71094447420103,"pct_p4p":17.66922177471742,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":-20.0},{"name":"汤青芬","value":4354.0,"target":6404.0,"pct":67.98875702685821,"pct_p4p":17.01883325677538,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":0.0},{"name":"李岩","value":10617.0,"target":13924.0,"pct":76.24964090778512,"pct_p4p":27.437129132523314,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":-75.0},{"name":"罗洋清","value":14238.0,"target":19028.0,"pct":74.82657136850956,"pct_p4p":39.801938474504844,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":-23.0},{"name":"曹丽","value":17474.0,"target":22083.0,"pct":79.12874156591043,"pct_p4p":24.482087673114343,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":-145.0},{"name":"方琼","value":14997.0,"target":20936.0,"pct":71.63259457393963,"pct_p4p":28.832433153297327,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":-115.0},{"name":"农路源","value":8621.0,"target":12366.0,"pct":69.71534853630924,"pct_p4p":26.01786335691915,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":-5.0},{"name":"庞婷婷","value":10236.0,"target":14834.0,"pct":69.00364028582985,"pct_p4p":17.61430246189918,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":-30.0},{"name":"陆晓菲","value":3846.0,"target":6182.0,"pct":62.21287609187966,"pct_p4p":25.559022360894435,"data_ds":"2026-11-01","day_base_ds":"2026-10-31","day_add":-7.0}],"goods_challenge":{"title":"商品成长 / 优爆品挑战赛","start":"2026-10-19","end":"2026-11-30","base_ds":"2026-10-18","reason":"","label":"10.19–11.30 新增","panel_title":"优爆品挑战赛","window_cn":"10月19日-11月30日","data_ds":"2026-11-01","day_base_ds":"2026-10-31","quarter":{"label":"FY27Q3","start":"2026-10-01","end":"2026-12-31"},"groups":[{"key":"seal","name":"海豹 / 掘金军团","members":["王凡","陈建国","漆螯童","谢承杰","高国权","邓晓东","李彬","蒋汶桃","王子豪","汤子豪","夏锐","李怡萍"]},{"key":"wind","name":"乘风营","members":["刘蓝琳","王金国","牛群","梁诗琪","程碧瑶","何尧玲","王钢","舒媛丹","李金城","张伟志","郭龙耀"]}],"skip":["罗金填","陈苑英"],"kefu":{"name":"拍档客服","count":12,"data_ds":"2026-11-01","day_base_ds":"2026-10-31"},"late_join":{"ds":"2026-10-22","members":["王钢","舒媛丹","李金城","张伟志","郭龙耀"]}},"update_time":"2026-11-03 11:24"}};
+
+const $ = (s, r = document) => r.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const fmt = (n) => (n === null || n === undefined || Number.isNaN(n)) ? "--" : Math.round(n).toLocaleString("en-US");
+const pct = (n) => (n === null || n === undefined || Number.isNaN(n)) ? "--" : (Math.round(n * 10) / 10).toFixed(1) + "%";
+const clamp = (n) => Math.max(0, Math.min(100, Number(n) || 0));
+
+function delta(n, unit = "") {
+  if (n === null || n === undefined || Number.isNaN(n)) return '<span class="dl na" title="需相邻数据日快照">--</span>';
+  const v = Math.round(n);
+  if (v > 0) return `<span class="dl up">+${v.toLocaleString("en-US")}${unit}</span>`;
+  if (v < 0) return `<span class="dl dn">${v.toLocaleString("en-US")}${unit}</span>`;
+  return `<span class="dl z">0${unit}</span>`;
+}
+
+const state = { view: "home", person: 0, sortKey: "you", sortDir: -1, q: "" };
+
+if (!BOARD) {
+  document.body.innerHTML = '<div style="padding:60px;font:16px sans-serif;color:#93a9c1">数据未内联：请运行 build/build_board.py 重新生成 index.html</div>';
+}
+
+/* ---------------- 顶栏 ---------------- */
+function renderNav() {
+  const nav = $("#nav");
+  const items = [`<a class="tab home" href="#/home" data-k="home">首页<span class="tv">优爆品 · 挑战赛</span></a>`];
+  BOARD.persons.forEach((p, i) => {
+    items.push(`<a class="tab" href="#/p/${encodeURIComponent(p.name)}" data-k="p${i}">${esc(p.name)}<span class="tv num">${fmt(p.you)}</span></a>`);
+  });
+  nav.innerHTML = items.join("");
+  $("#mDs").textContent = BOARD.meta.data_ds;
+  $("#mCnt").textContent = `${BOARD.meta.person_count} 位销售 · ${BOARD.meta.customer_count} 家 CGS 客户`;
+}
+
+function markNav() {
+  document.querySelectorAll(".tab").forEach((a) => a.classList.remove("on"));
+  const k = state.view === "home" ? "home" : "p" + state.person;
+  const el = document.querySelector(`.tab[data-k="${k}"]`);
+  if (el) { el.classList.add("on"); el.scrollIntoView({ block: "nearest", inline: "nearest" }); }
+}
+
+/* ---------------- 首页 ---------------- */
+function challengeDays(ch) {
+  if (!ch.end || !BOARD.meta.data_ds) return null;
+  const end = new Date(ch.end + "T00:00:00");
+  const cur = new Date(BOARD.meta.data_ds + "T00:00:00");
+  return Math.round((end - cur) / 86400000) + 1;
+}
+
+function chRow(i, name, value, add, target, rate, isTop) {
+  const addHtml = add === null || add === undefined
+    ? '<span class="rv na">--</span>'
+    : `<span class="rv add ${add < 0 ? "neg" : ""}">${add > 0 ? "+" : ""}${fmt(add)}</span>`;
+  return `<div class="ch-row${isTop ? " top1" : ""}">
+    <span class="rk">${i}</span>
+    <span class="who" title="${esc(name)}">${esc(name)}</span>
+    <span class="rv">${fmt(value)}</span>
+    ${addHtml}
+    <span class="rv">${target === null || target === undefined ? "--" : fmt(target)}</span>
+    <span class="pv">${pct(rate)}<span class="bar sm${isTop ? " gold" : ""}"><i style="width:${clamp(rate)}%"></i></span></span>
+  </div>`;
+}
+
+function renderHome() {
+  const H = BOARD.home || {};
+  const g = H.goods || {};
+  const ch = H.goods_challenge || {};
+  const sales = H.goods_sales || [];
+  const kefu = H.goods_kefu || [];
+  const struct = g.structure || [];
+  const online = struct.find((s) => String(s.name).includes("在线")) || {};
+  const custs = struct.find((s) => String(s.name).includes("客户")) || {};
+    const chTotal = sales.reduce((a, s) => a + (typeof s.ch_add === "number" ? s.ch_add : 0), 0);
+  const days = challengeDays(ch);
+
+  let html = `
+  <div class="block">
+    <div class="block-h">
+      <h2>优爆品总览</h2>
+      <div class="meta">平台口径 · <b>${esc(g.date || BOARD.meta.data_ds)}</b> 数据日 · 全店 ${fmt(g.current)} 个优爆品</div>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi">
+        <div class="k">当前优爆品数</div>
+        <div class="v num">${fmt(g.current)}</div>
+        <div class="f">全店口径 · 数据日 <b>${esc((g.date || BOARD.meta.data_ds).slice(5))}</b></div>
+      </div>
+      <div class="kpi gold">
+        <div class="k">季度目标</div>
+        <div class="v num">${fmt(g.target)}</div>
+        <div class="f">还差 <b>${g.target && g.current ? fmt(Math.max(0, g.target - g.current)) : "--"}</b> 个</div>
+      </div>
+      <div class="kpi">
+        <div class="k">目标完成率</div>
+        <div class="v num" style="color:${(g.pct || 0) >= 100 ? "var(--green)" : "var(--cyan)"}">${pct(g.pct)}</div>
+        <div class="bar"><i style="width:${clamp(g.pct)}%"></i></div>
+      </div>
+      <div class="kpi">
+        <div class="k">在线品数</div>
+        <div class="v num">${fmt(online.count)}</div>
+        <div class="f">${esc(online.pct_label || "优爆品占比")} <b>${pct(online.pct)}</b></div>
+      </div>
+      <div class="kpi">
+        <div class="k">有优爆品的客户</div>
+        <div class="v num">${fmt(custs.count)}<small>家</small></div>
+        <div class="f">${esc(custs.pct_label || "占服务中客户")} <b>${pct(custs.pct)}</b></div>
+      </div>
+      <div class="kpi">
+        <div class="k">推P商品数</div>
+        <div class="v num">${fmt(g.p4p_products)}</div>
+        <div class="f">推P占比 <b>${pct(g.p4p_pct)}</b></div>
+      </div>
+    </div>
+  </div>`;
+
+  html += `
+  <div class="block">
+    <div class="block-h">
+      <h2>${esc(ch.panel_title || "优爆品挑战赛")}</h2>
+      <div class="meta">${esc(ch.window_cn || "")} · 参赛销售合计新增 <b style="color:var(--gold)">${chTotal > 0 ? "+" : ""}${fmt(chTotal)}</b> 个
+      ${days !== null ? ` · 剩 <b>${days}</b> 天` : ""}</div>
+    </div>`;
+
+  if (!sales.length) {
+    html += `<div class="empty">挑战赛数据未接通（公司大屏 data_cur.json 未取到 goods_sales）</div>`;
+  } else {
+    const map = {};
+    sales.forEach((s) => { map[s.name] = s; });
+    const groups = ch.groups || [];
+    html += `<div class="ch-wrap">`;
+    groups.forEach((grp) => {
+      const rows = grp.members
+        .map((n) => map[n] || { name: n, value: null, ch_add: null, target: null, pct: null })
+        .sort((a, b) => (b.ch_add ?? -1e9) - (a.ch_add ?? -1e9));
+      html += `<div class="ch-panel">
+        <div class="ch-head">
+          <div class="t"><em>${grp.members.length} 人</em>${esc(grp.name)}</div>
+          <div class="s">按挑战期新增排序</div>
+        </div>
+        <div class="ch-cols"><span>#</span><span>销售</span><span style="text-align:right">当前</span><span style="text-align:right">挑战新增</span><span style="text-align:right">目标</span><span style="text-align:right">完成率</span></div>
+        <div class="ch-body">${rows.map((r, i) => chRow(i + 1, r.name, r.value, r.ch_add, r.target, r.pct, i === 0)).join("")}</div>
+      </div>`;
+    });
+    html += `</div>`;
+  }
+
+  if (kefu.length) {
+    const krows = [...kefu].sort((a, b) => (b.value ?? 0) - (a.value ?? 0));
+    const head = `<div class="ch-cols"><span>#</span><span>客服</span><span style="text-align:right">优爆品数</span><span style="text-align:right">季目标</span><span style="text-align:right">完成率</span><span style="text-align:right">今日新增</span></div>`;
+    const row = (r, i) => `<div class="ch-row${i === 0 ? " top1" : ""}">
+        <span class="rk">${i + 1}</span><span class="who">${esc(r.name)}</span>
+        <span class="rv">${fmt(r.value)}</span>
+        <span class="rv">${fmt(r.target)}</span>
+        <span class="pv">${pct(r.pct)}<span class="bar sm"><i style="width:${clamp(r.pct)}%"></i></span></span>
+        <span class="rv ${r.day_add < 0 ? "add neg" : "add"}">${r.day_add == null ? "--" : (r.day_add > 0 ? "+" : "") + fmt(r.day_add)}</span>
+      </div>`;
+    const half = Math.ceil(krows.length / 2);
+    const col = (arr, off) => `<div>${head}${arr.map((r, i) => row(r, off + i)).join("")}</div>`;
+    html += `<div class="ch-panel kf" style="margin-top:14px">
+      <div class="ch-head">
+        <div class="t"><em>${kefu.length} 人</em>拍档客服</div>
+        <div class="s">客服不参与挑战赛 · 按优爆品数排序</div>
+      </div>
+      <div class="ch-body kf2">${col(krows.slice(0, half), 0)}${col(krows.slice(half), half)}</div>
+    </div>`;
+  }
+  html += `</div>`;
+
+  $("#view-home").innerHTML = html;
+}
+
+/* ---------------- 人物页 ---------------- */
+function personRows(p) {
+  const q = state.q.trim();
+  let rows = p.customers.filter((c) => !q || c.name.includes(q) || (c.kefu || "").includes(q));
+  const k = state.sortKey, d = state.sortDir;
+  rows.sort((a, b) => {
+    const va = a[k], vb = b[k];
+    if (va === null || va === undefined) return 1;
+    if (vb === null || vb === undefined) return -1;
+    if (typeof va === "string") return va.localeCompare(vb, "zh") * d;
+    return (va - vb) * d;
+  });
+  return rows;
+}
+
+function renderPerson() {
+  const p = BOARD.persons[state.person];
+  if (!p) return;
+  const rows = personRows(p);
+  const arrow = (k) => (state.sortKey === k ? `<span class="ar">${state.sortDir < 0 ? "▼" : "▲"}</span>` : "");
+  const missing = p.month_add === null || p.day_add === null;
+
+  let html = `<div class="p-head">
+    <div class="p-title">
+      <div class="p-avatar">${esc(p.name.slice(0, 1))}</div>
+      <div>
+        <h2>${esc(p.name)}</h2>
+        <div class="ps">${esc(p.file)} · <b>${p.count}</b> 家 CGS 客户 · 数据日 <b>${esc(p.ds || BOARD.meta.data_ds)}</b></div>
+      </div>
+    </div>
+    <div class="hint">CGS 客户口径 · 按当前优爆品数降序</div>
+  </div>
+
+  <div class="p-kpi">
+    <div class="pk"><div class="k">客户数</div><div class="v num">${p.count}</div></div>
+    <div class="pk hl"><div class="k">当前优爆品数</div><div class="v num">${fmt(p.you)}</div></div>
+    <div class="pk"><div class="k">总交易品数</div><div class="v num">${fmt(p.trade)}</div></div>
+    <div class="pk gold"><div class="k">本月新增</div><div class="v num">${p.month_add === null ? "--" : (p.month_add > 0 ? "+" : "") + fmt(p.month_add)}</div></div>
+    <div class="pk gold"><div class="k">今日新增</div><div class="v num">${p.day_add === null ? "--" : (p.day_add > 0 ? "+" : "") + fmt(p.day_add)}</div></div>
+  </div>`;
+
+  if (missing) {
+    html += `<div class="note"><i>!</i><div>「今日新增 / 本月新增」按快照做差：今日新增 = 当前数据日 − 上一数据日；本月新增 = 当前数据日 − 本月首个数据日。
+    当前工作区只有 <b>${esc(BOARD.meta.data_ds)}</b> 一份导出（快照 ${BOARD.meta.snapshot_dates.length} 份${BOARD.meta.prev_ds ? "，上一数据日 " + esc(BOARD.meta.prev_ds) : "，无上一数据日"}），缺基准的格子一律显示 <b>--</b>，不拿 0 或上月值顶替。放入下一日导出后自动补齐。</div></div>`;
+  }
+
+  html += `<div class="block">
+    <div class="tools">
+      <div class="search"><input id="q" placeholder="搜客户名 / 客服" value="${esc(state.q)}"></div>
+      <div class="hint">共 ${rows.length} 家 · 合计 优爆品 ${fmt(rows.reduce((a, c) => a + (c.you || 0), 0))} · 交易品 ${fmt(rows.reduce((a, c) => a + (c.trade || 0), 0))}</div>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr>
+          <th style="width:52px">#</th>
+          <th style="width:44%">客户名称</th>
+          <th class="r" data-k="you" style="width:14%">当前优爆品数${arrow("you")}</th>
+          <th class="r" data-k="trade" style="width:14%">总交易品数${arrow("trade")}</th>
+          <th class="r" data-k="month_add" style="width:14%">本月新增${arrow("month_add")}</th>
+          <th class="r" data-k="day_add" style="width:14%">今日新增${arrow("day_add")}</th>
+        </tr></thead>
+        <tbody>`;
+
+  if (!rows.length) {
+    html += `<tr><td colspan="6"><div class="empty">没有匹配的客户</div></td></tr>`;
+  } else {
+    rows.forEach((c, i) => {
+      html += `<tr>
+        <td><span class="rk2 num">${i + 1}</span></td>
+        <td class="cust"><span class="cn" title="${esc(c.name)}">${esc(c.name)}</span>${c.kefu ? `<span class="cs">客服 ${esc(c.kefu)}</span>` : ""}</td>
+        <td class="r"><span class="v-you">${fmt(c.you)}</span></td>
+        <td class="r"><span class="v-trade">${fmt(c.trade)}</span></td>
+        <td class="r">${delta(c.month_add)}</td>
+        <td class="r">${delta(c.day_add)}</td>
+      </tr>`;
+    });
+  }
+  html += `</tbody></table></div></div>`;
+
+  $("#view-person").innerHTML = html;
+  const q = $("#q");
+  if (q) {
+    q.addEventListener("input", (e) => { state.q = e.target.value; renderPerson(); const el = $("#q"); el.focus(); el.setSelectionRange(el.value.length, el.value.length); });
+  }
+  document.querySelectorAll("#view-person th[data-k]").forEach((th) => {
+    th.addEventListener("click", () => {
+      const k = th.dataset.k;
+      if (state.sortKey === k) state.sortDir *= -1; else { state.sortKey = k; state.sortDir = -1; }
+      renderPerson();
+    });
+  });
+}
+
+/* ---------------- 页脚 ---------------- */
+function renderFoot() {
+  const m = BOARD.meta;
+  $("#foot").innerHTML = `
+    <div><b>口径：</b>「当前优爆品数」= 表格「优爆品数」（含其中爆品）；「总交易品数」= 表格「交易品数」；CGS 客户口径，直接取工作区各销售 xlsx（数据日 ${esc(m.data_ds)}，抓取 ${esc(m.captured_at)}）。</div>
+    <div><b>新增：</b>今日新增 = 当前数据日 − 上一数据日快照；本月新增 = 当前数据日 − 本月首个数据日快照。快照存于 <b>snapshots/</b>，缺基准显示 --。
+    <span class="sep">|</span>快照 ${m.snapshot_dates.length} 份：${m.snapshot_dates.map(esc).join("、") || "无"}</div>
+    <div><b>首页：</b>公司大屏同源 data_cur.json（更新 ${esc(m.home_update || "--")}），平台口径，与子页的 CGS 口径不同，不要跨页相加。</div>`;
+}
+
+/* ---------------- 路由 ---------------- */
+function route() {
+  const h = decodeURIComponent(location.hash || "#/home");
+  const m = h.match(/^#\/p\/(.+)$/);
+  if (m) {
+    const idx = BOARD.persons.findIndex((p) => p.name === m[1]);
+    state.view = "person";
+    state.person = idx >= 0 ? idx : 0;
+    state.q = "";
+    $("#view-home").hidden = true;
+    $("#view-person").hidden = false;
+    renderPerson();
+  } else {
+    state.view = "home";
+    $("#view-home").hidden = false;
+    $("#view-person").hidden = true;
+    renderHome();
+  }
+  markNav();
+  window.scrollTo({ top: 0, behavior: "auto" });
+}
+
+if (BOARD) {
+  renderNav();
+  renderFoot();
+  window.addEventListener("hashchange", route);
+  route();
+}
+</script>
+</body>
+</html>
