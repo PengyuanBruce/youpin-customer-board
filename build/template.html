@@ -202,6 +202,7 @@ thead th{
 }
 thead th.r{text-align:right}
 thead th .ar{font-size:9px;color:var(--cyan);margin-left:4px;opacity:.9}
+thead th .th-sub{display:block;font-size:10px;font-weight:400;color:var(--muted);letter-spacing:0;margin-top:2px}
 thead th:hover{color:var(--txt)}
 tbody td{padding:10px 13px;font-size:13px;border-bottom:1px solid rgba(120,190,255,.06);font-variant-numeric:tabular-nums}
 tbody tr:hover{background:rgba(63,208,255,.055)}
@@ -251,7 +252,7 @@ footer .sep{color:rgba(120,190,255,.3);margin:0 7px}
     <div class="logo">优</div>
     <div>
       <h1>客户优爆品数据看板</h1>
-      <div class="sub">数据日 <b id="mDs">--</b> · <span id="mCnt">--</span></div>
+      <div class="sub">客户盘点数据日 <b id="mDs">--</b> · <span id="mCnt">--</span></div>
     </div>
   </div>
   <nav class="tabs" id="nav" aria-label="销售导航"></nav>
@@ -463,7 +464,7 @@ function renderPerson() {
       <div class="p-avatar">${esc(p.name.slice(0, 1))}</div>
       <div>
         <h2>${esc(p.name)}</h2>
-        <div class="ps">${esc(p.file)} · <b>${p.count}</b> 家 CGS 客户 · 数据日 <b>${esc(p.ds || BOARD.meta.data_ds)}</b></div>
+        <div class="ps">${esc(p.file)} · <b>${p.count}</b> 家 CGS 客户 · 指标数据日 <b>${esc(BOARD.meta.data_ds)}</b>${BOARD.meta.inventory && BOARD.meta.inventory.used ? " · 指标源 平台客户盘点" : ""}</div>
       </div>
     </div>
     <div class="hint">CGS 客户口径 · 按当前优爆品数降序</div>
@@ -473,13 +474,19 @@ function renderPerson() {
     <div class="pk"><div class="k">客户数</div><div class="v num">${p.count}</div></div>
     <div class="pk hl"><div class="k">当前优爆品数</div><div class="v num">${fmt(p.you)}</div></div>
     <div class="pk"><div class="k">总交易品数</div><div class="v num">${fmt(p.trade)}</div></div>
-    <div class="pk gold"><div class="k">本月新增</div><div class="v num">${p.month_add === null ? "--" : (p.month_add > 0 ? "+" : "") + fmt(p.month_add)}</div></div>
-    <div class="pk gold"><div class="k">今日新增</div><div class="v num">${p.day_add === null ? "--" : (p.day_add > 0 ? "+" : "") + fmt(p.day_add)}</div></div>
+    <div class="pk gold" ${p.month_add_partial ? 'title="部分客户平台无商品数据，未计入"' : ""}><div class="k">本月新增</div><div class="v num">${p.month_add === null ? "--" : (p.month_add > 0 ? "+" : "") + fmt(p.month_add) + (p.month_add_partial ? " *" : "")}</div></div>
+    <div class="pk gold" ${p.day_add_partial ? 'title="部分客户平台无商品数据，未计入"' : ""}><div class="k">今日新增</div><div class="v num">${p.day_add === null ? "--" : (p.day_add > 0 ? "+" : "") + fmt(p.day_add) + (p.day_add_partial ? " *" : "")}</div></div>
   </div>`;
 
-  if (missing) {
-    html += `<div class="note"><i>!</i><div>「今日新增 / 本月新增」按快照做差：今日新增 = 当前数据日 − 上一数据日；本月新增 = 当前数据日 − 本月首个数据日。
-    当前工作区只有 <b>${esc(BOARD.meta.data_ds)}</b> 一份导出（快照 ${BOARD.meta.snapshot_dates.length} 份${BOARD.meta.prev_ds ? "，上一数据日 " + esc(BOARD.meta.prev_ds) : "，无上一数据日"}），缺基准的格子一律显示 <b>--</b>，不拿 0 或上月值顶替。放入下一日导出后自动补齐。</div></div>`;
+  const meta = BOARD.meta;
+  const gapWarn = meta.day_gap && meta.day_gap > 1
+    ? `「今日新增」对比的是上一可用数据日 <b>${esc(meta.prev_ds)}</b>（间隔 ${meta.day_gap} 天，平台未提供中间日期的盘点分区），因此这一列是<b>该区间累计</b>，不是严格的一日环比。`
+    : "";
+  if (missing || gapWarn) {
+    const miss = missing
+      ? `缺基准的格子一律显示 <b>--</b>，不拿 0 或上月值顶替（快照 ${meta.snapshot_dates.length} 份${meta.prev_ds ? "，上一数据日 " + esc(meta.prev_ds) : "，暂无上一数据日"}）。`
+      : "";
+    html += `<div class="note"><i>!</i><div>${gapWarn}${miss}</div></div>`;
   }
 
   html += `<div class="block">
@@ -494,8 +501,8 @@ function renderPerson() {
           <th style="width:44%">客户名称</th>
           <th class="r" data-k="you" style="width:14%">当前优爆品数${arrow("you")}</th>
           <th class="r" data-k="trade" style="width:14%">总交易品数${arrow("trade")}</th>
-          <th class="r" data-k="month_add" style="width:14%">本月新增${arrow("month_add")}</th>
-          <th class="r" data-k="day_add" style="width:14%">今日新增${arrow("day_add")}</th>
+          <th class="r" data-k="month_add" style="width:14%">本月新增${arrow("month_add")}${BOARD.meta.month_base_ds ? `<span class="th-sub">较 ${esc(BOARD.meta.month_base_ds.slice(5))}</span>` : ""}</th>
+          <th class="r" data-k="day_add" style="width:14%">今日新增${arrow("day_add")}${BOARD.meta.prev_ds ? `<span class="th-sub">较 ${esc(BOARD.meta.prev_ds.slice(5))}</span>` : ""}</th>
         </tr></thead>
         <tbody>`;
 
@@ -533,8 +540,8 @@ function renderPerson() {
 function renderFoot() {
   const m = BOARD.meta;
   $("#foot").innerHTML = `
-    <div><b>口径：</b>「当前优爆品数」= 表格「优爆品数」（含其中爆品）；「总交易品数」= 表格「交易品数」；CGS 客户口径，直接取工作区各销售 xlsx（数据日 ${esc(m.data_ds)}，抓取 ${esc(m.captured_at)}）。</div>
-    <div><b>新增：</b>今日新增 = 当前数据日 − 上一数据日快照；本月新增 = 当前数据日 − 本月首个数据日快照。快照存于 <b>snapshots/</b>，缺基准显示 --。
+    <div><b>口径：</b>「当前优爆品数」= 平台字段 youbaopin_prd_cnt（含其中爆品）；「总交易品数」= jiaoyi_prd_cnt；只看 CGS 客户（is_cgs_service = Y），客户清单取自工作区各销售 xlsx（清单数据日 ${esc(m.member_ds)}）${m.inventory && m.inventory.used ? `，指标刷新自平台「全量客户盘点」stat_date <b>${esc(m.inventory.ds)}</b>（匹配 ${m.inventory.matched}/${m.inventory.total} 家）` : ""}。抓取 ${esc(m.captured_at)}。</div>
+    <div><b>新增：</b>今日新增 = 当前数据日 − 上一可用数据日快照${m.prev_ds ? `（${esc(m.prev_ds)}，间隔 ${m.day_gap} 天）` : ""}；本月新增 = 当前数据日 − 本月首个数据日快照。快照存于 <b>snapshots/</b>，缺基准显示 --。
     <span class="sep">|</span>快照 ${m.snapshot_dates.length} 份：${m.snapshot_dates.map(esc).join("、") || "无"}</div>
     <div><b>首页：</b>公司大屏同源 data_cur.json（更新 ${esc(m.home_update || "--")}），平台口径，与子页的 CGS 口径不同，不要跨页相加。</div>`;
 }
