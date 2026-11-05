@@ -182,6 +182,8 @@ section[hidden]{display:none !important}
   color:#e8d5a9;border-radius:11px;padding:10px 13px;font-size:12px;line-height:1.6;margin-bottom:14px;
 }
 .note i{font-style:normal;color:var(--gold);font-weight:700}
+.note.mini{border-style:solid;border-color:var(--line);background:transparent;color:var(--muted);padding:7px 13px;margin-bottom:12px}
+.note.mini b{color:var(--gold)}
 
 .tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:10px}
 .search{position:relative;flex:0 1 260px;min-width:160px}
@@ -482,11 +484,16 @@ function renderPerson() {
   const gapWarn = meta.day_gap && meta.day_gap > 1
     ? `「今日新增」对比的是上一可用数据日 <b>${esc(meta.prev_ds)}</b>（间隔 ${meta.day_gap} 天，平台未提供中间日期的盘点分区），因此这一列是<b>该区间累计</b>，不是严格的一日环比。`
     : "";
+  const miss = missing
+    ? `缺基准的格子一律显示 <b>--</b>，不拿 0 或上月值顶替（快照 ${meta.snapshot_dates.length} 份${meta.prev_ds ? "，上一数据日 " + esc(meta.prev_ds) : "，暂无上一数据日"}）。`
+    : "";
+  const legend = (p.day_add_partial || p.month_add_partial)
+    ? `<b>*</b> 部分客户平台未下发商品数据，未计入新增。`
+    : "";
   if (missing || gapWarn) {
-    const miss = missing
-      ? `缺基准的格子一律显示 <b>--</b>，不拿 0 或上月值顶替（快照 ${meta.snapshot_dates.length} 份${meta.prev_ds ? "，上一数据日 " + esc(meta.prev_ds) : "，暂无上一数据日"}）。`
-      : "";
-    html += `<div class="note"><i>!</i><div>${gapWarn}${miss}</div></div>`;
+    html += `<div class="note"><i>!</i><div>${gapWarn}${miss}${legend}</div></div>`;
+  } else if (legend) {
+    html += `<div class="note mini"><div>${legend}</div></div>`;
   }
 
   html += `<div class="block">
