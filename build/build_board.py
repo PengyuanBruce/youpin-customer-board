@@ -220,6 +220,16 @@ def write_snapshot(ds, persons, customers, captured_at):
                       for c in customers},
     }
     path = os.path.join(SNAP_DIR, f"customers-{ds}.json")
+    # 同一数据日重复构建时，内容没变就不重写（避免只改 captured_at 造成无意义提交）
+    if os.path.exists(path):
+        try:
+            with open(path, encoding="utf-8") as fh:
+                old = json.load(fh)
+            if {k: v for k, v in old.items() if k != "captured_at"} == \
+                    {k: v for k, v in payload.items() if k != "captured_at"}:
+                return path
+        except Exception:  # noqa: BLE001
+            pass
     with open(path, "w", encoding="utf-8") as fh:
         json.dump(payload, fh, ensure_ascii=False, indent=1)
     return path
@@ -376,6 +386,20 @@ def main():
         "persons": persons,
         "home": home,
     }
+
+    # 数据没变就沿用上一版的抓取时间，让重复构建产物逐字节一致（推送脚本才会判定「无变化」）
+    if os.path.exists(OUT_JSON):
+        try:
+            with open(OUT_JSON, encoding="utf-8") as fh:
+                old_board = json.load(fh)
+            old_body = json.dumps(old_board, ensure_ascii=False, sort_keys=True)
+            new_body = json.dumps({**board, "meta": {**board["meta"], "captured_at": old_board.get("meta", {}).get("captured_at")}},
+                                  ensure_ascii=False, sort_keys=True)
+            if old_body == new_body and old_board.get("meta", {}).get("captured_at"):
+                board["meta"]["captured_at"] = old_board["meta"]["captured_at"]
+                print("数据与上一版一致，沿用 captured_at", board["meta"]["captured_at"])
+        except Exception:  # noqa: BLE001
+            pass
 
     with open(OUT_JSON, "w", encoding="utf-8") as fh:
         json.dump(board, fh, ensure_ascii=False, indent=1)
