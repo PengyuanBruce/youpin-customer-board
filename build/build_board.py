@@ -40,6 +40,7 @@ OUT_JSON = os.path.join(BASE, "board.json")
 COLS = {
     "序号": "seq",
     "客户名称": "name",
+    "客户类型标签": "ctype",
     "星等级": "stars",
     "本月实收(USD)": "recv_m",
     "本季度实收(USD)": "recv_q",
@@ -119,6 +120,7 @@ def read_workbook(path):
             "boom": num(rec.get("boom")),
             "trade": num(rec.get("trade")),
             "you_pct": num(rec.get("you_pct")),
+            "ctype": txt(rec.get("ctype")),
             "kefu": txt(rec.get("kefu")),
             "has_goods": txt(rec.get("has_goods")),
             "p4p30": num(rec.get("p4p30")),
