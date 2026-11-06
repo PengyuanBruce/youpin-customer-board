@@ -11,7 +11,7 @@
    "ambiguous_groups": 28,
    "ds_iso": "2026-11-05"
   },
-  "captured_at": "2026-11-06 09:17",
+  "captured_at": "2026-11-06 09:18",
   "month": "2026-11",
   "prev_ds": "2026-11-04",
   "day_gap": 1,
@@ -297,8 +297,11 @@
    ],
    "day_add": 0.0,
    "day_add_partial": true,
+   "day_add_excluded": 7,
    "month_add": 48.0,
-   "month_add_partial": false
+   "month_add_partial": false,
+   "month_add_excluded": 0,
+   "ambig_rows": 7
   },
   {
    "name": "邓晓东",
@@ -560,8 +563,11 @@
    ],
    "day_add": 0.0,
    "day_add_partial": true,
+   "day_add_excluded": 4,
    "month_add": -8.0,
-   "month_add_partial": false
+   "month_add_partial": false,
+   "month_add_excluded": 0,
+   "ambig_rows": 4
   },
   {
    "name": "谢承杰",
@@ -712,8 +718,11 @@
    ],
    "day_add": 0.0,
    "day_add_partial": true,
+   "day_add_excluded": 3,
    "month_add": 6.0,
-   "month_add_partial": false
+   "month_add_partial": false,
+   "month_add_excluded": 0,
+   "ambig_rows": 3
   },
   {
    "name": "张伟志",
@@ -915,8 +924,11 @@
    ],
    "day_add": 0.0,
    "day_add_partial": true,
+   "day_add_excluded": 2,
    "month_add": 4.0,
-   "month_add_partial": false
+   "month_add_partial": false,
+   "month_add_excluded": 0,
+   "ambig_rows": 2
   },
   {
    "name": "何尧玲",
@@ -1193,8 +1205,11 @@
    ],
    "day_add": 0.0,
    "day_add_partial": true,
+   "day_add_excluded": 3,
    "month_add": -14.0,
-   "month_add_partial": false
+   "month_add_partial": false,
+   "month_add_excluded": 0,
+   "ambig_rows": 3
   },
   {
    "name": "夏锐",
@@ -1426,8 +1441,11 @@
    ],
    "day_add": 0.0,
    "day_add_partial": true,
+   "day_add_excluded": 6,
    "month_add": 12.0,
-   "month_add_partial": false
+   "month_add_partial": false,
+   "month_add_excluded": 0,
+   "ambig_rows": 6
   },
   {
    "name": "高国权",
@@ -1635,8 +1653,11 @@
    ],
    "day_add": 0.0,
    "day_add_partial": true,
+   "day_add_excluded": 4,
    "month_add": 0.0,
-   "month_add_partial": false
+   "month_add_partial": false,
+   "month_add_excluded": 0,
+   "ambig_rows": 4
   },
   {
    "name": "李怡萍",
@@ -1832,8 +1853,11 @@
    ],
    "day_add": 0.0,
    "day_add_partial": false,
+   "day_add_excluded": 0,
    "month_add": -2.0,
-   "month_add_partial": false
+   "month_add_partial": false,
+   "month_add_excluded": 0,
+   "ambig_rows": 0
   }
  ],
  "home": {
