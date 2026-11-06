@@ -476,8 +476,8 @@ function renderPerson() {
     <div class="pk"><div class="k">客户数</div><div class="v num">${p.count}</div></div>
     <div class="pk hl"><div class="k">当前优爆品数</div><div class="v num">${fmt(p.you)}</div></div>
     <div class="pk"><div class="k">总交易品数</div><div class="v num">${fmt(p.trade)}</div></div>
-    <div class="pk gold" ${p.month_add_partial ? 'title="部分客户平台无商品数据，未计入"' : ""}><div class="k">本月新增</div><div class="v num">${p.month_add === null ? "--" : (p.month_add > 0 ? "+" : "") + fmt(p.month_add) + (p.month_add_partial ? " *" : "")}</div></div>
-    <div class="pk gold" ${p.day_add_partial ? 'title="部分客户平台无商品数据，未计入"' : ""}><div class="k">今日新增</div><div class="v num">${p.day_add === null ? "--" : (p.day_add > 0 ? "+" : "") + fmt(p.day_add) + (p.day_add_partial ? " *" : "")}</div></div>
+    <div class="pk gold" ${p.month_add_partial ? `title="本页 ${p.month_add_excluded} 家未计入（多账号客户或平台无商品数据）"` : ""}><div class="k">本月新增</div><div class="v num">${p.month_add === null ? "--" : (p.month_add > 0 ? "+" : "") + fmt(p.month_add) + (p.month_add_partial ? " *" : "")}</div></div>
+    <div class="pk gold" ${p.day_add_partial ? `title="本页 ${p.day_add_excluded} 家未计入（多账号客户或平台无商品数据）"` : ""}><div class="k">今日新增</div><div class="v num">${p.day_add === null ? "--" : (p.day_add > 0 ? "+" : "") + fmt(p.day_add) + (p.day_add_partial ? " *" : "")}</div></div>
   </div>`;
 
   const meta = BOARD.meta;
@@ -487,8 +487,13 @@ function renderPerson() {
   const miss = missing
     ? `缺基准的格子一律显示 <b>--</b>，不拿 0 或上月值顶替（快照 ${meta.snapshot_dates.length} 份${meta.prev_ds ? "，上一数据日 " + esc(meta.prev_ds) : "，暂无上一数据日"}）。`
     : "";
+  const exDay = p.day_add_excluded || 0;
+  const exMon = p.month_add_excluded || 0;
+  const ambiguous = exDay > 0 && p.ambig_rows >= exDay;
   const legend = (p.day_add_partial || p.month_add_partial)
-    ? `<b>*</b> 部分客户平台未下发商品数据，未计入新增。`
+    ? (ambiguous
+      ? `<b>*</b> 本页 ${exDay} 家客户在同一销售名下对应多个国际站账号（同公司多账号），账号级对应关系自 ${esc(meta.data_ds)} 起才固定，本期新增未计入；下一数据日恢复正常。`
+      : `<b>*</b> 本页 ${exDay || exMon} 家客户平台未下发商品数据，未计入新增。`)
     : "";
   if (missing || gapWarn) {
     html += `<div class="note"><i>!</i><div>${gapWarn}${miss}${legend}</div></div>`;
