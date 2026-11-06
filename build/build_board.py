@@ -431,6 +431,8 @@ def main():
             vals = [c[f] for c in p["customers"] if c[f] is not None]
             p[f] = sum(vals) if vals else None
             p[f + "_partial"] = len(vals) < len(p["customers"])
+            p[f + "_excluded"] = len(p["customers"]) - len(vals)
+        p["ambig_rows"] = sum(1 for c in p["customers"] if c.get("ambig_group"))
 
     persons.sort(key=lambda x: (-(x["you"] or 0), x["name"]))
 
