@@ -184,6 +184,9 @@ section[hidden]{display:none !important}
 .note i{font-style:normal;color:var(--gold);font-weight:700}
 .note.mini{border-style:solid;border-color:var(--line);background:transparent;color:var(--muted);padding:7px 13px;margin-bottom:12px}
 .note.mini b{color:var(--gold)}
+.tag{display:inline-block;padding:2px 9px;border-radius:99px;font-size:11.5px;letter-spacing:.2px;
+  color:#8fd8ff;background:rgba(63,208,255,.10);border:1px solid rgba(63,208,255,.26);white-space:nowrap}
+.tag-empty{color:var(--muted);background:transparent;border-color:var(--line)}
 
 .tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:10px}
 .search{position:relative;flex:0 1 260px;min-width:160px}
@@ -510,21 +513,23 @@ function renderPerson() {
       <table>
         <thead><tr>
           <th style="width:52px">#</th>
-          <th style="width:44%">客户名称</th>
-          <th class="r" data-k="you" style="width:14%">当前优爆品数${arrow("you")}</th>
-          <th class="r" data-k="trade" style="width:14%">总交易品数${arrow("trade")}</th>
-          <th class="r" data-k="month_add" style="width:14%">本月新增${arrow("month_add")}${BOARD.meta.month_base_ds ? `<span class="th-sub">较 ${esc(BOARD.meta.month_base_ds.slice(5))}</span>` : ""}</th>
-          <th class="r" data-k="day_add" style="width:14%">今日新增${arrow("day_add")}${BOARD.meta.prev_ds ? `<span class="th-sub">较 ${esc(BOARD.meta.prev_ds.slice(5))}</span>` : ""}</th>
+          <th style="width:30%">客户名称</th>
+          <th style="width:12%">客户类型</th>
+          <th class="r" data-k="you" style="width:13%">当前优爆品数${arrow("you")}</th>
+          <th class="r" data-k="trade" style="width:13%">总交易品数${arrow("trade")}</th>
+          <th class="r" data-k="month_add" style="width:13%">本月新增${arrow("month_add")}${BOARD.meta.month_base_ds ? `<span class="th-sub">较 ${esc(BOARD.meta.month_base_ds.slice(5))}</span>` : ""}</th>
+          <th class="r" data-k="day_add" style="width:13%">今日新增${arrow("day_add")}${BOARD.meta.prev_ds ? `<span class="th-sub">较 ${esc(BOARD.meta.prev_ds.slice(5))}</span>` : ""}</th>
         </tr></thead>
         <tbody>`;
 
   if (!rows.length) {
-    html += `<tr><td colspan="6"><div class="empty">没有匹配的客户</div></td></tr>`;
+    html += `<tr><td colspan="7"><div class="empty">没有匹配的客户</div></td></tr>`;
   } else {
     rows.forEach((c, i) => {
       html += `<tr>
         <td><span class="rk2 num">${i + 1}</span></td>
         <td class="cust"><span class="cn" title="${esc(c.name)}">${esc(c.name)}</span>${c.kefu ? `<span class="cs">客服 ${esc(c.kefu)}</span>` : ""}</td>
+        <td>${c.ctype ? `<span class="tag">${esc(c.ctype)}</span>` : '<span class="tag tag-empty">—</span>'}</td>
         <td class="r"><span class="v-you">${fmt(c.you)}</span></td>
         <td class="r"><span class="v-trade">${fmt(c.trade)}</span></td>
         <td class="r">${delta(c.month_add)}</td>
