@@ -8,9 +8,10 @@
    "matched": 88,
    "total": 88,
    "rows": 7525,
+   "ambiguous_groups": 28,
    "ds_iso": "2026-11-05"
   },
-  "captured_at": "2026-11-06 09:12",
+  "captured_at": "2026-11-06 09:17",
   "month": "2026-11",
   "prev_ds": "2026-11-04",
   "day_gap": 1,
@@ -33,10 +34,10 @@
    "ds": "2026-11-01",
    "title": "蒋汶桃 · CGS 客户优爆品明细（数据日期 2026-11-01）",
    "count": 13,
-   "you": 2194.0,
-   "trade": 9580.0,
-   "boom": 178.0,
-   "online": 15753.0,
+   "you": 2357.0,
+   "trade": 9687.0,
+   "boom": 194.0,
+   "online": 16182.0,
    "customers": [
     {
      "key": "2|深圳市易沅科技有限公司",
@@ -51,8 +52,12 @@
      "kefu": "陈宇",
      "has_goods": "有",
      "p4p30": 0.0,
+     "ambig_group": true,
+     "xlsx_you": 375.0,
+     "xlsx_trade": 2070.0,
      "src": "inventory",
-     "day_add": 2.0,
+     "ali_id": "1847002266",
+     "day_add": null,
      "month_add": 2.0
     },
     {
@@ -69,6 +74,7 @@
      "has_goods": "有",
      "p4p30": 11027.97,
      "src": "inventory",
+     "ali_id": "2208174474343",
      "day_add": 0.0,
      "month_add": 44.0
     },
@@ -86,6 +92,7 @@
      "has_goods": "有",
      "p4p30": 4324.3,
      "src": "inventory",
+     "ali_id": "17380537337",
      "day_add": 0.0,
      "month_add": -3.0
     },
@@ -94,17 +101,21 @@
      "seq": "9",
      "name": "深圳市贤林电子科技有限公司",
      "stars": 4.0,
-     "online": 1072.0,
-     "you": 81.0,
-     "boom": 0.0,
-     "trade": 576.0,
+     "online": 1505.0,
+     "you": 250.0,
+     "boom": 16.0,
+     "trade": 685.0,
      "you_pct": null,
      "kefu": "曹丽",
      "has_goods": "有",
      "p4p30": 19210.43,
+     "ambig_group": true,
+     "xlsx_you": 249.0,
+     "xlsx_trade": 677.0,
      "src": "inventory",
-     "day_add": 0.0,
-     "month_add": -168.0
+     "ali_id": "1772606778",
+     "day_add": null,
+     "month_add": 1.0
     },
     {
      "key": "47|深圳市华特朗科技有限公司",
@@ -120,6 +131,7 @@
      "has_goods": "有",
      "p4p30": 45359.37,
      "src": "inventory",
+     "ali_id": "2990222783",
      "day_add": 0.0,
      "month_add": 2.0
     },
@@ -136,8 +148,12 @@
      "kefu": "曹丽",
      "has_goods": "有",
      "p4p30": 6060.93,
+     "ambig_group": true,
+     "xlsx_you": 73.0,
+     "xlsx_trade": 569.0,
      "src": "inventory",
-     "day_add": 0.0,
+     "ali_id": "2206790540125",
+     "day_add": null,
      "month_add": 8.0
     },
     {
@@ -145,34 +161,42 @@
      "seq": "10",
      "name": "深圳市若星科技有限公司",
      "stars": 1.0,
-     "online": 625.0,
-     "you": 240.0,
+     "online": 623.0,
+     "you": 239.0,
      "boom": 2.0,
-     "trade": 566.0,
+     "trade": 564.0,
      "you_pct": null,
      "kefu": "李岩",
      "has_goods": "有",
      "p4p30": 0.0,
-     "src": "xlsx",
+     "ambig_group": true,
+     "xlsx_you": 240.0,
+     "xlsx_trade": 566.0,
+     "src": "inventory",
+     "ali_id": "2200728620123",
      "day_add": null,
-     "month_add": null
+     "month_add": -1.0
     },
     {
      "key": "54|深圳市鑫赛科科技发展有限公司",
      "seq": "54",
      "name": "深圳市鑫赛科科技发展有限公司",
      "stars": 0.0,
-     "online": 1136.0,
-     "you": 51.0,
+     "online": 1134.0,
+     "you": 48.0,
      "boom": 0.0,
-     "trade": 540.0,
+     "trade": 539.0,
      "you_pct": null,
      "kefu": "曹丽",
      "has_goods": "有",
      "p4p30": 45461.1,
-     "src": "xlsx",
+     "ambig_group": true,
+     "xlsx_you": 51.0,
+     "xlsx_trade": 540.0,
+     "src": "inventory",
+     "ali_id": "17180063362",
      "day_add": null,
-     "month_add": null
+     "month_add": -3.0
     },
     {
      "key": "41|研凌工控电脑科技（深圳）有限公司",
@@ -180,16 +204,20 @@
      "name": "研凌工控电脑科技（深圳）有限公司",
      "stars": 0.0,
      "online": 1667.0,
-     "you": 67.0,
+     "you": 65.0,
      "boom": 0.0,
-     "trade": 536.0,
+     "trade": 537.0,
      "you_pct": null,
      "kefu": "罗洋清",
      "has_goods": "有",
      "p4p30": 51453.23,
-     "src": "xlsx",
+     "ambig_group": true,
+     "xlsx_you": 67.0,
+     "xlsx_trade": 536.0,
+     "src": "inventory",
+     "ali_id": "2885246419",
      "day_add": null,
-     "month_add": null
+     "month_add": -2.0
     },
     {
      "key": "19|深圳市迈尔运动用品有限公司",
@@ -205,6 +233,7 @@
      "has_goods": "有",
      "p4p30": 15893.47,
      "src": "inventory",
+     "ali_id": "2207104044406",
      "day_add": 0.0,
      "month_add": 3.0
     },
@@ -221,8 +250,12 @@
      "kefu": "陈宇",
      "has_goods": "有",
      "p4p30": 17199.77,
+     "ambig_group": true,
+     "xlsx_you": 55.0,
+     "xlsx_trade": 452.0,
      "src": "inventory",
-     "day_add": 0.0,
+     "ali_id": "17380024804",
+     "day_add": null,
      "month_add": -3.0
     },
     {
@@ -239,6 +272,7 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "2211726841802",
      "day_add": 0.0,
      "month_add": -1.0
     },
@@ -256,14 +290,15 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "2500002598085",
      "day_add": 0.0,
      "month_add": 1.0
     }
    ],
-   "day_add": 2.0,
+   "day_add": 0.0,
    "day_add_partial": true,
-   "month_add": -115.0,
-   "month_add_partial": true
+   "month_add": 48.0,
+   "month_add_partial": false
   },
   {
    "name": "邓晓东",
@@ -271,10 +306,10 @@
    "ds": "2026-11-01",
    "title": "邓晓东 · CGS 客户优爆品明细（数据日期 2026-11-01）",
    "count": 13,
-   "you": 1460.0,
-   "trade": 7598.0,
+   "you": 1454.0,
+   "trade": 7597.0,
    "boom": 94.0,
-   "online": 12829.0,
+   "online": 12831.0,
    "customers": [
     {
      "key": "75|裕柔实业（深圳）有限公司",
@@ -290,6 +325,7 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "2206583525982",
      "day_add": 0.0,
      "month_add": 1.0
     },
@@ -307,6 +343,7 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "2215657171629",
      "day_add": 0.0,
      "month_add": -6.0
     },
@@ -324,6 +361,7 @@
      "has_goods": "有",
      "p4p30": 12657.2,
      "src": "inventory",
+     "ali_id": "2216752928873",
      "day_add": 0.0,
      "month_add": 5.0
     },
@@ -341,6 +379,7 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "3878680634",
      "day_add": 0.0,
      "month_add": -3.0
     },
@@ -358,6 +397,7 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "2206492168053",
      "day_add": 0.0,
      "month_add": -3.0
     },
@@ -374,8 +414,12 @@
      "kefu": "汤青芬",
      "has_goods": "有",
      "p4p30": 0.0,
+     "ambig_group": true,
+     "xlsx_you": 79.0,
+     "xlsx_trade": 721.0,
      "src": "inventory",
-     "day_add": 0.0,
+     "ali_id": "679339470",
+     "day_add": null,
      "month_add": 5.0
     },
     {
@@ -391,8 +435,12 @@
      "kefu": "庞婷婷",
      "has_goods": "有",
      "p4p30": 0.0,
+     "ambig_group": true,
+     "xlsx_you": 127.0,
+     "xlsx_trade": 616.0,
      "src": "inventory",
-     "day_add": 0.0,
+     "ali_id": "2759758693",
+     "day_add": null,
      "month_add": -2.0
     },
     {
@@ -400,17 +448,21 @@
      "seq": "20",
      "name": "深圳市恒展时代科技有限公司",
      "stars": 3.0,
-     "online": 1613.0,
+     "online": 1616.0,
      "you": 127.0,
      "boom": 1.0,
-     "trade": 587.0,
+     "trade": 586.0,
      "you_pct": null,
      "kefu": "曹丽",
      "has_goods": "有",
      "p4p30": 29527.3,
-     "src": "xlsx",
+     "ambig_group": true,
+     "xlsx_you": 127.0,
+     "xlsx_trade": 587.0,
+     "src": "inventory",
+     "ali_id": "2255326240",
      "day_add": null,
-     "month_add": null
+     "month_add": 0.0
     },
     {
      "key": "58|深圳梦智谷科技有限公司",
@@ -426,6 +478,7 @@
      "has_goods": "有",
      "p4p30": 777.5,
      "src": "inventory",
+     "ali_id": "2213451866231",
      "day_add": 0.0,
      "month_add": 2.0
     },
@@ -443,6 +496,7 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "17380147755",
      "day_add": 0.0,
      "month_add": 0.0
     },
@@ -460,6 +514,7 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "2138310094",
      "day_add": 0.0,
      "month_add": -1.0
     },
@@ -468,17 +523,21 @@
      "seq": "36",
      "name": "深圳市唐彩照明科技有限公司",
      "stars": 2.0,
-     "online": 764.0,
-     "you": 62.0,
+     "online": 763.0,
+     "you": 56.0,
      "boom": 0.0,
      "trade": 248.0,
      "you_pct": null,
      "kefu": "罗洋清",
      "has_goods": "有",
      "p4p30": 31600.63,
-     "src": "xlsx",
+     "ambig_group": true,
+     "xlsx_you": 62.0,
+     "xlsx_trade": 248.0,
+     "src": "inventory",
+     "ali_id": "17380197076",
      "day_add": null,
-     "month_add": null
+     "month_add": -6.0
     },
     {
      "key": "64|深圳市艾森国际供应链管理有限公司",
@@ -494,14 +553,15 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "2500001092159",
      "day_add": 0.0,
      "month_add": 0.0
     }
    ],
    "day_add": 0.0,
    "day_add_partial": true,
-   "month_add": -2.0,
-   "month_add_partial": true
+   "month_add": -8.0,
+   "month_add_partial": false
   },
   {
    "name": "谢承杰",
@@ -509,10 +569,10 @@
    "ds": "2026-11-01",
    "title": "谢承杰 · CGS 客户优爆品明细（数据日期 2026-11-01）",
    "count": 7,
-   "you": 718.0,
-   "trade": 6491.0,
+   "you": 717.0,
+   "trade": 6500.0,
    "boom": 21.0,
-   "online": 8799.0,
+   "online": 8829.0,
    "customers": [
     {
      "key": "21|深圳市柏诺瑞科技有限公司",
@@ -527,8 +587,12 @@
      "kefu": "农路源",
      "has_goods": "有",
      "p4p30": 0.0,
+     "ambig_group": true,
+     "xlsx_you": 86.0,
+     "xlsx_trade": 1414.0,
      "src": "inventory",
-     "day_add": 0.0,
+     "ali_id": "17380349536",
+     "day_add": null,
      "month_add": 2.0
     },
     {
@@ -544,8 +608,12 @@
      "kefu": "庞婷婷",
      "has_goods": "有",
      "p4p30": 18232.4,
+     "ambig_group": true,
+     "xlsx_you": 87.0,
+     "xlsx_trade": 1335.0,
      "src": "inventory",
-     "day_add": 0.0,
+     "ali_id": "17380011863",
+     "day_add": null,
      "month_add": -2.0
     },
     {
@@ -562,6 +630,7 @@
      "has_goods": "有",
      "p4p30": 9589.0,
      "src": "inventory",
+     "ali_id": "3190992955",
      "day_add": 0.0,
      "month_add": 3.0
     },
@@ -579,6 +648,7 @@
      "has_goods": "有",
      "p4p30": 2026.37,
      "src": "inventory",
+     "ali_id": "2215842123100",
      "day_add": 0.0,
      "month_add": -1.0
     },
@@ -596,6 +666,7 @@
      "has_goods": "有",
      "p4p30": 28793.87,
      "src": "inventory",
+     "ali_id": "3504574974",
      "day_add": 0.0,
      "month_add": 5.0
     },
@@ -604,17 +675,21 @@
      "seq": "11",
      "name": "深圳市伊斯特尔科技有限公司",
      "stars": 3.0,
-     "online": 1729.0,
-     "you": 138.0,
+     "online": 1759.0,
+     "you": 137.0,
      "boom": 1.0,
-     "trade": 669.0,
+     "trade": 678.0,
      "you_pct": null,
      "kefu": "庞婷婷",
      "has_goods": "有",
      "p4p30": 20510.37,
-     "src": "xlsx",
+     "ambig_group": true,
+     "xlsx_you": 138.0,
+     "xlsx_trade": 669.0,
+     "src": "inventory",
+     "ali_id": "2046553343",
      "day_add": null,
-     "month_add": null
+     "month_add": -1.0
     },
     {
      "key": "89|深圳市艾高普斯电子有限公司",
@@ -630,14 +705,15 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "2211527408749",
      "day_add": 0.0,
      "month_add": 0.0
     }
    ],
    "day_add": 0.0,
    "day_add_partial": true,
-   "month_add": 7.0,
-   "month_add_partial": true
+   "month_add": 6.0,
+   "month_add_partial": false
   },
   {
    "name": "张伟志",
@@ -645,27 +721,31 @@
    "ds": "2026-11-01",
    "title": "张伟志 · CGS 客户优爆品明细（数据日期 2026-11-01）",
    "count": 10,
-   "you": 663.0,
-   "trade": 4740.0,
+   "you": 665.0,
+   "trade": 4761.0,
    "boom": 6.0,
-   "online": 8119.0,
+   "online": 8210.0,
    "customers": [
     {
      "key": "2|深圳市陆洋电子科技有限公司",
      "seq": "2",
      "name": "深圳市陆洋电子科技有限公司",
      "stars": 2.0,
-     "online": 1930.0,
-     "you": 326.0,
+     "online": 1951.0,
+     "you": 328.0,
      "boom": 4.0,
-     "trade": 1911.0,
+     "trade": 1932.0,
      "you_pct": null,
      "kefu": "邢欢欢",
      "has_goods": "有",
      "p4p30": 2249.97,
-     "src": "xlsx",
+     "ambig_group": true,
+     "xlsx_you": 326.0,
+     "xlsx_trade": 1911.0,
+     "src": "inventory",
+     "ali_id": "2214736723804",
      "day_add": null,
-     "month_add": null
+     "month_add": 2.0
     },
     {
      "key": "33|深圳市精钻智能制造有限公司",
@@ -681,6 +761,7 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "1704802800",
      "day_add": 0.0,
      "month_add": 0.0
     },
@@ -698,6 +779,7 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "3428049694",
      "day_add": 0.0,
      "month_add": -1.0
     },
@@ -715,6 +797,7 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "2212452369450",
      "day_add": 0.0,
      "month_add": 2.0
     },
@@ -723,7 +806,7 @@
      "seq": "18",
      "name": "深圳市盟迪科技有限公司",
      "stars": 1.0,
-     "online": 1200.0,
+     "online": 1270.0,
      "you": 36.0,
      "boom": 0.0,
      "trade": 363.0,
@@ -731,9 +814,13 @@
      "kefu": "陈宇",
      "has_goods": "有",
      "p4p30": 0.0,
-     "src": "xlsx",
+     "ambig_group": true,
+     "xlsx_you": 36.0,
+     "xlsx_trade": 363.0,
+     "src": "inventory",
+     "ali_id": "3423693642",
      "day_add": null,
-     "month_add": null
+     "month_add": 0.0
     },
     {
      "key": "12|深圳市芯家科技有限公司",
@@ -749,6 +836,7 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "2500001485451",
      "day_add": 0.0,
      "month_add": 0.0
     },
@@ -766,6 +854,7 @@
      "has_goods": "有",
      "p4p30": 86442.8,
      "src": "inventory",
+     "ali_id": "3261820787",
      "day_add": 0.0,
      "month_add": -1.0
     },
@@ -783,6 +872,7 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "2560364630",
      "day_add": 0.0,
      "month_add": 0.0
     },
@@ -800,6 +890,7 @@
      "has_goods": "有",
      "p4p30": 15142.37,
      "src": "inventory",
+     "ali_id": "2217076165538",
      "day_add": 0.0,
      "month_add": 1.0
     },
@@ -817,14 +908,15 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "17381140702",
      "day_add": 0.0,
      "month_add": 1.0
     }
    ],
    "day_add": 0.0,
    "day_add_partial": true,
-   "month_add": 2.0,
-   "month_add_partial": true
+   "month_add": 4.0,
+   "month_add_partial": false
   },
   {
    "name": "何尧玲",
@@ -832,7 +924,7 @@
    "ds": "2026-11-01",
    "title": "何尧玲 · CGS 客户优爆品明细（数据日期 2026-11-01）",
    "count": 14,
-   "you": 602.0,
+   "you": 599.0,
    "trade": 6103.0,
    "boom": 13.0,
    "online": 9550.0,
@@ -851,6 +943,7 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "3538922332",
      "day_add": 0.0,
      "month_add": 2.0
     },
@@ -867,8 +960,12 @@
      "kefu": "苏梓梦",
      "has_goods": "有",
      "p4p30": 0.0,
+     "ambig_group": true,
+     "xlsx_you": 143.0,
+     "xlsx_trade": 1007.0,
      "src": "inventory",
-     "day_add": 0.0,
+     "ali_id": "2213733905460",
+     "day_add": null,
      "month_add": -4.0
     },
     {
@@ -885,6 +982,7 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "2217900476346",
      "day_add": 0.0,
      "month_add": -2.0
     },
@@ -902,6 +1000,7 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "3834123915",
      "day_add": 0.0,
      "month_add": 0.0
     },
@@ -919,6 +1018,7 @@
      "has_goods": "有",
      "p4p30": 5120.63,
      "src": "inventory",
+     "ali_id": "2218560462010",
      "day_add": 0.0,
      "month_add": 2.0
     },
@@ -935,8 +1035,12 @@
      "kefu": "邢欢欢",
      "has_goods": "有",
      "p4p30": 0.0,
+     "ambig_group": true,
+     "xlsx_you": 22.0,
+     "xlsx_trade": 418.0,
      "src": "inventory",
-     "day_add": -2.0,
+     "ali_id": "2206433042173",
+     "day_add": null,
      "month_add": -2.0
     },
     {
@@ -953,6 +1057,7 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "4008924296",
      "day_add": 0.0,
      "month_add": 0.0
     },
@@ -962,16 +1067,20 @@
      "name": "深圳市宝安区松岗顺利线业加工厂",
      "stars": 0.0,
      "online": 297.0,
-     "you": 74.0,
+     "you": 71.0,
      "boom": 0.0,
      "trade": 291.0,
      "you_pct": null,
      "kefu": "苏梓梦",
      "has_goods": "有",
      "p4p30": 0.0,
-     "src": "xlsx",
+     "ambig_group": true,
+     "xlsx_you": 74.0,
+     "xlsx_trade": 291.0,
+     "src": "inventory",
+     "ali_id": "17380297101",
      "day_add": null,
-     "month_add": null
+     "month_add": -3.0
     },
     {
      "key": "74|深圳市威安士科技有限公司",
@@ -987,6 +1096,7 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "2209961566772",
      "day_add": 0.0,
      "month_add": 0.0
     },
@@ -1004,6 +1114,7 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "2765985644",
      "day_add": 0.0,
      "month_add": -1.0
     },
@@ -1021,6 +1132,7 @@
      "has_goods": "有",
      "p4p30": 8326.8,
      "src": "inventory",
+     "ali_id": "17380716300",
      "day_add": 0.0,
      "month_add": 0.0
     },
@@ -1038,6 +1150,7 @@
      "has_goods": "有",
      "p4p30": 10467.4,
      "src": "inventory",
+     "ali_id": "2146383835",
      "day_add": 0.0,
      "month_add": -7.0
     },
@@ -1055,6 +1168,7 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "2216867206766",
      "day_add": 0.0,
      "month_add": 1.0
     },
@@ -1072,14 +1186,15 @@
      "has_goods": "有",
      "p4p30": 5873.77,
      "src": "inventory",
+     "ali_id": "1750426595",
      "day_add": 0.0,
      "month_add": 0.0
     }
    ],
-   "day_add": -2.0,
+   "day_add": 0.0,
    "day_add_partial": true,
-   "month_add": -11.0,
-   "month_add_partial": true
+   "month_add": -14.0,
+   "month_add_partial": false
   },
   {
    "name": "夏锐",
@@ -1087,27 +1202,31 @@
    "ds": "2026-11-01",
    "title": "夏锐 · CGS 客户优爆品明细（数据日期 2026-11-01）",
    "count": 11,
-   "you": 582.0,
+   "you": 583.0,
    "trade": 6215.0,
    "boom": 32.0,
-   "online": 9853.0,
+   "online": 9636.0,
    "customers": [
     {
      "key": "19|深圳市爱科思光电技术有限公司",
      "seq": "19",
      "name": "深圳市爱科思光电技术有限公司",
      "stars": 2.0,
-     "online": 1657.0,
-     "you": 136.0,
+     "online": 1652.0,
+     "you": 144.0,
      "boom": 11.0,
-     "trade": 1487.0,
+     "trade": 1482.0,
      "you_pct": null,
      "kefu": "汤青芬",
      "has_goods": "有",
      "p4p30": 763.5,
-     "src": "xlsx",
+     "ambig_group": true,
+     "xlsx_you": 136.0,
+     "xlsx_trade": 1487.0,
+     "src": "inventory",
+     "ali_id": "17380410954",
      "day_add": null,
-     "month_add": null
+     "month_add": 8.0
     },
     {
      "key": "52|深圳凯士威科技有限公司",
@@ -1122,8 +1241,12 @@
      "kefu": "曹丽",
      "has_goods": "有",
      "p4p30": 0.0,
+     "ambig_group": true,
+     "xlsx_you": 43.0,
+     "xlsx_trade": 1393.0,
      "src": "inventory",
-     "day_add": 0.0,
+     "ali_id": "1697222262",
+     "day_add": null,
      "month_add": 1.0
     },
     {
@@ -1139,8 +1262,12 @@
      "kefu": "李岩",
      "has_goods": "有",
      "p4p30": 27634.67,
+     "ambig_group": true,
+     "xlsx_you": 49.0,
+     "xlsx_trade": 824.0,
      "src": "inventory",
-     "day_add": -17.0,
+     "ali_id": "2575428304",
+     "day_add": null,
      "month_add": -17.0
     },
     {
@@ -1156,8 +1283,12 @@
      "kefu": "方琼",
      "has_goods": "有",
      "p4p30": 0.0,
+     "ambig_group": true,
+     "xlsx_you": 31.0,
+     "xlsx_trade": 637.0,
      "src": "inventory",
-     "day_add": 0.0,
+     "ali_id": "2138365066",
+     "day_add": null,
      "month_add": 0.0
     },
     {
@@ -1174,6 +1305,7 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "17381523765",
      "day_add": 0.0,
      "month_add": 0.0
     },
@@ -1191,6 +1323,7 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "4272474279",
      "day_add": 0.0,
      "month_add": 2.0
     },
@@ -1199,7 +1332,7 @@
      "seq": "93",
      "name": "深圳利登环保工程有限公司",
      "stars": 0.0,
-     "online": 382.0,
+     "online": 383.0,
      "you": 15.0,
      "boom": 0.0,
      "trade": 294.0,
@@ -1207,9 +1340,13 @@
      "kefu": "李岩",
      "has_goods": "有",
      "p4p30": 21795.63,
-     "src": "xlsx",
+     "ambig_group": true,
+     "xlsx_you": 15.0,
+     "xlsx_trade": 294.0,
+     "src": "inventory",
+     "ali_id": "2201294907403",
      "day_add": null,
-     "month_add": null
+     "month_add": 0.0
     },
     {
      "key": "88|深圳市哈娜电子商务有限公司",
@@ -1225,6 +1362,7 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "2212347963313",
      "day_add": 0.0,
      "month_add": 0.0
     },
@@ -1242,6 +1380,7 @@
      "has_goods": "有",
      "p4p30": 10628.17,
      "src": "inventory",
+     "ali_id": "3914353430",
      "day_add": 0.0,
      "month_add": 22.0
     },
@@ -1250,17 +1389,21 @@
      "seq": "64",
      "name": "深圳市晨光飞达科技有限公司",
      "stars": 1.0,
-     "online": 960.0,
-     "you": 41.0,
+     "online": 747.0,
+     "you": 34.0,
      "boom": 0.0,
-     "trade": 132.0,
+     "trade": 137.0,
      "you_pct": null,
      "kefu": "陈宇",
      "has_goods": "有",
      "p4p30": 16793.5,
+     "ambig_group": true,
+     "xlsx_you": 36.0,
+     "xlsx_trade": 136.0,
      "src": "inventory",
-     "day_add": 7.0,
-     "month_add": 5.0
+     "ali_id": "2200745970657",
+     "day_add": null,
+     "month_add": -2.0
     },
     {
      "key": "44|深圳市艾迪饵科技有限公司",
@@ -1276,14 +1419,15 @@
      "has_goods": "有",
      "p4p30": 18586.53,
      "src": "inventory",
+     "ali_id": "2216872305666",
      "day_add": 0.0,
      "month_add": -2.0
     }
    ],
-   "day_add": -10.0,
+   "day_add": 0.0,
    "day_add_partial": true,
-   "month_add": 11.0,
-   "month_add_partial": true
+   "month_add": 12.0,
+   "month_add_partial": false
   },
   {
    "name": "高国权",
@@ -1293,8 +1437,8 @@
    "count": 10,
    "you": 567.0,
    "trade": 2086.0,
-   "boom": 23.0,
-   "online": 5694.0,
+   "boom": 22.0,
+   "online": 5695.0,
    "customers": [
     {
      "key": "20|东莞市哈二爷宠物用品有限公司",
@@ -1310,6 +1454,7 @@
      "has_goods": "有",
      "p4p30": 19868.93,
      "src": "inventory",
+     "ali_id": "2500001369327",
      "day_add": 0.0,
      "month_add": 0.0
     },
@@ -1327,6 +1472,7 @@
      "has_goods": "有",
      "p4p30": 8880.07,
      "src": "inventory",
+     "ali_id": "2206838222761",
      "day_add": 0.0,
      "month_add": -2.0
     },
@@ -1336,16 +1482,20 @@
      "name": "深圳市创造力电子商务有限公司",
      "stars": 2.0,
      "online": 407.0,
-     "you": 117.0,
-     "boom": 15.0,
+     "you": 118.0,
+     "boom": 14.0,
      "trade": 387.0,
      "you_pct": null,
      "kefu": "庞婷婷",
      "has_goods": "有",
      "p4p30": 0.0,
-     "src": "xlsx",
+     "ambig_group": true,
+     "xlsx_you": 117.0,
+     "xlsx_trade": 387.0,
+     "src": "inventory",
+     "ali_id": "2210995008832",
      "day_add": null,
-     "month_add": null
+     "month_add": 1.0
     },
     {
      "key": "30|深圳鑫生力科技有限公司",
@@ -1361,6 +1511,7 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "2143876501",
      "day_add": 0.0,
      "month_add": 1.0
     },
@@ -1378,6 +1529,7 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "3181984429",
      "day_add": 0.0,
      "month_add": -1.0
     },
@@ -1395,6 +1547,7 @@
      "has_goods": "有",
      "p4p30": 9110.27,
      "src": "inventory",
+     "ali_id": "2500000052396",
      "day_add": 0.0,
      "month_add": 0.0
     },
@@ -1411,8 +1564,12 @@
      "kefu": "农路源",
      "has_goods": "有",
      "p4p30": 10580.87,
+     "ambig_group": true,
+     "xlsx_you": 20.0,
+     "xlsx_trade": 41.0,
      "src": "inventory",
-     "day_add": 3.0,
+     "ali_id": "2500000056257",
+     "day_add": null,
      "month_add": 3.0
     },
     {
@@ -1420,17 +1577,21 @@
      "seq": "65",
      "name": "深圳鑫大瀛科技有限公司",
      "stars": 0.0,
-     "online": 249.0,
-     "you": 23.0,
+     "online": 250.0,
+     "you": 22.0,
      "boom": 0.0,
      "trade": 21.0,
      "you_pct": null,
      "kefu": "庞婷婷",
      "has_goods": "有",
      "p4p30": 0.0,
-     "src": "xlsx",
+     "ambig_group": true,
+     "xlsx_you": 23.0,
+     "xlsx_trade": 21.0,
+     "src": "inventory",
+     "ali_id": "2215203990270",
      "day_add": null,
-     "month_add": null
+     "month_add": -1.0
     },
     {
      "key": "37|深圳市力鑫实业有限公司",
@@ -1445,8 +1606,12 @@
      "kefu": "邢欢欢",
      "has_goods": "有",
      "p4p30": 0.0,
+     "ambig_group": true,
+     "xlsx_you": 74.0,
+     "xlsx_trade": 4.0,
      "src": "inventory",
-     "day_add": -1.0,
+     "ali_id": "2200780150541",
+     "day_add": null,
      "month_add": -1.0
     },
     {
@@ -1463,14 +1628,15 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "2209558655350",
      "day_add": 0.0,
      "month_add": 0.0
     }
    ],
-   "day_add": 2.0,
+   "day_add": 0.0,
    "day_add_partial": true,
    "month_add": 0.0,
-   "month_add_partial": true
+   "month_add_partial": false
   },
   {
    "name": "李怡萍",
@@ -1497,6 +1663,7 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "2213192243750",
      "day_add": 0.0,
      "month_add": 3.0
     },
@@ -1514,6 +1681,7 @@
      "has_goods": "有",
      "p4p30": 15786.53,
      "src": "inventory",
+     "ali_id": "3204231415",
      "day_add": 0.0,
      "month_add": -1.0
     },
@@ -1531,6 +1699,7 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "1779954745",
      "day_add": 0.0,
      "month_add": 0.0
     },
@@ -1548,6 +1717,7 @@
      "has_goods": "有",
      "p4p30": 24020.37,
      "src": "inventory",
+     "ali_id": "4235544081",
      "day_add": 0.0,
      "month_add": 0.0
     },
@@ -1565,6 +1735,7 @@
      "has_goods": "有",
      "p4p30": 15213.97,
      "src": "inventory",
+     "ali_id": "3037837822",
      "day_add": 0.0,
      "month_add": -2.0
     },
@@ -1582,6 +1753,7 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "3322109462",
      "day_add": 0.0,
      "month_add": 0.0
     },
@@ -1599,6 +1771,7 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "3906343955",
      "day_add": 0.0,
      "month_add": 0.0
     },
@@ -1616,6 +1789,7 @@
      "has_goods": "有",
      "p4p30": 0.0,
      "src": "inventory",
+     "ali_id": "2208161035583",
      "day_add": 0.0,
      "month_add": -1.0
     },
@@ -1633,6 +1807,7 @@
      "has_goods": "有",
      "p4p30": 4183.53,
      "src": "inventory",
+     "ali_id": "2202807048134",
      "day_add": 0.0,
      "month_add": -1.0
     },
@@ -1650,6 +1825,7 @@
      "has_goods": "有",
      "p4p30": 1712.7,
      "src": "inventory",
+     "ali_id": "2576026139",
      "day_add": 0.0,
      "month_add": 0.0
     }
