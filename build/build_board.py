@@ -16,6 +16,8 @@ from __future__ import annotations
 
 import datetime as dt
 import glob
+import io
+import itertools
 import json
 import os
 import re
@@ -132,11 +134,13 @@ def norm_key(s):
 
 
 def load_inventory(path):
-    """读平台「全量客户盘点」采集件，返回 (数据日, {(销售, 客户): 指标})。
+    """读平台「全量客户盘点」采集件，返回 (数据日, {(销售, 客户): [候选指标...]}, 行数)。
 
     采集件形如 {meta, rawResponses:[{data:{data:[...]}}]}，只取最大 stat_date 分区。
+    同一销售下可能有同名不同账号的客户（例：深圳市贤林电子科技有限公司 两个国际站账号），
+    因此一个 key 保留候选列表，交给 apply_inventory 按上期快照做一一分配。
     """
-    with open(path, encoding="utf-8") as fh:
+    with io.open(path, encoding="utf-8") as fh:
         d = json.load(fh)
     rows = []
     for item in d.get("rawResponses") or []:
@@ -155,18 +159,53 @@ def load_inventory(path):
             continue
         kept += 1
         k = (norm_key(r.get("partner_user_sales_name")), norm_key(r.get("cust_name_cn")))
-        table[k] = {
+        table.setdefault(k, []).append({
+            "ali_id": str(r.get("ali_id") or r.get("global_id") or ""),
             "you": num(r.get("youbaopin_prd_cnt")),
             "trade": num(r.get("jiaoyi_prd_cnt")),
             "online": num(r.get("prd_cnt")),
             "boom": num(r.get("baopin_prd_cnt")),
             "kefu": txt(r.get("partner_user_kefu_name")),
             "cgs": str(r.get("is_cgs_service") or "").upper(),
-        }
+        })
     return ds, table, kept
 
 
-def apply_inventory(persons, inv_path):
+def _dist(c, hit, prev_snap):
+    """候选与「该行自己」的基准值差距。
+
+    基准优先用工作区 xlsx 的数（账号级、稳定），其次用上期快照；
+    xlsx 与平台字段同源，用它做锚比用可能已被串号污染的旧快照可靠。
+    """
+    if hit.get("you") is None:
+        return 10 ** 6
+    a = c.get("xlsx_you")
+    b = c.get("xlsx_trade")
+    if a is None:
+        old = ((prev_snap or {}).get("customers") or {}).get(c.get("key")) or {}
+        a, b = old.get("you"), old.get("trade")
+    if a is None:
+        return 10 ** 6
+    return abs(hit["you"] - a) + abs((hit.get("trade") or 0) - (b or 0))
+
+
+def _assign(rows, cands, prev_snap):
+    """同名多账号：按上期快照把候选一一分给本地行。"""
+    if len(cands) == 1:
+        return [(c, cands[0]) for c in rows]
+    if len(rows) == 1:
+        return [(rows[0], min(cands, key=lambda h: _dist(rows[0], h, prev_snap)))]
+    best, best_cost = None, None
+    for perm in itertools.permutations(cands, len(rows)):
+        cost = sum(_dist(c, h, prev_snap) for c, h in zip(rows, perm))
+        if best_cost is None or cost < best_cost:
+            best, best_cost = perm, cost
+    if best is None:
+        return [(c, None) for c in rows]
+    return list(zip(rows, best))
+
+
+def apply_inventory(persons, inv_path, prev_snap=None):
     """用平台盘点件刷新每位在册客户的指标（客户清单仍以工作区 xlsx 为准）。"""
     if not inv_path or not os.path.exists(inv_path):
         return {"used": False, "reason": "未找到盘点采集件", "matched": 0, "total": 0}
@@ -174,28 +213,45 @@ def apply_inventory(persons, inv_path):
     if not ds:
         return {"used": False, "reason": "盘点件无数据行", "matched": 0, "total": 0}
 
-    matched = total = 0
+    matched = total = ambiguous = 0
     for p in persons:
+        groups = {}
         for c in p["customers"]:
-            total += 1
-            hit = table.get((norm_key(p["name"]), norm_key(c["name"])))
-            if hit is None:
-                c["src"] = "xlsx"
+            groups.setdefault(norm_key(c["name"]), []).append(c)
+        for name_key, rows in groups.items():
+            total += len(rows)
+            cands = table.get((norm_key(p["name"]), name_key)) or []
+            if not cands:
+                for c in rows:
+                    c["src"] = "xlsx"
                 continue
-            matched += 1
-            # 平台该客户没有商品数据（you 为空）时保留 xlsx 值，但客户已匹配
-            c["src"] = "inventory" if hit.get("you") is not None else "xlsx"
-            if hit.get("you") is not None:
-                c["you"] = hit["you"]
-            if hit.get("trade") is not None:
-                c["trade"] = hit["trade"]
-            if hit.get("online") is not None:
-                c["online"] = hit["online"]
-            if hit.get("boom") is not None:
-                c["boom"] = hit["boom"]
-            if hit.get("kefu"):
-                c["kefu"] = hit["kefu"]
-    return {"used": True, "ds": ds, "matched": matched, "total": total, "rows": kept}
+            if len(cands) > 1:
+                ambiguous += 1
+                for c in rows:
+                    c["ambig_group"] = True
+                    c.setdefault("xlsx_you", c["you"])
+                    c.setdefault("xlsx_trade", c["trade"])
+            for c, hit in _assign(rows, cands, prev_snap):
+                if hit is None:
+                    c["src"] = "xlsx"
+                    continue
+                matched += 1
+                # 平台该客户没有商品数据（you 为空）时保留 xlsx 值，但客户已匹配
+                c["src"] = "inventory" if hit.get("you") is not None else "xlsx"
+                if hit.get("ali_id"):
+                    c["ali_id"] = hit["ali_id"]
+                if hit.get("you") is not None:
+                    c["you"] = hit["you"]
+                if hit.get("trade") is not None:
+                    c["trade"] = hit["trade"]
+                if hit.get("online") is not None:
+                    c["online"] = hit["online"]
+                if hit.get("boom") is not None:
+                    c["boom"] = hit["boom"]
+                if hit.get("kefu"):
+                    c["kefu"] = hit["kefu"]
+    return {"used": True, "ds": ds, "matched": matched, "total": total,
+            "rows": kept, "ambiguous_groups": ambiguous}
 
 
 def load_snapshots():
@@ -209,14 +265,16 @@ def load_snapshots():
     return snaps
 
 
-def write_snapshot(ds, persons, customers, captured_at):
+def write_snapshot(ds, persons, customers, captured_at, source="xlsx"):
     os.makedirs(SNAP_DIR, exist_ok=True)
     payload = {
         "ds": ds,
         "captured_at": captured_at,
+        "source": source,
         "persons": {p["name"]: {"you": p["you"], "trade": p["trade"], "customers": p["count"]}
                     for p in persons},
-        "customers": {c["key"]: {"you": c["you"], "trade": c["trade"], "name": c["name"]}
+        "customers": {c["key"]: {"you": c["you"], "trade": c["trade"], "name": c["name"],
+                                 "ali_id": c.get("ali_id")}
                       for c in customers},
     }
     path = os.path.join(SNAP_DIR, f"customers-{ds}.json")
@@ -304,7 +362,10 @@ def main():
             if a == "--inventory" and i + 1 < len(sys.argv):
                 inv_path = sys.argv[i + 1]
         inv_path = inv_path or INVENTORY_SRC
-    inv = apply_inventory(persons, inv_path)
+    # 同名多账号需要上期快照做分配依据，因此先读快照再刷新指标
+    prior = load_snapshots()
+    prior_snap = prior[max(prior)] if prior else None
+    inv = apply_inventory(persons, inv_path, prior_snap)
 
     if inv.get("used") and inv.get("matched"):
         d = inv["ds"]
@@ -322,7 +383,8 @@ def main():
         p["online"] = sum(c["online"] or 0 for c in p["customers"])
 
     snaps = load_snapshots()
-    write_snapshot(data_ds, persons, all_customers, captured_at)
+    write_snapshot(data_ds, persons, all_customers, captured_at,
+                   "inventory" if inv.get("used") else "xlsx")
     snaps = load_snapshots()
 
     dates = sorted(snaps)
@@ -353,8 +415,15 @@ def main():
         for c in p["customers"]:
             # 平台无商品数据的客户（指标仍沿用旧件）不参与新增，避免拿 0 冒充「没变化」
             known = (not inv.get("used")) or c.get("src") == "inventory"
-            c["day_add"] = delta(c["key"], "you", prev_snap) if known else None
-            c["month_add"] = delta(c["key"], "you", month_snap) if known else None
+            ok_day, ok_month = known, known
+            if known and c.get("ambig_group"):
+                # 同名多账号：上期快照得带同一个账号标识，才敢做日环比
+                old = (prev_snap or {}).get("customers", {}).get(c["key"]) or {}
+                ok_day = bool(c.get("ali_id")) and old.get("ali_id") == c.get("ali_id")
+                # 本月基准若是纯 xlsx 快照（账号级干净），本月累计仍可信
+                ok_month = (month_snap or {}).get("source", "xlsx") == "xlsx" or ok_day
+            c["day_add"] = delta(c["key"], "you", prev_snap) if ok_day else None
+            c["month_add"] = delta(c["key"], "you", month_snap) if ok_month else None
 
     # 汇总：只对有值项求和；有客户缺数时打 partial 标（前端加 * 并说明）
     for p in persons:
