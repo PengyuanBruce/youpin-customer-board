@@ -62,10 +62,11 @@ body::before{
 }
 .brand h1{font-size:16.5px;margin:0;letter-spacing:.5px;font-weight:650;white-space:nowrap}
 .brand .sub{font-size:11.5px;color:var(--muted);letter-spacing:.3px;margin-top:2px;white-space:nowrap}
+@media (max-width:760px){.tabs{flex-wrap:nowrap;overflow-x:auto;flex:1 1 100%;padding-bottom:2px}.tab{padding:7px 10px;font-size:12px}}
 @media (max-width:640px){.brand{min-width:0}.brand .sub{white-space:normal;line-height:1.35}}
 .brand .sub b{color:var(--cyan);font-weight:600}
 
-.tabs{display:flex;gap:6px;align-items:center;overflow-x:auto;scrollbar-width:none;flex:1 1 420px;min-width:0}
+.tabs{display:flex;gap:6px;align-items:center;flex-wrap:wrap;flex:1 1 100%;min-width:0}
 .tabs::-webkit-scrollbar{display:none}
 .tab{
   position:relative;flex:none;display:flex;align-items:baseline;gap:6px;
@@ -188,6 +189,8 @@ section[hidden]{display:none !important}
 .tag{display:inline-block;padding:2px 9px;border-radius:99px;font-size:11.5px;letter-spacing:.2px;
   color:#8fd8ff;background:rgba(63,208,255,.10);border:1px solid rgba(63,208,255,.26);white-space:nowrap}
 .tag-empty{color:var(--muted);background:transparent;border-color:var(--line)}
+.tag.t-first{color:var(--gold);background:rgba(255,200,87,.10);border-color:rgba(255,200,87,.28)}
+.tag.t-goods{color:var(--green);background:rgba(61,220,151,.10);border-color:rgba(61,220,151,.28)}
 
 .tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:10px}
 .search{position:relative;flex:0 1 260px;min-width:160px}
@@ -227,6 +230,8 @@ td .rk2{font-size:11px;color:var(--muted)}
 .dl.na{color:var(--muted);background:transparent;font-weight:500}
 .empty{padding:26px 14px;text-align:center;color:var(--muted);font-size:12.5px}
 
+.stale-warn{color:var(--gold)}
+.stale-warn:empty{display:none}
 footer{
   position:relative;z-index:1;max-width:1680px;margin:0 auto;padding:16px clamp(14px,2.4vw,34px) 0;
   font-size:11.5px;color:var(--muted);line-height:1.75;
@@ -470,7 +475,7 @@ function renderPerson() {
       <div class="p-avatar">${esc(p.name.slice(0, 1))}</div>
       <div>
         <h2>${esc(p.name)}</h2>
-        <div class="ps">${esc(p.file)} · <b>${p.count}</b> 家 CGS 客户 · 指标数据日 <b>${esc(BOARD.meta.data_ds)}</b>${BOARD.meta.inventory && BOARD.meta.inventory.used ? " · 指标源 平台客户盘点" : ""}</div>
+        <div class="ps">${esc(p.name)}.xlsx · <b>${p.count}</b> 家 CGS 客户 · 指标数据日 <b>${esc(BOARD.meta.data_ds)}</b>${BOARD.meta.inventory && BOARD.meta.inventory.used ? " · 指标源 平台客户盘点" : ""}</div>
       </div>
     </div>
     <div class="hint">CGS 客户口径 · 按当前优爆品数降序</div>
@@ -530,7 +535,7 @@ function renderPerson() {
       html += `<tr>
         <td><span class="rk2 num">${i + 1}</span></td>
         <td class="cust"><span class="cn" title="${esc(c.name)}">${esc(c.name)}</span>${c.kefu ? `<span class="cs">客服 ${esc(c.kefu)}</span>` : ""}</td>
-        <td>${c.ctype ? `<span class="tag">${esc(c.ctype)}</span>` : '<span class="tag tag-empty">—</span>'}</td>
+        <td>${c.ctype ? `<span class="tag ${c.ctype === "首次年" ? "t-first" : (c.ctype === "优质货盘推P" ? "t-goods" : "")}">${esc(c.ctype)}</span>` : '<span class="tag tag-empty">—</span>'}</td>
         <td class="r"><span class="v-you">${fmt(c.you)}</span></td>
         <td class="r"><span class="v-trade">${fmt(c.trade)}</span></td>
         <td class="r">${delta(c.month_add)}</td>
@@ -558,10 +563,11 @@ function renderPerson() {
 function renderFoot() {
   const m = BOARD.meta;
   $("#foot").innerHTML = `
-    <div><b>口径：</b>「当前优爆品数」= 平台字段 youbaopin_prd_cnt（含其中爆品）；「总交易品数」= jiaoyi_prd_cnt；只看 CGS 客户（is_cgs_service = Y），客户清单取自工作区各销售 xlsx（清单数据日 ${esc(m.member_ds)}）${m.inventory && m.inventory.used ? `，指标刷新自平台「全量客户盘点」stat_date <b>${esc(m.inventory.ds)}</b>（匹配 ${m.inventory.matched}/${m.inventory.total} 家）` : ""}。抓取 ${esc(m.captured_at)}。</div>
-    <div><b>新增：</b>今日新增 = 当前数据日 − 上一可用数据日快照${m.prev_ds ? `（${esc(m.prev_ds)}，间隔 ${m.day_gap} 天）` : ""}；本月新增 = 当前数据日 − 本月首个数据日快照。快照存于 <b>snapshots/</b>，缺基准显示 --。
-    <span class="sep">|</span>快照 ${m.snapshot_dates.length} 份：${m.snapshot_dates.map(esc).join("、") || "无"}</div>
-    <div><b>首页：</b>公司大屏同源 data_cur.json（更新 ${esc(m.home_update || "--")}），平台口径，与子页的 CGS 口径不同，不要跨页相加。</div>`;
+    <div class="stale-warn">${m.inventory && m.inventory.stale_partitions && m.inventory.stale_partitions.length ? `数据日说明：平台 ${m.inventory.stale_partitions.map(x => esc(x.ds)).join("、")} 分区只返回 ${m.inventory.stale_partitions.map(x => x.rows).join(" / ")} 行（覆盖 ${m.inventory.stale_partitions.map(x => (x.coverage * 100).toFixed(1) + "%").join(" / ")}），判定未回填完整，本页沿用 <b>${esc(m.data_ds)}</b> 完整分区；补齐后自动切换。` : ""}</div>
+    <div><b>口径：</b>「当前优爆品数」= 平台 youbaopin_prd_cnt（含其中爆品）；「总交易品数」= jiaoyi_prd_cnt；客户清单取自工作区各销售 xlsx（${m.person_count} 人 / ${m.customer_count} 家），指标取平台「全量客户盘点」stat_date <b>${esc(m.inventory.ds)}</b>（匹配 ${m.inventory.matched}/${m.inventory.total} 家）。抓取 ${esc(m.captured_at)}。</div>
+    <div><b>新增：</b>今日新增 = 当前数据日 − 上一可用数据日；本月新增 = 当前数据日 − 本轮清单首个可用数据日${m.month_base_ds ? `（${esc(m.month_base_ds)}）` : ""}。缺基准显示 --。<span class="sep">|</span>快照 ${m.snapshot_dates.length} 份：${m.snapshot_dates.map(esc).join("、") || "无"}</div>
+    <div><b>首页：</b>公司大屏同源 data_cur.json（更新 ${esc((BOARD.home && BOARD.home.update) || "--")}），平台口径，与子页的客户口径不同，不要跨页相加。</div>`;
+
 }
 
 /* ---------------- 路由 ---------------- */
