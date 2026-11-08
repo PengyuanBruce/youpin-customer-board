@@ -62,7 +62,6 @@ body::before{
 }
 .brand h1{font-size:16.5px;margin:0;letter-spacing:.5px;font-weight:650;white-space:nowrap}
 .brand .sub{font-size:11.5px;color:var(--muted);letter-spacing:.3px;margin-top:2px;white-space:nowrap}
-@media (max-width:760px){.tabs{flex-wrap:nowrap;overflow-x:auto;flex:1 1 100%;padding-bottom:2px}.tab{padding:7px 10px;font-size:12px}}
 @media (max-width:640px){.brand{min-width:0}.brand .sub{white-space:normal;line-height:1.35}}
 .brand .sub b{color:var(--cyan);font-weight:600}
 
@@ -254,6 +253,11 @@ footer .sep{color:rgba(120,190,255,.3);margin:0 7px}
   .ch-panel:not(.kf) .ch-cols span:nth-child(5),.ch-panel:not(.kf) .ch-row > *:nth-child(5){display:none}
   .ch-panel.kf .ch-cols,.ch-panel.kf .ch-row{grid-template-columns:16px minmax(30px,1fr) 44px 48px 44px;gap:3px;padding-left:8px;padding-right:8px}
   .ch-panel.kf .ch-cols span:nth-child(4),.ch-panel.kf .ch-row > *:nth-child(4){display:none}
+}
+
+@media (max-width:760px){
+  .top .tabs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:3px}
+  .top .tab{padding:7px 10px;font-size:12px}
 }
 </style>
 </head>
