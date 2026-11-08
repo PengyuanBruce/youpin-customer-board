@@ -319,6 +319,9 @@ def main():
     # 用选中的成员/分配结果重建该分区及各历史分区快照
     persons = chosen["persons"]
     for e in evaluated:
+        # 覆盖不足的分区不落快照：否则明天会拿它当「昨天」算差，把残缺数带进来
+        if e is not chosen and e["cov"] < 0.95:
+            continue
         captures = prior.get(e["ds"], {}).get("captured_at") or ""
         write_snapshot(e["ds"], e["persons"], captures or "", "inventory")
 
