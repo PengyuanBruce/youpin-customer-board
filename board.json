@@ -11,21 +11,21 @@
    "2026-11-06",
    "2026-11-07"
   ],
-  "captured_at": "2026-11-08 14:03",
-  "person_count": 23,
-  "customer_count": 492,
+  "captured_at": "2026-11-08 14:22",
+  "person_count": 22,
+  "customer_count": 483,
   "inventory": {
    "used": true,
    "ds": "20261106",
-   "matched": 488,
-   "total": 492,
-   "coverage": 0.9919,
+   "matched": 479,
+   "total": 483,
+   "coverage": 0.9917,
    "rows": 7526,
    "stale_partitions": [
     {
      "ds": "2026-11-07",
      "rows": 7073,
-     "coverage": 0.8252
+     "coverage": 0.8302
     }
    ]
   }
@@ -6089,147 +6089,6 @@
    "day_add": -8.0,
    "day_add_excluded": 0,
    "month_add": -8.0,
-   "month_add_excluded": 0
-  },
-  {
-   "name": "文一锦",
-   "title": "文一锦 · 客群客户清单",
-   "customers": [
-    {
-     "name": "深圳市菲利德电子有限公司",
-     "ctype": "首次年",
-     "kefu": "庞婷婷",
-     "key": "深圳市菲利德电子有限公司#1",
-     "xlsx_you": 2.0,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "3323111237",
-     "you": 2.0,
-     "trade": 122.0,
-     "day_add": 0.0,
-     "month_add": 0.0
-    },
-    {
-     "name": "深圳市正晧科技有限公司",
-     "ctype": "首次年",
-     "kefu": "曹丽",
-     "key": "深圳市正晧科技有限公司#1",
-     "xlsx_you": 30.0,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "17380664699",
-     "you": 32.0,
-     "trade": 28.0,
-     "day_add": 0.0,
-     "month_add": 0.0
-    },
-    {
-     "name": "深圳市好立得电子有限公司",
-     "ctype": "优质货盘推P",
-     "kefu": "方琼",
-     "key": "深圳市好立得电子有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "17179896958",
-     "you": 201.0,
-     "trade": 521.0,
-     "day_add": 0.0,
-     "month_add": 0.0
-    },
-    {
-     "name": "深圳市德辛阳智能科技有限公司",
-     "ctype": "优质货盘推P",
-     "kefu": "庞婷婷",
-     "key": "深圳市德辛阳智能科技有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "2217050247075",
-     "you": 182.0,
-     "trade": 1401.0,
-     "day_add": -3.0,
-     "month_add": -3.0
-    },
-    {
-     "name": "深圳市斯汉德科技有限公司",
-     "ctype": "优质货盘推P",
-     "kefu": "罗洋清",
-     "key": "深圳市斯汉德科技有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "you": 312.0,
-     "trade": 257.0,
-     "ali_id": "2465693492+3588536085+3587986605+2212992994458",
-     "agg": 4,
-     "src": "inv",
-     "day_add": -1.0,
-     "month_add": -1.0
-    },
-    {
-     "name": "深圳市远景达科技有限公司",
-     "ctype": "优质货盘推P",
-     "kefu": "苏梓梦",
-     "key": "深圳市远景达科技有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "you": 78.0,
-     "trade": 348.0,
-     "ali_id": "4227790291+2206923768140",
-     "agg": 2,
-     "src": "inv",
-     "day_add": -4.0,
-     "month_add": -4.0
-    },
-    {
-     "name": "深圳市科永泰电子有限公司",
-     "ctype": "优质货盘推P",
-     "kefu": "苏梓梦",
-     "key": "深圳市科永泰电子有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "17380010731",
-     "you": 61.0,
-     "trade": 1.0,
-     "day_add": 0.0,
-     "month_add": 0.0
-    },
-    {
-     "name": "深圳辰铮科技有限公司",
-     "ctype": "优质货盘推P",
-     "kefu": "邢欢欢",
-     "key": "深圳辰铮科技有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "2200779074728",
-     "you": 56.0,
-     "trade": 426.0,
-     "day_add": 0.0,
-     "month_add": 0.0
-    },
-    {
-     "name": "深圳佰斯特尔电子有限公司",
-     "ctype": "优质货盘推P",
-     "kefu": "苏梓梦",
-     "key": "深圳佰斯特尔电子有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "2813633847",
-     "you": 13.0,
-     "trade": 316.0,
-     "day_add": 1.0,
-     "month_add": 1.0
-    }
-   ],
-   "you": 937.0,
-   "trade": 3420.0,
-   "count": 9,
-   "day_add": -7.0,
-   "day_add_excluded": 0,
-   "month_add": -7.0,
    "month_add_excluded": 0
   },
   {
