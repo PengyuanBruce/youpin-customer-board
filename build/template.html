@@ -219,6 +219,7 @@ td.r,th.r{text-align:right}
 td.cust{font-variant-numeric:normal;max-width:420px}
 td.cust .cn{color:#e4f0fb;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 td.cust .cs{font-size:10.5px;color:var(--muted);margin-top:2px}
+td.cust .cs.own,.cs.own{color:var(--gold)}
 td .rk2{font-size:11px;color:var(--muted)}
 .v-you{color:#eaf9ff;font-weight:600;font-size:13.5px}
 .v-trade{color:#c9dcee}
@@ -538,7 +539,7 @@ function renderPerson() {
     rows.forEach((c, i) => {
       html += `<tr>
         <td><span class="rk2 num">${i + 1}</span></td>
-        <td class="cust"><span class="cn" title="${esc(c.name)}">${esc(c.name)}</span>${c.kefu ? `<span class="cs">客服 ${esc(c.kefu)}</span>` : ""}</td>
+        <td class="cust"><span class="cn" title="${esc(c.name)}">${esc(c.name)}</span>${c.kefu ? `<span class="cs">客服 ${esc(c.kefu)}</span>` : ""}${c.owner ? `<span class="cs own">现属 ${esc(c.owner)}</span>` : ""}</td>
         <td>${c.ctype ? `<span class="tag ${c.ctype === "首次年" ? "t-first" : (c.ctype === "优质货盘推P" ? "t-goods" : "")}">${esc(c.ctype)}</span>` : '<span class="tag tag-empty">—</span>'}</td>
         <td class="r"><span class="v-you">${fmt(c.you)}</span></td>
         <td class="r"><span class="v-trade">${fmt(c.trade)}</span></td>
