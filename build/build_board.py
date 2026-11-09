@@ -97,12 +97,17 @@ def load_inventory(path):
     for r in rows:
         if txt(r.get("stat_date")) != ds:
             continue
-        key = (norm(r.get("partner_user_sales_name")), norm(r.get("cust_name_cn")))
-        table.setdefault(key, []).append({
+        sales = norm(r.get("partner_user_sales_name"))
+        name = norm(r.get("cust_name_cn"))
+        item = {
             "ali_id": txt(r.get("ali_id")),
             "you": num(r.get("youbaopin_prd_cnt")),
             "trade": num(r.get("jiaoyi_prd_cnt")),
-        })
+            "sales": txt(r.get("partner_user_sales_name")),
+        }
+        table.setdefault((sales, name), []).append(item)
+        # 兜底索引：客户换销售后仍能按名字找到（表里记的是老销售）
+        table.setdefault(("*", name), []).append(item)
     iso = f"{ds[:4]}-{ds[4:6]}-{ds[6:8]}" if len(ds) == 8 else ds
     return iso, table, len(rows)
 
@@ -196,6 +201,11 @@ def assign(persons, table, prior=None):
             groups.setdefault(c["name"], []).append(c)
         for name, rows in groups.items():
             cands = table.get((norm(p["name"]), norm(name))) or []
+            fallback = False
+            if not cands:
+                # 客户可能只是换了销售（表里仍记着老销售），按名字兜底找一次
+                cands = table.get(("*", norm(name))) or []
+                fallback = bool(cands)
             total += len(rows)
             if len(rows) == 1 and len(cands) > 1:
                 # 一个客户名对应平台多个账号（同公司多店）：合并计，稳定且不猜
@@ -208,6 +218,8 @@ def assign(persons, table, prior=None):
                 c["ali_id"] = "+".join(h["ali_id"] for h in cands if h["ali_id"])
                 c["agg"] = len(cands)
                 c["src"] = "inv" if c["you"] is not None else "noval"
+                if fallback:
+                    c["owner"] = cands[0].get("sales") or ""
                 continue
             for c, hit in _assign(rows, cands, prior):
                 if hit is None:
@@ -221,6 +233,8 @@ def assign(persons, table, prior=None):
                 c["ali_id"] = hit["ali_id"]
                 c["you"] = hit["you"]
                 c["trade"] = hit["trade"]
+                if fallback:
+                    c["owner"] = hit.get("sales") or ""
                 if len(cands) > 1:
                     c["ambig"] = True
         p["you"] = sum(c.get("you") or 0 for c in p["customers"])
