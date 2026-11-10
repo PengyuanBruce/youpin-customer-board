@@ -283,6 +283,13 @@ def load_members():
 
 def load_home():
     home = {}
+    # BOARD_HOME_SOURCE=cache：忽略上游 data_cur（例如挑战赛基线被上游跑坏时），
+    # 直接用上一版缓存，避免把残缺首页发上线。
+    if os.environ.get("BOARD_HOME_SOURCE") == "cache":
+        if os.path.exists(HOME_CACHE):
+            with open(HOME_CACHE, encoding="utf-8") as fh:
+                return json.load(fh)
+        return {}
     if os.path.exists(HOME_SRC):
         with open(HOME_SRC, encoding="utf-8") as fh:
             d = json.load(fh)
@@ -318,6 +325,12 @@ def main():
         ds = dsm or iso
         # 固定锚：始终用本表结构下最早那期快照，避免每天换锚导致同名多账号来回漂
         anchor = prior.get(base_anchor_ds) if base_anchor_ds else None
+        if anchor is None:
+            # 最早的分区没有「本期之前」的固定锚：退到磁盘上离它最近的一份更早快照。
+            # 否则同名多账号会全成本并列 10**6、按候选顺序瞎分（序号 #1/#2 隔天对调）。
+            earlier = [d for d in sorted(prior) if d < ds]
+            if earlier:
+                anchor = prior[earlier[-1]]
         ps = copy.deepcopy(persons)
         st = assign(ps, table, anchor)
         if base_anchor_ds is None:
