@@ -293,7 +293,8 @@ def load_home():
     if os.path.exists(HOME_SRC):
         with open(HOME_SRC, encoding="utf-8") as fh:
             d = json.load(fh)
-        home = {k: d.get(k) for k in ("goods", "goods_sales", "goods_kefu", "goods_challenge")}
+        # 首页只保留「优爆品总览」；挑战赛板块已整体下线，相关数据不再随页面下发
+        home = {k: d.get(k) for k in ("goods",)}
         home["update"] = d.get("update_time")
         with open(HOME_CACHE, "w", encoding="utf-8") as fh:
             json.dump(home, fh, ensure_ascii=False)
