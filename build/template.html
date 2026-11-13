@@ -298,6 +298,9 @@ function markNav() {
 function renderHome() {
   const H = BOARD.home || {};
   const g = H.goods || {};
+  const struct = g.structure || [];
+  const online = struct.find((s) => String(s.name).includes("在线")) || {};
+  const custs = struct.find((s) => String(s.name).includes("客户")) || {};
 
   let html = `
   <div class="block">
