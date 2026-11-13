@@ -121,37 +121,6 @@ section[hidden]{display:none !important}
 .bar.gold > i{background:linear-gradient(90deg,#d99b1f,#ffc857)}
 .bar.sm{margin-top:6px;height:4px}
 
-/* ---------- 挑战赛 ---------- */
-.ch-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:14px}
-.ch-panel{border:1px solid var(--line);border-radius:13px;background:var(--panel-2);overflow:hidden;min-width:0}
-.ch-head{
-  display:flex;align-items:center;justify-content:space-between;gap:10px;
-  padding:11px 14px;border-bottom:1px solid var(--line);
-  background:linear-gradient(90deg,rgba(255,200,87,.1),transparent 70%);
-}
-.ch-head .t{font-size:13px;font-weight:640;letter-spacing:.5px;display:flex;align-items:center;gap:8px}
-.ch-head .t em{font-style:normal;font-size:10.5px;color:var(--gold);border:1px solid rgba(255,200,87,.35);
-  border-radius:99px;padding:1px 7px;letter-spacing:.4px}
-.ch-head .s{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
-.ch-cols,.ch-row{display:grid;grid-template-columns:24px minmax(58px,1fr) 74px 70px 74px 96px;gap:6px;align-items:center}
-.ch-cols{padding:7px 12px;font-size:10.5px;color:var(--muted);letter-spacing:.4px;border-bottom:1px solid rgba(120,190,255,.08)}
-.ch-body{overflow:visible}
-.ch-row{padding:7px 12px;font-size:12.5px;border-bottom:1px solid rgba(120,190,255,.05)}
-.ch-row:hover{background:rgba(63,208,255,.055)}
-.ch-row .rk{font-size:10.5px;color:var(--muted);font-variant-numeric:tabular-nums}
-.ch-row .who{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#dcebf9}
-.ch-row .rv{text-align:right;font-variant-numeric:tabular-nums;color:#cfe2f4}
-.ch-row .rv.add{color:var(--green)}
-.ch-row .rv.add.neg{color:var(--red)}
-.ch-row .rv.na{color:var(--muted)}
-.ch-row .pv{text-align:right;font-variant-numeric:tabular-nums;font-size:11.5px;color:var(--dim)}
-.ch-row .pv .bar{margin-top:4px}
-.ch-row.top1 .rk{color:var(--gold)}
-.ch-row.top1 .who{color:#fff}
-.ch-body.kf2{display:grid;grid-template-columns:1fr 1fr;gap:0 26px}
-.ch-body.kf2 > div{min-width:0}
-.ch-panel.kf .ch-cols,.ch-panel.kf .ch-row{grid-template-columns:22px minmax(52px,1fr) 66px 64px 78px 62px}
-
 /* ---------- 人物页 ---------- */
 .p-head{
   display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;justify-content:space-between;
@@ -307,7 +276,7 @@ if (!BOARD) {
 /* ---------------- 顶栏 ---------------- */
 function renderNav() {
   const nav = $("#nav");
-  const items = [`<a class="tab home" href="#/home" data-k="home">首页<span class="tv">优爆品 · 挑战赛</span></a>`];
+  const items = [`<a class="tab home" href="#/home" data-k="home">首页<span class="tv">优爆品</span></a>`];
   BOARD.persons.forEach((p, i) => {
     items.push(`<a class="tab" href="#/p/${encodeURIComponent(p.name)}" data-k="p${i}">${esc(p.name)}<span class="tv num">${fmt(p.you)}</span></a>`);
   });
@@ -324,38 +293,11 @@ function markNav() {
 }
 
 /* ---------------- 首页 ---------------- */
-function challengeDays(ch) {
-  if (!ch.end || !BOARD.meta.data_ds) return null;
-  const end = new Date(ch.end + "T00:00:00");
-  const cur = new Date(BOARD.meta.data_ds + "T00:00:00");
-  return Math.round((end - cur) / 86400000) + 1;
-}
 
-function chRow(i, name, value, add, target, rate, isTop) {
-  const addHtml = add === null || add === undefined
-    ? '<span class="rv na">--</span>'
-    : `<span class="rv add ${add < 0 ? "neg" : ""}">${add > 0 ? "+" : ""}${fmt(add)}</span>`;
-  return `<div class="ch-row${isTop ? " top1" : ""}">
-    <span class="rk">${i}</span>
-    <span class="who" title="${esc(name)}">${esc(name)}</span>
-    <span class="rv">${fmt(value)}</span>
-    ${addHtml}
-    <span class="rv">${target === null || target === undefined ? "--" : fmt(target)}</span>
-    <span class="pv">${pct(rate)}<span class="bar sm${isTop ? " gold" : ""}"><i style="width:${clamp(rate)}%"></i></span></span>
-  </div>`;
-}
 
 function renderHome() {
   const H = BOARD.home || {};
   const g = H.goods || {};
-  const ch = H.goods_challenge || {};
-  const sales = H.goods_sales || [];
-  const kefu = H.goods_kefu || [];
-  const struct = g.structure || [];
-  const online = struct.find((s) => String(s.name).includes("在线")) || {};
-  const custs = struct.find((s) => String(s.name).includes("客户")) || {};
-    const chTotal = sales.reduce((a, s) => a + (typeof s.ch_add === "number" ? s.ch_add : 0), 0);
-  const days = challengeDays(ch);
 
   let html = `
   <div class="block">
@@ -397,58 +339,6 @@ function renderHome() {
     </div>
   </div>`;
 
-  html += `
-  <div class="block">
-    <div class="block-h">
-      <h2>${esc(ch.panel_title || "优爆品挑战赛")}</h2>
-      <div class="meta">${esc(ch.window_cn || "")} · 参赛销售合计新增 <b style="color:var(--gold)">${chTotal > 0 ? "+" : ""}${fmt(chTotal)}</b> 个
-      ${days !== null ? ` · 剩 <b>${days}</b> 天` : ""}</div>
-    </div>`;
-
-  if (!sales.length) {
-    html += `<div class="empty">挑战赛数据未接通（公司大屏 data_cur.json 未取到 goods_sales）</div>`;
-  } else {
-    const map = {};
-    sales.forEach((s) => { map[s.name] = s; });
-    const groups = ch.groups || [];
-    html += `<div class="ch-wrap">`;
-    groups.forEach((grp) => {
-      const rows = grp.members
-        .map((n) => map[n] || { name: n, value: null, ch_add: null, target: null, pct: null })
-        .sort((a, b) => (b.ch_add ?? -1e9) - (a.ch_add ?? -1e9));
-      html += `<div class="ch-panel">
-        <div class="ch-head">
-          <div class="t"><em>${grp.members.length} 人</em>${esc(grp.name)}</div>
-          <div class="s">按挑战期新增排序</div>
-        </div>
-        <div class="ch-cols"><span>#</span><span>销售</span><span style="text-align:right">当前</span><span style="text-align:right">挑战新增</span><span style="text-align:right">目标</span><span style="text-align:right">完成率</span></div>
-        <div class="ch-body">${rows.map((r, i) => chRow(i + 1, r.name, r.value, r.ch_add, r.target, r.pct, i === 0)).join("")}</div>
-      </div>`;
-    });
-    html += `</div>`;
-  }
-
-  if (kefu.length) {
-    const krows = [...kefu].sort((a, b) => (b.value ?? 0) - (a.value ?? 0));
-    const head = `<div class="ch-cols"><span>#</span><span>客服</span><span style="text-align:right">优爆品数</span><span style="text-align:right">季目标</span><span style="text-align:right">完成率</span><span style="text-align:right">今日新增</span></div>`;
-    const row = (r, i) => `<div class="ch-row${i === 0 ? " top1" : ""}">
-        <span class="rk">${i + 1}</span><span class="who">${esc(r.name)}</span>
-        <span class="rv">${fmt(r.value)}</span>
-        <span class="rv">${fmt(r.target)}</span>
-        <span class="pv">${pct(r.pct)}<span class="bar sm"><i style="width:${clamp(r.pct)}%"></i></span></span>
-        <span class="rv ${r.day_add < 0 ? "add neg" : "add"}">${r.day_add == null ? "--" : (r.day_add > 0 ? "+" : "") + fmt(r.day_add)}</span>
-      </div>`;
-    const half = Math.ceil(krows.length / 2);
-    const col = (arr, off) => `<div>${head}${arr.map((r, i) => row(r, off + i)).join("")}</div>`;
-    html += `<div class="ch-panel kf" style="margin-top:14px">
-      <div class="ch-head">
-        <div class="t"><em>${kefu.length} 人</em>拍档客服</div>
-        <div class="s">客服不参与挑战赛 · 按优爆品数排序</div>
-      </div>
-      <div class="ch-body kf2">${col(krows.slice(0, half), 0)}${col(krows.slice(half), half)}</div>
-    </div>`;
-  }
-  html += `</div>`;
 
   $("#view-home").innerHTML = html;
 }
