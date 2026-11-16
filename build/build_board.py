@@ -373,19 +373,41 @@ def main():
     if prev_ds:
         day_gap = (dt.date.fromisoformat(data_ds) - dt.date.fromisoformat(prev_ds)).days
 
+    # ── 「上周新增」（2026-11-16 用户改口径，取代客户表的「今日新增」）──
+    #   = 上周一~上周五的优爆品净增 = 上周五的优爆品数 − 上周日（上周一前一天）的优爆品数。
+    #   窗口按**构建当日**回溯（这一列讲的是“上一个完整工作周”，与当天数据日无关，
+    #   所以同一周内反复构建，列值保持稳定）。
+    #   盘点分区若缺上周五（平台周末不出分区），退到窗口内最后一个可用分区，
+    #   实际用到的两端日期写进 meta.week_window，页脚与 tooltip 照实说明。
+    _today = dt.date.today()
+    wk_mon = _today - dt.timedelta(days=_today.weekday() + 7)
+    wk_fri = wk_mon + dt.timedelta(days=4)
+    wk_sun = wk_mon - dt.timedelta(days=1)
+    _cand_end = [d for d in all_ds if wk_mon.isoformat() <= d <= wk_fri.isoformat()]
+    _cand_base = [d for d in all_ds if d <= wk_sun.isoformat()]
+    wk_end_ds = _cand_end[-1] if _cand_end else None
+    wk_base_ds = _cand_base[-1] if _cand_base else None
+    wk_end_snap = snaps.get(wk_end_ds)
+    wk_base_snap = snaps.get(wk_base_ds)
+    wk_short_by = ((wk_fri - dt.date.fromisoformat(wk_end_ds)).days
+                   if wk_end_ds else None)
+
     for p in persons:
         for c in p["customers"]:
             known = c.get("src") == "inv"
             if known and c.get("ambig") and prev_snap:
                 old = (prev_snap.get("customers") or {}).get(c["key"]) or {}
                 known = old.get("ali_id") == c.get("ali_id")
-            old_day = ((prev_snap or {}).get("customers") or {}).get(c["key"]) or {}
+            old_wk = ((wk_end_snap or {}).get("customers") or {}).get(c["key"]) or {}
+            old_wkb = ((wk_base_snap or {}).get("customers") or {}).get(c["key"]) or {}
             old_mon = ((month_snap or {}).get("customers") or {}).get(c["key"]) or {}
-            c["day_add"] = (None if not known or old_day.get("you") is None
-                            else c["you"] - old_day["you"])
+            # 上周新增取「上周五（或窗口内最后一个可用日）− 上周日」，两端快照缺一即 None
+            c["week_add"] = (None if not known or old_wk.get("you") is None
+                             or old_wkb.get("you") is None
+                             else old_wk["you"] - old_wkb["you"])
             c["month_add"] = (None if not known or old_mon.get("you") is None
                               else c["you"] - old_mon["you"])
-        for f in ("day_add", "month_add"):
+        for f in ("week_add", "month_add"):
             vals = [c[f] for c in p["customers"] if c[f] is not None]
             p[f] = sum(vals) if vals else None
             p[f + "_excluded"] = p["count"] - len(vals)
@@ -397,6 +419,13 @@ def main():
             "prev_ds": prev_ds,
             "day_gap": day_gap,
             "month_base_ds": month_base_ds,
+            "week_window": {
+                "mon": wk_mon.isoformat(),
+                "fri": wk_fri.isoformat(),
+                "base": wk_base_ds,
+                "end": wk_end_ds,
+                "short_by": wk_short_by,
+            },
             "snapshot_dates": all_ds,
             "captured_at": captured_at,
             "person_count": len(persons),
@@ -425,6 +454,8 @@ def main():
         fh.write(html)
 
     print(f"数据日 {data_ds} | 上期 {prev_ds}（间隔 {day_gap} 天）| 本月基准 {month_base_ds}")
+    print(f"上周新增窗口 {wk_mon}~{wk_fri}（基准 {wk_base_ds} / 末端 {wk_end_ds}"
+          + (f"，末端比周五早 {wk_short_by} 天" if wk_short_by else "") + "）")
     print(f"销售 {len(persons)} 人 | 客户 {board['meta']['customer_count']} 家 | "
           f"匹配 {chosen['stat']['matched']}/{chosen['stat']['total']} ({chosen['cov']:.1%})")
     print(f"优爆品 {sum(p['you'] or 0 for p in persons):.0f} | 交易品 {sum(p['trade'] or 0 for p in persons):.0f}")
