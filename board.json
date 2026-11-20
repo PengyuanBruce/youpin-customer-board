@@ -1,7 +1,7 @@
 {
  "meta": {
-  "data_ds": "2026-11-18",
-  "prev_ds": "2026-11-17",
+  "data_ds": "2026-11-19",
+  "prev_ds": "2026-11-18",
   "day_gap": 1,
   "month_base_ds": "2026-11-04",
   "week_window": {
@@ -26,18 +26,19 @@
    "2026-11-15",
    "2026-11-16",
    "2026-11-17",
-   "2026-11-18"
+   "2026-11-18",
+   "2026-11-19"
   ],
-  "captured_at": "2026-11-19 09:19",
+  "captured_at": "2026-11-20 10:17",
   "person_count": 22,
   "customer_count": 402,
   "inventory": {
    "used": true,
-   "ds": "20261118",
+   "ds": "20261119",
    "matched": 402,
    "total": 402,
    "coverage": 1.0,
-   "rows": 7096,
+   "rows": 7100,
    "stale_partitions": []
   }
  },
@@ -123,13 +124,13 @@
      "key": "深圳市艾莱客健康科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 1141.0,
+     "you": 1142.0,
      "trade": 1609.0,
      "ali_id": "2345286930+2208377683515",
      "agg": 2,
      "src": "inv",
      "week_add": -91.0,
-     "month_add": 113.0
+     "month_add": 114.0
     },
     {
      "name": "深圳市振诚包装制品有限公司",
@@ -141,7 +142,7 @@
      "src": "inv",
      "ali_id": "3894746133",
      "you": 691.0,
-     "trade": 971.0,
+     "trade": 965.0,
      "week_add": 7.0,
      "month_add": 25.0
     },
@@ -154,10 +155,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2209008586016",
-     "you": 584.0,
-     "trade": 807.0,
+     "you": 583.0,
+     "trade": 802.0,
      "week_add": 10.0,
-     "month_add": 30.0
+     "month_add": 29.0
     },
     {
      "name": "深圳市四通广行实业有限公司",
@@ -168,10 +169,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2204778362586",
-     "you": 422.0,
+     "you": 417.0,
      "trade": 1367.0,
      "week_add": -35.0,
-     "month_add": -29.0
+     "month_add": -34.0
     },
     {
      "name": "深圳市欣欣向荣科技有限公司",
@@ -182,10 +183,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2211267178048",
-     "you": 242.0,
-     "trade": 521.0,
+     "you": 235.0,
+     "trade": 519.0,
      "week_add": -8.0,
-     "month_add": -16.0
+     "month_add": -23.0
     },
     {
      "name": "深圳市奥瑞美实业有限公司",
@@ -194,13 +195,13 @@
      "key": "深圳市奥瑞美实业有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 245.0,
+     "you": 246.0,
      "trade": 1353.0,
      "ali_id": "2206822835513+2213191715559",
      "agg": 2,
      "src": "inv",
      "week_add": -10.0,
-     "month_add": -20.0
+     "month_add": -19.0
     },
     {
      "name": "深圳市旭联科技有限公司",
@@ -209,13 +210,13 @@
      "key": "深圳市旭联科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 238.0,
+     "you": 234.0,
      "trade": 742.0,
-     "ali_id": "2213233261821+3191252371",
+     "ali_id": "3191252371+2213233261821",
      "agg": 2,
      "src": "inv",
      "week_add": -9.0,
-     "month_add": -24.0
+     "month_add": -28.0
     },
     {
      "name": "深圳德蓝达科技有限公司",
@@ -238,13 +239,13 @@
      "key": "深圳市驰美科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 202.0,
+     "you": 201.0,
      "trade": 6.0,
-     "ali_id": "17381079080+17380257839",
+     "ali_id": "17380257839+17381079080",
      "agg": 2,
      "src": "inv",
      "week_add": 4.0,
-     "month_add": -3.0
+     "month_add": -4.0
     },
     {
      "name": "深圳市东晟源电子科技有限公司",
@@ -255,10 +256,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2206728206883",
-     "you": 93.0,
+     "you": 92.0,
      "trade": 272.0,
      "week_add": -5.0,
-     "month_add": -8.0
+     "month_add": -9.0
     },
     {
      "name": "深圳市鼎邮国际货运代理有限公司",
@@ -267,13 +268,13 @@
      "key": "深圳市鼎邮国际货运代理有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 88.0,
+     "you": 86.0,
      "trade": 0.0,
      "ali_id": "2208759543831+3321614884",
      "agg": 2,
      "src": "inv",
      "week_add": -2.0,
-     "month_add": 4.0
+     "month_add": 2.0
     },
     {
      "name": "深圳市索达数码科技有限公司",
@@ -284,10 +285,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "17380362753",
-     "you": 86.0,
+     "you": 88.0,
      "trade": 356.0,
      "week_add": -4.0,
-     "month_add": -4.0
+     "month_add": -2.0
     },
     {
      "name": "深圳市好盈科技股份有限公司",
@@ -299,7 +300,7 @@
      "src": "inv",
      "ali_id": "2468941806",
      "you": 85.0,
-     "trade": 58.0,
+     "trade": 79.0,
      "week_add": 0.0,
      "month_add": 8.0
     },
@@ -324,13 +325,13 @@
      "key": "深圳市一品时代科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 62.0,
+     "you": 63.0,
      "trade": 500.0,
-     "ali_id": "2209796698691+2207556530951",
+     "ali_id": "2207556530951+2209796698691",
      "agg": 2,
      "src": "inv",
      "week_add": -1.0,
-     "month_add": 5.0
+     "month_add": 6.0
     },
     {
      "name": "深圳市森蓝能源科技有限公司",
@@ -353,13 +354,13 @@
      "key": "深圳市赢骄益科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 194.0,
+     "you": 192.0,
      "trade": 613.0,
      "ali_id": "2211568615353+2217190323164",
      "agg": 2,
      "src": "inv",
      "week_add": -5.0,
-     "month_add": -5.0
+     "month_add": -7.0
     },
     {
      "name": "深圳市优莱尔电子科技有限公司",
@@ -368,13 +369,13 @@
      "key": "深圳市优莱尔电子科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 57.0,
+     "you": 55.0,
      "trade": 502.0,
-     "ali_id": "2208370350454+17381391100",
+     "ali_id": "17381391100+2208370350454",
      "agg": 2,
      "src": "inv",
      "week_add": -6.0,
-     "month_add": 0.0
+     "month_add": -2.0
     },
     {
      "name": "深圳市巨能达科技有限公司",
@@ -385,18 +386,18 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2218598044103",
-     "you": 44.0,
+     "you": 45.0,
      "trade": 667.0,
      "week_add": 1.0,
-     "month_add": 8.0
+     "month_add": 9.0
     }
    ],
-   "you": 4757.0,
-   "trade": 11005.0,
+   "you": 4738.0,
+   "trade": 11013.0,
    "count": 24,
    "week_add": -119.0,
    "week_add_excluded": 0,
-   "month_add": 100.0,
+   "month_add": 81.0,
    "month_add_excluded": 0
   },
   {
@@ -412,10 +413,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2208174474343",
-     "you": 933.0,
-     "trade": 1641.0,
+     "you": 969.0,
+     "trade": 1638.0,
      "week_add": -26.0,
-     "month_add": 29.0
+     "month_add": 65.0
     },
     {
      "name": "深圳市迈洛克实业有限公司",
@@ -455,10 +456,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2990222783",
-     "you": 90.0,
-     "trade": 575.0,
+     "you": 91.0,
+     "trade": 576.0,
      "week_add": -1.0,
-     "month_add": 30.0
+     "month_add": 31.0
     },
     {
      "name": "深圳市贤林电子科技有限公司",
@@ -469,11 +470,11 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2206790540125",
-     "you": 74.0,
-     "trade": 591.0,
+     "you": 75.0,
+     "trade": 598.0,
      "ambig": true,
      "week_add": -4.0,
-     "month_add": -7.0
+     "month_add": -6.0
     },
     {
      "name": "深圳市鑫赛科科技发展有限公司",
@@ -483,8 +484,8 @@
      "xlsx_you": null,
      "xlsx_trade": null,
      "you": 48.0,
-     "trade": 532.0,
-     "ali_id": "2200575305481+17180063362+3993497100",
+     "trade": 531.0,
+     "ali_id": "3993497100+17180063362+2200575305481",
      "agg": 3,
      "src": "inv",
      "week_add": -3.0,
@@ -499,7 +500,7 @@
      "xlsx_trade": null,
      "you": 61.0,
      "trade": 532.0,
-     "ali_id": "2885246419+2210324521899",
+     "ali_id": "2210324521899+2885246419",
      "agg": 2,
      "src": "inv",
      "week_add": 1.0,
@@ -514,10 +515,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2207104044406",
-     "you": 142.0,
+     "you": 137.0,
      "trade": 521.0,
      "week_add": -4.0,
-     "month_add": -8.0
+     "month_add": -13.0
     },
     {
      "name": "深圳市奔马电子科技有限公司",
@@ -527,8 +528,8 @@
      "xlsx_you": null,
      "xlsx_trade": null,
      "you": 56.0,
-     "trade": 451.0,
-     "ali_id": "2210065064555+17380024804",
+     "trade": 454.0,
+     "ali_id": "17380024804+2210065064555",
      "agg": 2,
      "src": "inv",
      "week_add": 0.0,
@@ -543,10 +544,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2211726841802",
-     "you": 49.0,
+     "you": 50.0,
      "trade": 278.0,
      "week_add": -8.0,
-     "month_add": -41.0
+     "month_add": -40.0
     },
     {
      "name": "深圳市安缤悦电子科技有限公司",
@@ -557,10 +558,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500002598085",
-     "you": 9.0,
-     "trade": 238.0,
+     "you": 11.0,
+     "trade": 239.0,
      "week_add": 2.0,
-     "month_add": 8.0
+     "month_add": 10.0
     },
     {
      "name": "深圳市宇安礼品有限公司",
@@ -571,10 +572,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500001001501",
-     "you": 74.0,
-     "trade": 438.0,
+     "you": 75.0,
+     "trade": 437.0,
      "week_add": 0.0,
-     "month_add": 20.0
+     "month_add": 21.0
     },
     {
      "name": "深圳市龙弛智慧科技有限公司",
@@ -613,10 +614,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500000236162",
-     "you": 77.0,
+     "you": 79.0,
      "trade": 151.0,
      "week_add": 6.0,
-     "month_add": 8.0
+     "month_add": 10.0
     },
     {
      "name": "深圳市益海新能科技有限公司",
@@ -650,13 +651,13 @@
      "key": "深圳市安诚通集装箱服务有限公司#1",
      "xlsx_you": 22.0,
      "xlsx_trade": null,
-     "you": 49.0,
+     "you": 46.0,
      "trade": 51.0,
      "ali_id": "2500000572137+3971657654",
      "agg": 2,
      "src": "inv",
      "week_add": -3.0,
-     "month_add": -10.0
+     "month_add": -13.0
     },
     {
      "name": "深圳市艾比兴实业有限公司",
@@ -665,13 +666,13 @@
      "key": "深圳市艾比兴实业有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 677.0,
+     "you": 678.0,
      "trade": 668.0,
-     "ali_id": "2216474840333+1037280053",
+     "ali_id": "1037280053+2216474840333",
      "agg": 2,
      "src": "inv",
      "week_add": 14.0,
-     "month_add": 16.0
+     "month_add": 17.0
     },
     {
      "name": "深圳市文汇科技发展有限公司",
@@ -682,10 +683,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2210970016608",
-     "you": 176.0,
-     "trade": 148.0,
+     "you": 174.0,
+     "trade": 149.0,
      "week_add": 1.0,
-     "month_add": 1.0
+     "month_add": -1.0
     },
     {
      "name": "深圳市谦耀电子有限公司",
@@ -696,10 +697,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2218900245406",
-     "you": 226.0,
+     "you": 224.0,
      "trade": 267.0,
      "week_add": 44.0,
-     "month_add": 71.0
+     "month_add": 69.0
     },
     {
      "name": "深圳市铭泰伟业科技有限公司",
@@ -708,13 +709,13 @@
      "key": "深圳市铭泰伟业科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 258.0,
+     "you": 259.0,
      "trade": 120.0,
      "ali_id": "17381017629+3033076619+17380555627",
      "agg": 3,
      "src": "inv",
      "week_add": -6.0,
-     "month_add": -8.0
+     "month_add": -7.0
     },
     {
      "name": "深圳市桓芯科技有限公司",
@@ -725,10 +726,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2215704327121",
-     "you": 149.0,
+     "you": 152.0,
      "trade": 236.0,
      "week_add": 2.0,
-     "month_add": 10.0
+     "month_add": 13.0
     },
     {
      "name": "深圳市雅为智能技术有限公司",
@@ -739,10 +740,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2210453090536",
-     "you": 118.0,
+     "you": 117.0,
      "trade": 154.0,
      "week_add": 5.0,
-     "month_add": 7.0
+     "month_add": 6.0
     },
     {
      "name": "深圳市博杰伦森科技有限公司",
@@ -751,13 +752,13 @@
      "key": "深圳市博杰伦森科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 127.0,
+     "you": 123.0,
      "trade": 317.0,
-     "ali_id": "2209237469309+2200694844634",
+     "ali_id": "2200694844634+2209237469309",
      "agg": 2,
      "src": "inv",
      "week_add": 7.0,
-     "month_add": 13.0
+     "month_add": 9.0
     },
     {
      "name": "深圳思达瑞电子有限公司",
@@ -768,10 +769,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2036723202",
-     "you": 104.0,
-     "trade": 160.0,
+     "you": 106.0,
+     "trade": 159.0,
      "week_add": 7.0,
-     "month_add": 6.0
+     "month_add": 8.0
     },
     {
      "name": "深圳牧人行智能制造有限公司",
@@ -782,10 +783,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "17379923867",
-     "you": 68.0,
+     "you": 66.0,
      "trade": 150.0,
      "week_add": -3.0,
-     "month_add": -5.0
+     "month_add": -7.0
     },
     {
      "name": "深圳市全品衣贸服饰有限公司",
@@ -807,10 +808,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "17381005236",
-     "you": 48.0,
+     "you": 49.0,
      "trade": 38.0,
      "week_add": -3.0,
-     "month_add": -6.0
+     "month_add": -5.0
     },
     {
      "name": "深圳市辰多星电子科技有限公司",
@@ -819,13 +820,13 @@
      "key": "深圳市辰多星电子科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 89.0,
+     "you": 88.0,
      "trade": 179.0,
      "ali_id": "3570677716+17380522213+3564841739+3567248222+3564654543",
      "agg": 5,
      "src": "inv",
      "week_add": -6.0,
-     "month_add": -6.0
+     "month_add": -7.0
     },
     {
      "name": "深圳高锐达显示科技有限公司",
@@ -842,12 +843,12 @@
      "month_add": 1.0
     }
    ],
-   "you": 4017.0,
-   "trade": 10330.0,
+   "you": 4049.0,
+   "trade": 10337.0,
    "count": 31,
    "week_add": 29.0,
    "week_add_excluded": 2,
-   "month_add": 112.0,
+   "month_add": 144.0,
    "month_add_excluded": 2
   },
   {
@@ -905,10 +906,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500001600632",
-     "you": 83.0,
+     "you": 82.0,
      "trade": 201.0,
      "week_add": 26.0,
-     "month_add": 19.0
+     "month_add": 18.0
     },
     {
      "name": "深圳市申珀科技有限公司",
@@ -930,10 +931,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500001795108",
-     "you": 1107.0,
-     "trade": 1425.0,
+     "you": 1120.0,
+     "trade": 1439.0,
      "week_add": 10.0,
-     "month_add": -16.0
+     "month_add": -3.0
     },
     {
      "name": "惠州市劲诚复合材料有限公司",
@@ -944,10 +945,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "3336017045",
-     "you": 290.0,
-     "trade": 453.0,
+     "you": 306.0,
+     "trade": 452.0,
      "week_add": -36.0,
-     "month_add": -42.0
+     "month_add": -26.0
     },
     {
      "name": "深圳华声科技有限公司",
@@ -958,10 +959,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2297907710",
-     "you": 306.0,
-     "trade": 1864.0,
+     "you": 315.0,
+     "trade": 1865.0,
      "week_add": 6.0,
-     "month_add": 26.0
+     "month_add": 35.0
     },
     {
      "name": "深圳市路通电子有限公司",
@@ -970,13 +971,13 @@
      "key": "深圳市路通电子有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 190.0,
+     "you": 189.0,
      "trade": 271.0,
-     "ali_id": "2211709542772+2211483067765",
+     "ali_id": "2211483067765+2211709542772",
      "agg": 2,
      "src": "inv",
      "week_add": -3.0,
-     "month_add": -1.0
+     "month_add": -2.0
     },
     {
      "name": "深圳市泓致远科技有限公司",
@@ -985,13 +986,13 @@
      "key": "深圳市泓致远科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 139.0,
+     "you": 136.0,
      "trade": 251.0,
-     "ali_id": "2213446367888+2206517167266",
+     "ali_id": "2206517167266+2213446367888",
      "agg": 2,
      "src": "inv",
      "week_add": 2.0,
-     "month_add": 54.0
+     "month_add": 51.0
     },
     {
      "name": "深圳市鑫博龙科技有限公司",
@@ -1000,13 +1001,13 @@
      "key": "深圳市鑫博龙科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 81.0,
+     "you": 80.0,
      "trade": 1004.0,
-     "ali_id": "4231507366+2204163218185+2208402632202",
+     "ali_id": "2208402632202+4231507366+2204163218185",
      "agg": 3,
      "src": "inv",
      "week_add": 4.0,
-     "month_add": 0.0
+     "month_add": -1.0
     },
     {
      "name": "深圳市齐泰科技有限公司",
@@ -1017,10 +1018,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2218214446679",
-     "you": 95.0,
-     "trade": 868.0,
+     "you": 93.0,
+     "trade": 870.0,
      "week_add": -26.0,
-     "month_add": -48.0
+     "month_add": -50.0
     },
     {
      "name": "深圳市杰赛源电气有限公司",
@@ -1044,13 +1045,13 @@
      "key": "深圳市世纪金点包装有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 367.0,
+     "you": 371.0,
      "trade": 27.0,
-     "ali_id": "2215556540706+2821849678",
+     "ali_id": "2821849678+2215556540706",
      "agg": 2,
      "src": "inv",
      "week_add": -8.0,
-     "month_add": -20.0
+     "month_add": -16.0
     },
     {
      "name": "深圳市楷印科技有限公司",
@@ -1075,20 +1076,499 @@
      "xlsx_trade": null,
      "you": 73.0,
      "trade": 235.0,
-     "ali_id": "2210094411450+2208254440003+2206820520149",
+     "ali_id": "2208254440003+2206820520149+2210094411450",
      "agg": 3,
      "src": "inv",
      "week_add": -13.0,
      "month_add": -14.0
     }
    ],
-   "you": 3007.0,
-   "trade": 7129.0,
+   "you": 3041.0,
+   "trade": 7145.0,
    "count": 16,
    "week_add": -32.0,
    "week_add_excluded": 1,
-   "month_add": -40.0,
+   "month_add": -6.0,
    "month_add_excluded": 1
+  },
+  {
+   "name": "李怡萍",
+   "title": "李怡萍 · CGS 客户优爆品明细（数据日期 2026-11-01）",
+   "customers": [
+    {
+     "name": "深圳市凌志链接系统有限公司",
+     "ctype": "自选",
+     "kefu": "古慧华",
+     "key": "深圳市凌志链接系统有限公司#1",
+     "xlsx_you": null,
+     "xlsx_trade": null,
+     "src": "inv",
+     "ali_id": "2213192243750",
+     "you": 42.0,
+     "trade": 2713.0,
+     "week_add": -4.0,
+     "month_add": 20.0
+    },
+    {
+     "name": "深圳市鸿彩印刷有限公司",
+     "ctype": "自选",
+     "kefu": "汤青芬",
+     "key": "深圳市鸿彩印刷有限公司#1",
+     "xlsx_you": null,
+     "xlsx_trade": null,
+     "src": "inv",
+     "ali_id": "1779954745",
+     "you": 16.0,
+     "trade": 753.0,
+     "week_add": 0.0,
+     "month_add": 3.0
+    },
+    {
+     "name": "深圳市点晨科技有限公司",
+     "ctype": "自选",
+     "kefu": "曹丽",
+     "key": "深圳市点晨科技有限公司#1",
+     "xlsx_you": null,
+     "xlsx_trade": null,
+     "src": "inv",
+     "ali_id": "4235544081",
+     "you": 22.0,
+     "trade": 383.0,
+     "week_add": 4.0,
+     "month_add": 4.0
+    },
+    {
+     "name": "深圳市孚森科技有限公司",
+     "ctype": "自选",
+     "kefu": "方琼",
+     "key": "深圳市孚森科技有限公司#1",
+     "xlsx_you": null,
+     "xlsx_trade": null,
+     "src": "inv",
+     "ali_id": "3037837822",
+     "you": 56.0,
+     "trade": 312.0,
+     "week_add": 3.0,
+     "month_add": 2.0
+    },
+    {
+     "name": "深圳市鑫道为科技有限公司",
+     "ctype": "自选",
+     "kefu": "邢欢欢",
+     "key": "深圳市鑫道为科技有限公司#1",
+     "xlsx_you": null,
+     "xlsx_trade": null,
+     "src": "inv",
+     "ali_id": "3322109462",
+     "you": 2.0,
+     "trade": 221.0,
+     "week_add": -1.0,
+     "month_add": 0.0
+    },
+    {
+     "name": "深圳晨科流体技术有限公司",
+     "ctype": "自选",
+     "kefu": "苏梓梦",
+     "key": "深圳晨科流体技术有限公司#1",
+     "xlsx_you": null,
+     "xlsx_trade": null,
+     "src": "inv",
+     "ali_id": "3906343955",
+     "you": 4.0,
+     "trade": 180.0,
+     "week_add": 0.0,
+     "month_add": 0.0
+    },
+    {
+     "name": "深圳市阿贝丝化妆用具有限公司",
+     "ctype": "自选",
+     "kefu": "汤青芬",
+     "key": "深圳市阿贝丝化妆用具有限公司#1",
+     "xlsx_you": null,
+     "xlsx_trade": null,
+     "src": "inv",
+     "ali_id": "2208161035583",
+     "you": 10.0,
+     "trade": 103.0,
+     "week_add": -1.0,
+     "month_add": -2.0
+    },
+    {
+     "name": "深圳新概念箱包有限公司",
+     "ctype": "自选",
+     "kefu": "庞婷婷",
+     "key": "深圳新概念箱包有限公司#1",
+     "xlsx_you": null,
+     "xlsx_trade": null,
+     "src": "inv",
+     "ali_id": "2202807048134",
+     "you": 35.0,
+     "trade": 47.0,
+     "week_add": 3.0,
+     "month_add": 1.0
+    },
+    {
+     "name": "深圳市轩达电子有限公司",
+     "ctype": "自选",
+     "kefu": "庞婷婷",
+     "key": "深圳市轩达电子有限公司#1",
+     "xlsx_you": null,
+     "xlsx_trade": null,
+     "src": "inv",
+     "ali_id": "2576026139",
+     "you": 20.0,
+     "trade": 16.0,
+     "week_add": -3.0,
+     "month_add": -6.0
+    },
+    {
+     "name": "深圳易控电气科技有限公司",
+     "ctype": "首次年",
+     "kefu": "农路源",
+     "key": "深圳易控电气科技有限公司#1",
+     "xlsx_you": 28.0,
+     "xlsx_trade": null,
+     "src": "inv",
+     "ali_id": "2218894194587",
+     "you": 27.0,
+     "trade": 62.0,
+     "week_add": -1.0,
+     "month_add": 1.0
+    },
+    {
+     "name": "深圳市美虞莱生物科技有限公司",
+     "ctype": "首次年",
+     "kefu": "陆晓菲",
+     "key": "深圳市美虞莱生物科技有限公司#1",
+     "xlsx_you": 1.0,
+     "xlsx_trade": null,
+     "src": "inv",
+     "ali_id": "2500002189825",
+     "you": 2.0,
+     "trade": 7.0,
+     "week_add": 0.0,
+     "month_add": 1.0
+    },
+    {
+     "name": "深圳森斧工贸有限公司",
+     "ctype": "首次年",
+     "kefu": "曹丽",
+     "key": "深圳森斧工贸有限公司#1",
+     "xlsx_you": 65.0,
+     "xlsx_trade": null,
+     "src": "inv",
+     "ali_id": "2500001333168",
+     "you": 70.0,
+     "trade": 112.0,
+     "week_add": 3.0,
+     "month_add": 3.0
+    },
+    {
+     "name": "深圳市阿马纳科技有限公司",
+     "ctype": "首次年",
+     "kefu": "苏梓梦",
+     "key": "深圳市阿马纳科技有限公司#1",
+     "xlsx_you": 5.0,
+     "xlsx_trade": null,
+     "src": "inv",
+     "ali_id": "2500002472646",
+     "you": 39.0,
+     "trade": 1614.0,
+     "week_add": 6.0,
+     "month_add": 34.0
+    },
+    {
+     "name": "深圳英沃德贸易有限公司",
+     "ctype": "首次年",
+     "kefu": "苏梓梦",
+     "key": "深圳英沃德贸易有限公司#1",
+     "xlsx_you": 216.0,
+     "xlsx_trade": null,
+     "src": "inv",
+     "ali_id": "2500002005403",
+     "you": 249.0,
+     "trade": 416.0,
+     "week_add": 6.0,
+     "month_add": 32.0
+    },
+    {
+     "name": "深圳市得意洋洋橡塑科技有限公司",
+     "ctype": "优质货盘推P",
+     "kefu": "农路源",
+     "key": "深圳市得意洋洋橡塑科技有限公司#1",
+     "xlsx_you": null,
+     "xlsx_trade": null,
+     "src": "inv",
+     "ali_id": "3934400466",
+     "you": 349.0,
+     "trade": 361.0,
+     "week_add": 6.0,
+     "month_add": 11.0
+    },
+    {
+     "name": "深圳迈森箱包有限公司",
+     "ctype": "优质货盘推P",
+     "kefu": "庞婷婷",
+     "key": "深圳迈森箱包有限公司#1",
+     "xlsx_you": null,
+     "xlsx_trade": null,
+     "you": 234.0,
+     "trade": 1297.0,
+     "ali_id": "2212953572233+2212953358957",
+     "agg": 2,
+     "src": "inv",
+     "week_add": -26.0,
+     "month_add": -33.0
+    },
+    {
+     "name": "深圳市锐同技术有限公司",
+     "ctype": "优质货盘推P",
+     "kefu": "方琼",
+     "key": "深圳市锐同技术有限公司#1",
+     "xlsx_you": null,
+     "xlsx_trade": null,
+     "src": "inv",
+     "ali_id": "2209840717131",
+     "you": 22.0,
+     "trade": 466.0,
+     "week_add": -2.0,
+     "month_add": 1.0
+    },
+    {
+     "name": "深圳市祥鑫睿新能源科技有限公司",
+     "ctype": "优质货盘推P",
+     "kefu": "邢欢欢",
+     "key": "深圳市祥鑫睿新能源科技有限公司#1",
+     "xlsx_you": null,
+     "xlsx_trade": null,
+     "src": "inv",
+     "ali_id": "2206700164653",
+     "you": 134.0,
+     "trade": 626.0,
+     "week_add": 4.0,
+     "month_add": -3.0
+    },
+    {
+     "name": "中山市欧利克新材料科技有限公司",
+     "ctype": "优质货盘推P",
+     "kefu": "庞婷婷",
+     "key": "中山市欧利克新材料科技有限公司#1",
+     "xlsx_you": null,
+     "xlsx_trade": null,
+     "src": "inv",
+     "ali_id": "2214137207006",
+     "you": 186.0,
+     "trade": 503.0,
+     "week_add": -4.0,
+     "month_add": -3.0
+    },
+    {
+     "name": "深圳市恩尼家居建材有限公司",
+     "ctype": "优质货盘推P",
+     "kefu": "汤青芬",
+     "key": "深圳市恩尼家居建材有限公司#1",
+     "xlsx_you": null,
+     "xlsx_trade": null,
+     "src": "inv",
+     "ali_id": "2216861042557",
+     "you": 21.0,
+     "trade": 387.0,
+     "week_add": 2.0,
+     "month_add": 2.0
+    },
+    {
+     "name": "深圳市和兴光电技术有限公司",
+     "ctype": "优质货盘推P",
+     "kefu": "陈宇",
+     "key": "深圳市和兴光电技术有限公司#1",
+     "xlsx_you": null,
+     "xlsx_trade": null,
+     "src": "inv",
+     "ali_id": "2201524852878",
+     "you": 133.0,
+     "trade": 944.0,
+     "week_add": -6.0,
+     "month_add": -14.0
+    },
+    {
+     "name": "深圳市纳维尔数码科技有限公司",
+     "ctype": "优质货盘推P",
+     "kefu": "曹丽",
+     "key": "深圳市纳维尔数码科技有限公司#1",
+     "xlsx_you": null,
+     "xlsx_trade": null,
+     "you": 168.0,
+     "trade": 1642.0,
+     "ali_id": "17380493013+3586996489+2208241161846",
+     "agg": 3,
+     "src": "inv",
+     "week_add": -2.0,
+     "month_add": -6.0
+    },
+    {
+     "name": "深圳市深苒科技有限公司",
+     "ctype": "优质货盘推P",
+     "kefu": "邢欢欢",
+     "key": "深圳市深苒科技有限公司#1",
+     "xlsx_you": null,
+     "xlsx_trade": null,
+     "src": "inv",
+     "ali_id": "2500001768689",
+     "you": 96.0,
+     "trade": 465.0,
+     "week_add": -7.0,
+     "month_add": -20.0
+    },
+    {
+     "name": "深圳市金炜诚科技有限公司",
+     "ctype": "优质货盘推P",
+     "kefu": "庞婷婷",
+     "key": "深圳市金炜诚科技有限公司#1",
+     "xlsx_you": null,
+     "xlsx_trade": null,
+     "src": "inv",
+     "ali_id": "2218344014414",
+     "you": 166.0,
+     "trade": 2.0,
+     "week_add": 0.0,
+     "month_add": 7.0
+    },
+    {
+     "name": "深圳市三宝运动用品有限公司",
+     "ctype": "优质货盘推P",
+     "kefu": "罗洋清",
+     "key": "深圳市三宝运动用品有限公司#1",
+     "xlsx_you": null,
+     "xlsx_trade": null,
+     "src": "inv",
+     "ali_id": "2216604354471",
+     "you": 112.0,
+     "trade": 190.0,
+     "week_add": -1.0,
+     "month_add": -14.0
+    },
+    {
+     "name": "深圳市爱明电子有限公司",
+     "ctype": "优质货盘推P",
+     "kefu": "农路源",
+     "key": "深圳市爱明电子有限公司#1",
+     "xlsx_you": null,
+     "xlsx_trade": null,
+     "src": "inv",
+     "ali_id": "1661806177",
+     "you": 140.0,
+     "trade": 203.0,
+     "week_add": -5.0,
+     "month_add": 1.0
+    },
+    {
+     "name": "深圳市电应普科技有限公司",
+     "ctype": "优质货盘推P",
+     "kefu": "方琼",
+     "key": "深圳市电应普科技有限公司#1",
+     "xlsx_you": null,
+     "xlsx_trade": null,
+     "src": "inv",
+     "ali_id": "1577981966",
+     "you": 121.0,
+     "trade": 866.0,
+     "week_add": 7.0,
+     "month_add": 7.0
+    },
+    {
+     "name": "深圳市鑫华芯光电科技有限公司",
+     "ctype": "优质货盘推P",
+     "kefu": "邢欢欢",
+     "key": "深圳市鑫华芯光电科技有限公司#1",
+     "xlsx_you": null,
+     "xlsx_trade": null,
+     "src": "inv",
+     "ali_id": "2215212251495",
+     "you": 71.0,
+     "trade": 887.0,
+     "week_add": -2.0,
+     "month_add": 3.0
+    },
+    {
+     "name": "深圳市连可电子科技有限公司",
+     "ctype": "优质货盘推P",
+     "kefu": "李岩",
+     "key": "深圳市连可电子科技有限公司#1",
+     "xlsx_you": null,
+     "xlsx_trade": null,
+     "src": "inv",
+     "ali_id": "17181713914",
+     "you": 74.0,
+     "trade": 163.0,
+     "week_add": -5.0,
+     "month_add": -8.0
+    },
+    {
+     "name": "深圳市永志高电子有限公司",
+     "ctype": "优质货盘推P",
+     "kefu": "罗洋清",
+     "key": "深圳市永志高电子有限公司#1",
+     "xlsx_you": null,
+     "xlsx_trade": null,
+     "you": 87.0,
+     "trade": 631.0,
+     "ali_id": "17380236017+2201271022034",
+     "agg": 2,
+     "src": "inv",
+     "week_add": -2.0,
+     "month_add": -3.0
+    },
+    {
+     "name": "深圳市德众尚杰汽车电子有限公司",
+     "ctype": "优质货盘推P",
+     "kefu": "农路源",
+     "key": "深圳市德众尚杰汽车电子有限公司#1",
+     "xlsx_you": null,
+     "xlsx_trade": null,
+     "src": "inv",
+     "ali_id": "17379886602",
+     "you": 62.0,
+     "trade": 703.0,
+     "week_add": -1.0,
+     "month_add": 1.0
+    },
+    {
+     "name": "深圳市金朋视听电子有限公司",
+     "ctype": "优质货盘推P",
+     "kefu": "陆晓菲",
+     "key": "深圳市金朋视听电子有限公司#1",
+     "xlsx_you": null,
+     "xlsx_trade": null,
+     "src": "inv",
+     "ali_id": "17381295133",
+     "you": 83.0,
+     "trade": 56.0,
+     "week_add": 0.0,
+     "month_add": 1.0
+    },
+    {
+     "name": "深圳市普鑫达科技有限公司",
+     "ctype": "优质货盘推P",
+     "kefu": "罗洋清",
+     "key": "深圳市普鑫达科技有限公司#1",
+     "xlsx_you": null,
+     "xlsx_trade": null,
+     "you": 73.0,
+     "trade": 223.0,
+     "ali_id": "2199926955+2210889935378",
+     "agg": 2,
+     "src": "inv",
+     "week_add": 1.0,
+     "month_add": 10.0
+    }
+   ],
+   "you": 2926.0,
+   "trade": 17554.0,
+   "count": 33,
+   "week_add": -28.0,
+   "week_add_excluded": 0,
+   "month_add": 33.0,
+   "month_add_excluded": 0
   },
   {
    "name": "夏锐",
@@ -1101,13 +1581,13 @@
      "key": "深圳市爱科思光电技术有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 145.0,
-     "trade": 1498.0,
-     "ali_id": "1697361958+17380410954+3417467862",
+     "you": 146.0,
+     "trade": 1499.0,
+     "ali_id": "1697361958+3417467862+17380410954",
      "agg": 3,
      "src": "inv",
      "week_add": 3.0,
-     "month_add": 1.0
+     "month_add": 2.0
     },
     {
      "name": "深圳凯士威科技有限公司",
@@ -1116,13 +1596,13 @@
      "key": "深圳凯士威科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 45.0,
-     "trade": 1404.0,
-     "ali_id": "2847864050+1697222262",
+     "you": 43.0,
+     "trade": 1412.0,
+     "ali_id": "1697222262+2847864050",
      "agg": 2,
      "src": "inv",
      "week_add": 3.0,
-     "month_add": 1.0
+     "month_add": -1.0
     },
     {
      "name": "深圳环亚东升科技有限公司",
@@ -1131,13 +1611,13 @@
      "key": "深圳环亚东升科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 32.0,
-     "trade": 774.0,
-     "ali_id": "2207569464385+2575428304",
+     "you": 33.0,
+     "trade": 772.0,
+     "ali_id": "2575428304+2207569464385",
      "agg": 2,
      "src": "inv",
      "week_add": -1.0,
-     "month_add": 0.0
+     "month_add": 1.0
     },
     {
      "name": "深圳市富饶世纪电子有限公司",
@@ -1147,8 +1627,8 @@
      "xlsx_you": null,
      "xlsx_trade": null,
      "you": 28.0,
-     "trade": 658.0,
-     "ali_id": "2215122111479+2138365066",
+     "trade": 667.0,
+     "ali_id": "2138365066+2215122111479",
      "agg": 2,
      "src": "inv",
      "week_add": 0.0,
@@ -1163,10 +1643,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "4272474279",
-     "you": 40.0,
-     "trade": 344.0,
+     "you": 38.0,
+     "trade": 345.0,
      "week_add": 1.0,
-     "month_add": 5.0
+     "month_add": 3.0
     },
     {
      "name": "深圳利登环保工程有限公司",
@@ -1177,7 +1657,7 @@
      "xlsx_trade": null,
      "you": 13.0,
      "trade": 290.0,
-     "ali_id": "2212358287229+2201294907403",
+     "ali_id": "2201294907403+2212358287229",
      "agg": 2,
      "src": "inv",
      "week_add": -1.0,
@@ -1218,13 +1698,13 @@
      "key": "深圳市晨光飞达科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 82.0,
-     "trade": 269.0,
+     "you": 80.0,
+     "trade": 270.0,
      "ali_id": "2404045087+2200745970657",
      "agg": 2,
      "src": "inv",
      "week_add": 3.0,
-     "month_add": 7.0
+     "month_add": 5.0
     },
     {
      "name": "深圳市艾迪饵科技有限公司",
@@ -1235,10 +1715,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2216872305666",
-     "you": 63.0,
+     "you": 62.0,
      "trade": 112.0,
      "week_add": 1.0,
-     "month_add": 4.0
+     "month_add": 3.0
     },
     {
      "name": "深圳捷迎洋贸易有限公司",
@@ -1260,10 +1740,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500001954322",
-     "you": 26.0,
+     "you": 27.0,
      "trade": 1.0,
      "week_add": 0.0,
-     "month_add": -1.0
+     "month_add": 0.0
     },
     {
      "name": "深圳市十亿网络科技有限公司",
@@ -1288,10 +1768,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500002367445",
-     "you": 9.0,
-     "trade": 21.0,
+     "you": 12.0,
+     "trade": 22.0,
      "week_add": 0.0,
-     "month_add": 9.0
+     "month_add": 12.0
     },
     {
      "name": "深圳市诺赛智贸科技有限公司",
@@ -1316,10 +1796,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500001152478",
-     "you": 55.0,
+     "you": 56.0,
      "trade": 0.0,
      "week_add": -3.0,
-     "month_add": -7.0
+     "month_add": -6.0
     },
     {
      "name": "深圳芬奇科技有限公司",
@@ -1369,10 +1849,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2214098132675",
-     "you": 854.0,
-     "trade": 1947.0,
+     "you": 839.0,
+     "trade": 1938.0,
      "week_add": -6.0,
-     "month_add": -45.0
+     "month_add": -60.0
     },
     {
      "name": "深圳市万客通科技有限公司",
@@ -1381,13 +1861,13 @@
      "key": "深圳市万客通科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 469.0,
-     "trade": 9316.0,
-     "ali_id": "2209521605831+2209502535089+2216517477580+2210885954800",
+     "you": 467.0,
+     "trade": 9376.0,
+     "ali_id": "2216517477580+2209521605831+2210885954800+2209502535089",
      "agg": 4,
      "src": "inv",
      "week_add": 3.0,
-     "month_add": -11.0
+     "month_add": -13.0
     },
     {
      "name": "深圳市百乐康科技有限公司",
@@ -1412,10 +1892,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "3903824296",
-     "you": 188.0,
+     "you": 187.0,
      "trade": 121.0,
      "week_add": 12.0,
-     "month_add": 8.0
+     "month_add": 7.0
     },
     {
      "name": "深圳市卖家秀科技有限公司",
@@ -1426,10 +1906,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500000261944",
-     "you": 165.0,
+     "you": 163.0,
      "trade": 124.0,
      "week_add": 0.0,
-     "month_add": 6.0
+     "month_add": 4.0
     },
     {
      "name": "深圳市米芯微贸易有限公司",
@@ -1455,7 +1935,7 @@
      "src": "inv",
      "ali_id": "17380540784",
      "you": 123.0,
-     "trade": 981.0,
+     "trade": 979.0,
      "week_add": 12.0,
      "month_add": 19.0
     },
@@ -1468,10 +1948,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2200726185662",
-     "you": 40.0,
-     "trade": 960.0,
+     "you": 39.0,
+     "trade": 962.0,
      "week_add": 3.0,
-     "month_add": 2.0
+     "month_add": 1.0
     },
     {
      "name": "深圳市娇康精密机械有限公司",
@@ -1496,498 +1976,19 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2212364401578",
-     "you": 58.0,
+     "you": 57.0,
      "trade": 21.0,
      "week_add": -3.0,
-     "month_add": -7.0
+     "month_add": -8.0
     }
    ],
-   "you": 2920.0,
-   "trade": 20256.0,
+   "you": 2898.0,
+   "trade": 20326.0,
    "count": 29,
    "week_add": 47.0,
    "week_add_excluded": 2,
-   "month_add": -13.0,
+   "month_add": -35.0,
    "month_add_excluded": 2
-  },
-  {
-   "name": "李怡萍",
-   "title": "李怡萍 · CGS 客户优爆品明细（数据日期 2026-11-01）",
-   "customers": [
-    {
-     "name": "深圳市凌志链接系统有限公司",
-     "ctype": "自选",
-     "kefu": "古慧华",
-     "key": "深圳市凌志链接系统有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "2213192243750",
-     "you": 43.0,
-     "trade": 2691.0,
-     "week_add": -4.0,
-     "month_add": 21.0
-    },
-    {
-     "name": "深圳市鸿彩印刷有限公司",
-     "ctype": "自选",
-     "kefu": "汤青芬",
-     "key": "深圳市鸿彩印刷有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "1779954745",
-     "you": 15.0,
-     "trade": 747.0,
-     "week_add": 0.0,
-     "month_add": 2.0
-    },
-    {
-     "name": "深圳市点晨科技有限公司",
-     "ctype": "自选",
-     "kefu": "曹丽",
-     "key": "深圳市点晨科技有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "4235544081",
-     "you": 22.0,
-     "trade": 383.0,
-     "week_add": 4.0,
-     "month_add": 4.0
-    },
-    {
-     "name": "深圳市孚森科技有限公司",
-     "ctype": "自选",
-     "kefu": "方琼",
-     "key": "深圳市孚森科技有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "3037837822",
-     "you": 56.0,
-     "trade": 312.0,
-     "week_add": 3.0,
-     "month_add": 2.0
-    },
-    {
-     "name": "深圳市鑫道为科技有限公司",
-     "ctype": "自选",
-     "kefu": "邢欢欢",
-     "key": "深圳市鑫道为科技有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "3322109462",
-     "you": 2.0,
-     "trade": 222.0,
-     "week_add": -1.0,
-     "month_add": 0.0
-    },
-    {
-     "name": "深圳晨科流体技术有限公司",
-     "ctype": "自选",
-     "kefu": "苏梓梦",
-     "key": "深圳晨科流体技术有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "3906343955",
-     "you": 7.0,
-     "trade": 180.0,
-     "week_add": 0.0,
-     "month_add": 3.0
-    },
-    {
-     "name": "深圳市阿贝丝化妆用具有限公司",
-     "ctype": "自选",
-     "kefu": "汤青芬",
-     "key": "深圳市阿贝丝化妆用具有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "2208161035583",
-     "you": 10.0,
-     "trade": 103.0,
-     "week_add": -1.0,
-     "month_add": -2.0
-    },
-    {
-     "name": "深圳新概念箱包有限公司",
-     "ctype": "自选",
-     "kefu": "庞婷婷",
-     "key": "深圳新概念箱包有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "2202807048134",
-     "you": 35.0,
-     "trade": 47.0,
-     "week_add": 3.0,
-     "month_add": 1.0
-    },
-    {
-     "name": "深圳市轩达电子有限公司",
-     "ctype": "自选",
-     "kefu": "庞婷婷",
-     "key": "深圳市轩达电子有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "2576026139",
-     "you": 19.0,
-     "trade": 16.0,
-     "week_add": -3.0,
-     "month_add": -7.0
-    },
-    {
-     "name": "深圳易控电气科技有限公司",
-     "ctype": "首次年",
-     "kefu": "农路源",
-     "key": "深圳易控电气科技有限公司#1",
-     "xlsx_you": 28.0,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "2218894194587",
-     "you": 27.0,
-     "trade": 62.0,
-     "week_add": -1.0,
-     "month_add": 1.0
-    },
-    {
-     "name": "深圳市美虞莱生物科技有限公司",
-     "ctype": "首次年",
-     "kefu": "陆晓菲",
-     "key": "深圳市美虞莱生物科技有限公司#1",
-     "xlsx_you": 1.0,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "2500002189825",
-     "you": 2.0,
-     "trade": 7.0,
-     "week_add": 0.0,
-     "month_add": 1.0
-    },
-    {
-     "name": "深圳森斧工贸有限公司",
-     "ctype": "首次年",
-     "kefu": "曹丽",
-     "key": "深圳森斧工贸有限公司#1",
-     "xlsx_you": 65.0,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "2500001333168",
-     "you": 70.0,
-     "trade": 111.0,
-     "week_add": 3.0,
-     "month_add": 3.0
-    },
-    {
-     "name": "深圳市阿马纳科技有限公司",
-     "ctype": "首次年",
-     "kefu": "苏梓梦",
-     "key": "深圳市阿马纳科技有限公司#1",
-     "xlsx_you": 5.0,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "2500002472646",
-     "you": 32.0,
-     "trade": 1617.0,
-     "week_add": 6.0,
-     "month_add": 27.0
-    },
-    {
-     "name": "深圳英沃德贸易有限公司",
-     "ctype": "首次年",
-     "kefu": "苏梓梦",
-     "key": "深圳英沃德贸易有限公司#1",
-     "xlsx_you": 216.0,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "2500002005403",
-     "you": 243.0,
-     "trade": 416.0,
-     "week_add": 6.0,
-     "month_add": 26.0
-    },
-    {
-     "name": "深圳市得意洋洋橡塑科技有限公司",
-     "ctype": "优质货盘推P",
-     "kefu": "农路源",
-     "key": "深圳市得意洋洋橡塑科技有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "3934400466",
-     "you": 348.0,
-     "trade": 362.0,
-     "week_add": 6.0,
-     "month_add": 10.0
-    },
-    {
-     "name": "深圳迈森箱包有限公司",
-     "ctype": "优质货盘推P",
-     "kefu": "庞婷婷",
-     "key": "深圳迈森箱包有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "you": 224.0,
-     "trade": 1297.0,
-     "ali_id": "2212953572233+2212953358957",
-     "agg": 2,
-     "src": "inv",
-     "week_add": -26.0,
-     "month_add": -43.0
-    },
-    {
-     "name": "深圳市锐同技术有限公司",
-     "ctype": "优质货盘推P",
-     "kefu": "方琼",
-     "key": "深圳市锐同技术有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "2209840717131",
-     "you": 22.0,
-     "trade": 466.0,
-     "week_add": -2.0,
-     "month_add": 1.0
-    },
-    {
-     "name": "深圳市祥鑫睿新能源科技有限公司",
-     "ctype": "优质货盘推P",
-     "kefu": "邢欢欢",
-     "key": "深圳市祥鑫睿新能源科技有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "2206700164653",
-     "you": 134.0,
-     "trade": 626.0,
-     "week_add": 4.0,
-     "month_add": -3.0
-    },
-    {
-     "name": "中山市欧利克新材料科技有限公司",
-     "ctype": "优质货盘推P",
-     "kefu": "庞婷婷",
-     "key": "中山市欧利克新材料科技有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "2214137207006",
-     "you": 183.0,
-     "trade": 503.0,
-     "week_add": -4.0,
-     "month_add": -6.0
-    },
-    {
-     "name": "深圳市恩尼家居建材有限公司",
-     "ctype": "优质货盘推P",
-     "kefu": "汤青芬",
-     "key": "深圳市恩尼家居建材有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "2216861042557",
-     "you": 21.0,
-     "trade": 389.0,
-     "week_add": 2.0,
-     "month_add": 2.0
-    },
-    {
-     "name": "深圳市和兴光电技术有限公司",
-     "ctype": "优质货盘推P",
-     "kefu": "陈宇",
-     "key": "深圳市和兴光电技术有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "2201524852878",
-     "you": 134.0,
-     "trade": 944.0,
-     "week_add": -6.0,
-     "month_add": -13.0
-    },
-    {
-     "name": "深圳市纳维尔数码科技有限公司",
-     "ctype": "优质货盘推P",
-     "kefu": "曹丽",
-     "key": "深圳市纳维尔数码科技有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "you": 169.0,
-     "trade": 1643.0,
-     "ali_id": "3586996489+17380493013+2208241161846",
-     "agg": 3,
-     "src": "inv",
-     "week_add": -2.0,
-     "month_add": -5.0
-    },
-    {
-     "name": "深圳市深苒科技有限公司",
-     "ctype": "优质货盘推P",
-     "kefu": "邢欢欢",
-     "key": "深圳市深苒科技有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "2500001768689",
-     "you": 96.0,
-     "trade": 465.0,
-     "week_add": -7.0,
-     "month_add": -20.0
-    },
-    {
-     "name": "深圳市金炜诚科技有限公司",
-     "ctype": "优质货盘推P",
-     "kefu": "庞婷婷",
-     "key": "深圳市金炜诚科技有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "2218344014414",
-     "you": 164.0,
-     "trade": 2.0,
-     "week_add": 0.0,
-     "month_add": 5.0
-    },
-    {
-     "name": "深圳市三宝运动用品有限公司",
-     "ctype": "优质货盘推P",
-     "kefu": "罗洋清",
-     "key": "深圳市三宝运动用品有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "2216604354471",
-     "you": 116.0,
-     "trade": 190.0,
-     "week_add": -1.0,
-     "month_add": -10.0
-    },
-    {
-     "name": "深圳市爱明电子有限公司",
-     "ctype": "优质货盘推P",
-     "kefu": "农路源",
-     "key": "深圳市爱明电子有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "1661806177",
-     "you": 140.0,
-     "trade": 203.0,
-     "week_add": -5.0,
-     "month_add": 1.0
-    },
-    {
-     "name": "深圳市电应普科技有限公司",
-     "ctype": "优质货盘推P",
-     "kefu": "方琼",
-     "key": "深圳市电应普科技有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "1577981966",
-     "you": 118.0,
-     "trade": 861.0,
-     "week_add": 7.0,
-     "month_add": 4.0
-    },
-    {
-     "name": "深圳市鑫华芯光电科技有限公司",
-     "ctype": "优质货盘推P",
-     "kefu": "邢欢欢",
-     "key": "深圳市鑫华芯光电科技有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "2215212251495",
-     "you": 70.0,
-     "trade": 881.0,
-     "week_add": -2.0,
-     "month_add": 2.0
-    },
-    {
-     "name": "深圳市连可电子科技有限公司",
-     "ctype": "优质货盘推P",
-     "kefu": "李岩",
-     "key": "深圳市连可电子科技有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "17181713914",
-     "you": 73.0,
-     "trade": 163.0,
-     "week_add": -5.0,
-     "month_add": -9.0
-    },
-    {
-     "name": "深圳市永志高电子有限公司",
-     "ctype": "优质货盘推P",
-     "kefu": "罗洋清",
-     "key": "深圳市永志高电子有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "you": 87.0,
-     "trade": 631.0,
-     "ali_id": "17380236017+2201271022034",
-     "agg": 2,
-     "src": "inv",
-     "week_add": -2.0,
-     "month_add": -3.0
-    },
-    {
-     "name": "深圳市德众尚杰汽车电子有限公司",
-     "ctype": "优质货盘推P",
-     "kefu": "农路源",
-     "key": "深圳市德众尚杰汽车电子有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "17379886602",
-     "you": 62.0,
-     "trade": 703.0,
-     "week_add": -1.0,
-     "month_add": 1.0
-    },
-    {
-     "name": "深圳市金朋视听电子有限公司",
-     "ctype": "优质货盘推P",
-     "kefu": "陆晓菲",
-     "key": "深圳市金朋视听电子有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "src": "inv",
-     "ali_id": "17381295133",
-     "you": 80.0,
-     "trade": 56.0,
-     "week_add": 0.0,
-     "month_add": -2.0
-    },
-    {
-     "name": "深圳市普鑫达科技有限公司",
-     "ctype": "优质货盘推P",
-     "kefu": "罗洋清",
-     "key": "深圳市普鑫达科技有限公司#1",
-     "xlsx_you": null,
-     "xlsx_trade": null,
-     "you": 75.0,
-     "trade": 221.0,
-     "ali_id": "2210889935378+2199926955",
-     "agg": 2,
-     "src": "inv",
-     "week_add": 1.0,
-     "month_add": 12.0
-    }
-   ],
-   "you": 2899.0,
-   "trade": 17520.0,
-   "count": 33,
-   "week_add": -28.0,
-   "week_add_excluded": 0,
-   "month_add": 6.0,
-   "month_add_excluded": 0
   },
   {
    "name": "王凡",
@@ -2002,10 +2003,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500002304860",
-     "you": 1.0,
+     "you": 2.0,
      "trade": 0.0,
      "week_add": 0.0,
-     "month_add": 1.0
+     "month_add": 2.0
     },
     {
      "name": "深圳市裕圣达科技有限公司",
@@ -2030,10 +2031,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500002339716",
-     "you": 2.0,
-     "trade": 131.0,
+     "you": 3.0,
+     "trade": 132.0,
      "week_add": 0.0,
-     "month_add": 2.0
+     "month_add": 3.0
     },
     {
      "name": "深圳鑫辉永盛节能科技有限公司",
@@ -2072,10 +2073,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500002324457",
-     "you": 18.0,
-     "trade": 84.0,
+     "you": 20.0,
+     "trade": 85.0,
      "week_add": 4.0,
-     "month_add": 9.0
+     "month_add": 11.0
     },
     {
      "name": "深圳市寻余科技有限公司",
@@ -2086,10 +2087,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500002316268",
-     "you": 44.0,
+     "you": 45.0,
      "trade": 64.0,
      "week_add": 7.0,
-     "month_add": 15.0
+     "month_add": 16.0
     },
     {
      "name": "深圳市玩威科技有限公司",
@@ -2100,10 +2101,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500001588847",
-     "you": 135.0,
-     "trade": 283.0,
+     "you": 136.0,
+     "trade": 282.0,
      "week_add": 11.0,
-     "month_add": 16.0
+     "month_add": 17.0
     },
     {
      "name": "数维芯科技（深圳）有限公司",
@@ -2156,7 +2157,7 @@
      "xlsx_trade": null,
      "you": 38.0,
      "trade": 0.0,
-     "ali_id": "2200656836403+2211020667629",
+     "ali_id": "2211020667629+2200656836403",
      "agg": 2,
      "src": "inv",
      "week_add": -1.0,
@@ -2171,10 +2172,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500001358033",
-     "you": 190.0,
+     "you": 179.0,
      "trade": 3.0,
      "week_add": -4.0,
-     "month_add": 1.0
+     "month_add": -10.0
     },
     {
      "name": "煌港特钢科技(广东)有限公司",
@@ -2227,11 +2228,11 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500000345355",
-     "you": 85.0,
-     "trade": 4996.0,
+     "you": 107.0,
+     "trade": 4968.0,
      "owner": "马文健",
      "week_add": -9.0,
-     "month_add": 3.0
+     "month_add": 25.0
     },
     {
      "name": "深圳市科扬万灏科技有限公司",
@@ -2242,10 +2243,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500002419860",
-     "you": 19.0,
+     "you": 22.0,
      "trade": 0.0,
      "week_add": 3.0,
-     "month_add": 12.0
+     "month_add": 15.0
     },
     {
      "name": "深圳市晟晖亚科技有限公司",
@@ -2282,13 +2283,13 @@
      "key": "深圳市钶达科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 886.0,
-     "trade": 4746.0,
-     "ali_id": "2211426066556+2218349116196+3859029580",
+     "you": 894.0,
+     "trade": 4743.0,
+     "ali_id": "3859029580+2211426066556+2218349116196",
      "agg": 3,
      "src": "inv",
      "week_add": 28.0,
-     "month_add": 85.0
+     "month_add": 93.0
     },
     {
      "name": "深圳市润得丰实业有限公司",
@@ -2298,7 +2299,7 @@
      "xlsx_you": null,
      "xlsx_trade": null,
      "you": 602.0,
-     "trade": 1114.0,
+     "trade": 1109.0,
      "ali_id": "17179870601+3560023818",
      "agg": 2,
      "src": "inv",
@@ -2312,13 +2313,13 @@
      "key": "利辛实业（深圳）有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 217.0,
+     "you": 214.0,
      "trade": 184.0,
-     "ali_id": "2212133104093+4003130942",
+     "ali_id": "4003130942+2212133104093",
      "agg": 2,
      "src": "inv",
      "week_add": -1.0,
-     "month_add": -7.0
+     "month_add": -10.0
     },
     {
      "name": "深圳芯链微科技有限公司",
@@ -2329,10 +2330,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2214808658654",
-     "you": 159.0,
-     "trade": 685.0,
+     "you": 160.0,
+     "trade": 687.0,
      "week_add": 11.0,
-     "month_add": -22.0
+     "month_add": -21.0
     },
     {
      "name": "深圳市轻迈车业有限公司",
@@ -2341,13 +2342,13 @@
      "key": "深圳市轻迈车业有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 154.0,
-     "trade": 88.0,
-     "ali_id": "2209316274695+2901693335",
+     "you": 150.0,
+     "trade": 87.0,
+     "ali_id": "2901693335+2209316274695",
      "agg": 2,
      "src": "inv",
      "week_add": -7.0,
-     "month_add": -10.0
+     "month_add": -14.0
     },
     {
      "name": "广东望京卡牌科技有限公司",
@@ -2359,7 +2360,7 @@
      "src": "inv",
      "ali_id": "2207022704718",
      "you": 98.0,
-     "trade": 179.0,
+     "trade": 178.0,
      "week_add": -6.0,
      "month_add": -13.0
     },
@@ -2373,7 +2374,7 @@
      "src": "inv",
      "ali_id": "2500002358709",
      "you": 11.0,
-     "trade": 11845.0,
+     "trade": 11841.0,
      "week_add": 4.0,
      "month_add": 5.0
     },
@@ -2386,7 +2387,7 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500001608883",
-     "you": 30.0,
+     "you": 31.0,
      "trade": 668.0,
      "week_add": -2.0,
      "month_add": null
@@ -2401,17 +2402,17 @@
      "src": "inv",
      "ali_id": "2209753255850",
      "you": 63.0,
-     "trade": 210.0,
+     "trade": 209.0,
      "week_add": -1.0,
      "month_add": null
     }
    ],
-   "you": 2813.0,
-   "trade": 26734.0,
+   "you": 2836.0,
+   "trade": 26694.0,
    "count": 29,
    "week_add": 9.0,
    "week_add_excluded": 0,
-   "month_add": 92.0,
+   "month_add": 114.0,
    "month_add_excluded": 2
   },
   {
@@ -2441,10 +2442,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500002023803",
-     "you": 4.0,
+     "you": 3.0,
      "trade": 11.0,
      "week_add": 0.0,
-     "month_add": 1.0
+     "month_add": 0.0
     },
     {
      "name": "东莞市南城新强安贸易商行",
@@ -2511,10 +2512,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500000979360",
-     "you": 76.0,
+     "you": 78.0,
      "trade": 104.0,
      "week_add": 1.0,
-     "month_add": -3.0
+     "month_add": -1.0
     },
     {
      "name": "深圳市奥彩科技有限公司",
@@ -2566,7 +2567,7 @@
      "src": "inv",
      "ali_id": "2500001986626",
      "you": 0.0,
-     "trade": 16.0,
+     "trade": 17.0,
      "week_add": 0.0,
      "month_add": 0.0
     },
@@ -2664,10 +2665,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500002173438",
-     "you": 23.0,
-     "trade": 162.0,
+     "you": 27.0,
+     "trade": 173.0,
      "week_add": 3.0,
-     "month_add": 11.0
+     "month_add": 15.0
     },
     {
      "name": "陕西聚网优电子商务有限公司",
@@ -2678,11 +2679,11 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500001991066",
-     "you": 6.0,
+     "you": 7.0,
      "trade": 0.0,
      "owner": "王子豪",
      "week_add": -1.0,
-     "month_add": -1.0
+     "month_add": 0.0
     },
     {
      "name": "深圳市锦菲服饰有限公司",
@@ -2723,7 +2724,7 @@
      "src": "inv",
      "ali_id": "2500002337539",
      "you": 2.0,
-     "trade": 183.0,
+     "trade": 203.0,
      "week_add": 1.0,
      "month_add": -1.0
     },
@@ -2818,10 +2819,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500001954645",
-     "you": 54.0,
+     "you": 53.0,
      "trade": 396.0,
      "week_add": 1.0,
-     "month_add": 1.0
+     "month_add": 0.0
     },
     {
      "name": "深圳市光研美科技有限公司",
@@ -2833,7 +2834,7 @@
      "src": "inv",
      "ali_id": "2500001406243",
      "you": 51.0,
-     "trade": 7.0,
+     "trade": 8.0,
      "week_add": -3.0,
      "month_add": -4.0
     },
@@ -2918,7 +2919,7 @@
      "src": "inv",
      "ali_id": "2500002417541",
      "you": 0.0,
-     "trade": 27.0,
+     "trade": 34.0,
      "owner": "谢承杰",
      "week_add": 0.0,
      "month_add": 0.0
@@ -2974,10 +2975,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "17380330981",
-     "you": 855.0,
+     "you": 863.0,
      "trade": 1555.0,
      "week_add": 14.0,
-     "month_add": -41.0
+     "month_add": -33.0
     },
     {
      "name": "深圳市正赢电子有限公司",
@@ -2988,10 +2989,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "3363406110",
-     "you": 180.0,
+     "you": 179.0,
      "trade": 2039.0,
      "week_add": 2.0,
-     "month_add": 2.0
+     "month_add": 1.0
     },
     {
      "name": "深圳市易扣展示制品有限公司",
@@ -3000,13 +3001,13 @@
      "key": "深圳市易扣展示制品有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 189.0,
+     "you": 193.0,
      "trade": 357.0,
-     "ali_id": "2868347398+1871594851",
+     "ali_id": "1871594851+2868347398",
      "agg": 2,
      "src": "inv",
      "week_add": -18.0,
-     "month_add": -40.0
+     "month_add": -36.0
     },
     {
      "name": "汕头市铭集通电子科技有限公司",
@@ -3017,10 +3018,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500000615611",
-     "you": 146.0,
+     "you": 148.0,
      "trade": 0.0,
      "week_add": 0.0,
-     "month_add": -1.0
+     "month_add": 1.0
     },
     {
      "name": "深圳嘉车科技有限公司",
@@ -3031,10 +3032,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "1804269411",
-     "you": 144.0,
+     "you": 147.0,
      "trade": 321.0,
      "week_add": -1.0,
-     "month_add": 10.0
+     "month_add": 13.0
     },
     {
      "name": "深圳市金海洋实业发展有限公司",
@@ -3057,13 +3058,13 @@
      "key": "深圳海福地电子科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 83.0,
-     "trade": 140.0,
-     "ali_id": "2630387349+2210904773244+2414695569",
+     "you": 84.0,
+     "trade": 139.0,
+     "ali_id": "2630387349+2414695569+2210904773244",
      "agg": 3,
      "src": "inv",
      "week_add": -15.0,
-     "month_add": -22.0
+     "month_add": -21.0
     },
     {
      "name": "深圳市朴普玛特科技有限公司",
@@ -3074,10 +3075,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500000642475",
-     "you": 115.0,
-     "trade": 536.0,
+     "you": 117.0,
+     "trade": 535.0,
      "week_add": 6.0,
-     "month_add": 5.0
+     "month_add": 7.0
     },
     {
      "name": "深圳市福瑞曼科技有限公司",
@@ -3086,13 +3087,13 @@
      "key": "深圳市福瑞曼科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 75.0,
+     "you": 74.0,
      "trade": 24.0,
-     "ali_id": "2215078025694+3033538570",
+     "ali_id": "3033538570+2215078025694",
      "agg": 2,
      "src": "inv",
      "week_add": -1.0,
-     "month_add": -4.0
+     "month_add": -5.0
     },
     {
      "name": "深圳市晶鑫晨光电科技有限公司",
@@ -3103,10 +3104,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2212958012968",
-     "you": 106.0,
+     "you": 114.0,
      "trade": 169.0,
      "week_add": -3.0,
-     "month_add": 18.0
+     "month_add": 26.0
     },
     {
      "name": "深圳市越来越酷科技有限公司",
@@ -3115,13 +3116,13 @@
      "key": "深圳市越来越酷科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 58.0,
-     "trade": 345.0,
-     "ali_id": "3859033943+1764201561",
+     "you": 57.0,
+     "trade": 348.0,
+     "ali_id": "1764201561+3859033943",
      "agg": 2,
      "src": "inv",
      "week_add": 3.0,
-     "month_add": 8.0
+     "month_add": 7.0
     },
     {
      "name": "深圳市佛洛伦克家居有限公司",
@@ -3130,21 +3131,21 @@
      "key": "深圳市佛洛伦克家居有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 262.0,
+     "you": 249.0,
      "trade": 285.0,
      "ali_id": "2209297506608+2206609878265",
      "agg": 2,
      "src": "inv",
      "week_add": 30.0,
-     "month_add": 29.0
+     "month_add": 16.0
     }
    ],
-   "you": 2646.0,
-   "trade": 7816.0,
+   "you": 2663.0,
+   "trade": 7857.0,
    "count": 51,
    "week_add": 51.0,
    "week_add_excluded": 2,
-   "month_add": 9.0,
+   "month_add": 26.0,
    "month_add_excluded": 2
   },
   {
@@ -3161,7 +3162,7 @@
      "src": "inv",
      "ali_id": "2206583525982",
      "you": 7.0,
-     "trade": 933.0,
+     "trade": 932.0,
      "week_add": 1.0,
      "month_add": -1.0
     },
@@ -3174,10 +3175,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2215657171629",
-     "you": 401.0,
+     "you": 400.0,
      "trade": 907.0,
      "week_add": -14.0,
-     "month_add": -19.0
+     "month_add": -20.0
     },
     {
      "name": "裕丰体育用品(深圳)有限公司",
@@ -3188,10 +3189,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "3878680634",
-     "you": 115.0,
+     "you": 116.0,
      "trade": 825.0,
      "week_add": 0.0,
-     "month_add": 0.0
+     "month_add": 1.0
     },
     {
      "name": "深圳市吉特达科技有限公司",
@@ -3200,13 +3201,13 @@
      "key": "深圳市吉特达科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 120.0,
-     "trade": 680.0,
-     "ali_id": "2759758693+2206402803589",
+     "you": 121.0,
+     "trade": 691.0,
+     "ali_id": "2206402803589+2759758693",
      "agg": 2,
      "src": "inv",
      "week_add": -9.0,
-     "month_add": -5.0
+     "month_add": -4.0
     },
     {
      "name": "深圳梦智谷科技有限公司",
@@ -3217,10 +3218,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2213451866231",
-     "you": 31.0,
+     "you": 30.0,
      "trade": 424.0,
      "week_add": 0.0,
-     "month_add": 2.0
+     "month_add": 1.0
     },
     {
      "name": "深圳诺翔发进出口有限公司",
@@ -3232,7 +3233,7 @@
      "src": "inv",
      "ali_id": "17380147755",
      "you": 40.0,
-     "trade": 275.0,
+     "trade": 282.0,
      "week_add": 0.0,
      "month_add": -7.0
     },
@@ -3257,13 +3258,13 @@
      "key": "深圳市唐彩照明科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 52.0,
-     "trade": 243.0,
-     "ali_id": "3568367888+3568906319+17380197076",
+     "you": 53.0,
+     "trade": 242.0,
+     "ali_id": "3568906319+3568367888+17380197076",
      "agg": 3,
      "src": "inv",
      "week_add": -4.0,
-     "month_add": -4.0
+     "month_add": -3.0
     },
     {
      "name": "深圳市艾森国际供应链管理有限公司",
@@ -3300,13 +3301,13 @@
      "key": "深圳市天勤共创科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 540.0,
-     "trade": 1387.0,
-     "ali_id": "2214836081260+2500001319830",
+     "you": 531.0,
+     "trade": 1393.0,
+     "ali_id": "2500001319830+2214836081260",
      "agg": 2,
      "src": "inv",
      "week_add": -30.0,
-     "month_add": -20.0
+     "month_add": -29.0
     },
     {
      "name": "深圳易瑞晟数码有限公司",
@@ -3317,10 +3318,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "17380209647",
-     "you": 199.0,
-     "trade": 1325.0,
+     "you": 195.0,
+     "trade": 1326.0,
      "week_add": 13.0,
-     "month_add": -8.0
+     "month_add": -12.0
     },
     {
      "name": "深圳市起点电子科技有限公司",
@@ -3330,8 +3331,8 @@
      "xlsx_you": null,
      "xlsx_trade": null,
      "you": 288.0,
-     "trade": 533.0,
-     "ali_id": "3067241137+2015414515",
+     "trade": 524.0,
+     "ali_id": "2015414515+3067241137",
      "agg": 2,
      "src": "inv",
      "week_add": 2.0,
@@ -3360,10 +3361,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2201502272872",
-     "you": 77.0,
+     "you": 70.0,
      "trade": 249.0,
      "week_add": -14.0,
-     "month_add": -27.0
+     "month_add": -34.0
     },
     {
      "name": "深圳宏慧达电子科技有限公司",
@@ -3375,7 +3376,7 @@
      "src": "inv",
      "ali_id": "3192602388",
      "you": 147.0,
-     "trade": 346.0,
+     "trade": 349.0,
      "week_add": 25.0,
      "month_add": 27.0
     },
@@ -3388,10 +3389,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "3301562553",
-     "you": 97.0,
+     "you": 98.0,
      "trade": 104.0,
      "week_add": -6.0,
-     "month_add": -10.0
+     "month_add": -9.0
     },
     {
      "name": "深圳市英普瑞斯科技有限公司",
@@ -3400,13 +3401,13 @@
      "key": "深圳市英普瑞斯科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 14.0,
+     "you": 15.0,
      "trade": 821.0,
-     "ali_id": "2211462589840+17380529153",
+     "ali_id": "17380529153+2211462589840",
      "agg": 2,
      "src": "inv",
      "week_add": -1.0,
-     "month_add": -5.0
+     "month_add": -4.0
     },
     {
      "name": "深圳金东网络科技有限公司",
@@ -3417,18 +3418,18 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500000256503",
-     "you": 78.0,
+     "you": 77.0,
      "trade": 356.0,
      "week_add": -3.0,
-     "month_add": -4.0
+     "month_add": -5.0
     }
    ],
-   "you": 2444.0,
-   "trade": 10033.0,
+   "you": 2426.0,
+   "trade": 10050.0,
    "count": 19,
    "week_add": -44.0,
    "week_add_excluded": 0,
-   "month_add": -87.0,
+   "month_add": -105.0,
    "month_add_excluded": 0
   },
   {
@@ -3442,13 +3443,13 @@
      "key": "深圳市柏诺瑞科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 83.0,
-     "trade": 1429.0,
-     "ali_id": "17380349536+2372975325",
+     "you": 84.0,
+     "trade": 1427.0,
+     "ali_id": "2372975325+17380349536",
      "agg": 2,
      "src": "inv",
      "week_add": -3.0,
-     "month_add": -5.0
+     "month_add": -4.0
     },
     {
      "name": "深圳市高贝电子有限公司",
@@ -3457,13 +3458,13 @@
      "key": "深圳市高贝电子有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 76.0,
-     "trade": 1335.0,
+     "you": 77.0,
+     "trade": 1336.0,
      "ali_id": "17380011863+17381706667",
      "agg": 2,
      "src": "inv",
      "week_add": -3.0,
-     "month_add": -9.0
+     "month_add": -8.0
     },
     {
      "name": "深圳市爱唯尔镭射工艺礼品有限公司",
@@ -3474,10 +3475,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "3190992955",
-     "you": 320.0,
-     "trade": 981.0,
+     "you": 319.0,
+     "trade": 982.0,
      "week_add": 5.0,
-     "month_add": 2.0
+     "month_add": 1.0
     },
     {
      "name": "深圳市峰辉顺科技发展有限公司",
@@ -3489,7 +3490,7 @@
      "src": "inv",
      "ali_id": "2215842123100",
      "you": 7.0,
-     "trade": 941.0,
+     "trade": 940.0,
      "week_add": 0.0,
      "month_add": -11.0
     },
@@ -3502,10 +3503,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "3504574974",
-     "you": 74.0,
+     "you": 73.0,
      "trade": 801.0,
      "week_add": 7.0,
-     "month_add": 5.0
+     "month_add": 4.0
     },
     {
      "name": "深圳市伊斯特尔科技有限公司",
@@ -3514,13 +3515,13 @@
      "key": "深圳市伊斯特尔科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 131.0,
+     "you": 130.0,
      "trade": 679.0,
      "ali_id": "2046553343+2207870659876+2107111028",
      "agg": 3,
      "src": "inv",
      "week_add": 4.0,
-     "month_add": -6.0
+     "month_add": -7.0
     },
     {
      "name": "深圳市艾高普斯电子有限公司",
@@ -3532,7 +3533,7 @@
      "src": "inv",
      "ali_id": "2211527408749",
      "you": 1.0,
-     "trade": 328.0,
+     "trade": 327.0,
      "week_add": -1.0,
      "month_add": -1.0
     },
@@ -3559,10 +3560,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500001321670",
-     "you": 91.0,
-     "trade": 504.0,
+     "you": 88.0,
+     "trade": 505.0,
      "week_add": -1.0,
-     "month_add": -3.0
+     "month_add": -6.0
     },
     {
      "name": "深圳深飞鸟电子有限公司",
@@ -3601,10 +3602,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "1095264682914",
-     "you": 206.0,
-     "trade": 1324.0,
+     "you": 207.0,
+     "trade": 1322.0,
      "week_add": 2.0,
-     "month_add": 9.0
+     "month_add": 10.0
     },
     {
      "name": "深圳市迪思卡沃科技有限公司",
@@ -3615,10 +3616,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "3353545891",
-     "you": 258.0,
+     "you": 257.0,
      "trade": 40.0,
      "week_add": 6.0,
-     "month_add": 3.0
+     "month_add": 2.0
     },
     {
      "name": "东莞市塘厦璇邱电子商务商行（个体工商户）",
@@ -3629,10 +3630,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2212932741599",
-     "you": 140.0,
-     "trade": 1167.0,
+     "you": 137.0,
+     "trade": 1171.0,
      "week_add": 8.0,
-     "month_add": 6.0
+     "month_add": 3.0
     },
     {
      "name": "深圳市碧芸芙化妆品有限公司",
@@ -3643,10 +3644,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2206885567758",
-     "you": 263.0,
+     "you": 264.0,
      "trade": 716.0,
      "week_add": 29.0,
-     "month_add": 38.0
+     "month_add": 39.0
     },
     {
      "name": "深圳市致远方物联技术有限公司",
@@ -3655,13 +3656,13 @@
      "key": "深圳市致远方物联技术有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 189.0,
+     "you": 188.0,
      "trade": 485.0,
      "ali_id": "2027766527+2211115464233",
      "agg": 2,
      "src": "inv",
      "week_add": 2.0,
-     "month_add": 10.0
+     "month_add": 9.0
     },
     {
      "name": "深圳市艺斯凯科技有限公司",
@@ -3670,13 +3671,13 @@
      "key": "深圳市艺斯凯科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 138.0,
-     "trade": 589.0,
-     "ali_id": "2208695633912+3182806539",
+     "you": 137.0,
+     "trade": 593.0,
+     "ali_id": "3182806539+2208695633912",
      "agg": 2,
      "src": "inv",
      "week_add": 0.0,
-     "month_add": -4.0
+     "month_add": -5.0
     },
     {
      "name": "深圳向新服装辅料有限公司",
@@ -3687,18 +3688,18 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500000647955",
-     "you": 40.0,
+     "you": 39.0,
      "trade": 175.0,
      "week_add": 1.0,
-     "month_add": 0.0
+     "month_add": -1.0
     }
    ],
-   "you": 2063.0,
-   "trade": 11711.0,
+   "you": 2054.0,
+   "trade": 11716.0,
    "count": 18,
    "week_add": 54.0,
    "week_add_excluded": 0,
-   "month_add": 30.0,
+   "month_add": 21.0,
    "month_add_excluded": 0
   },
   {
@@ -3714,10 +3715,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500001369327",
-     "you": 133.0,
+     "you": 134.0,
      "trade": 728.0,
      "week_add": 11.0,
-     "month_add": 7.0
+     "month_add": 8.0
     },
     {
      "name": "深圳市创力讯光电设备有限公司",
@@ -3728,10 +3729,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2206838222761",
-     "you": 43.0,
+     "you": 44.0,
      "trade": 527.0,
      "week_add": 6.0,
-     "month_add": 7.0
+     "month_add": 8.0
     },
     {
      "name": "深圳鑫生力科技有限公司",
@@ -3742,10 +3743,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2143876501",
-     "you": 96.0,
-     "trade": 251.0,
+     "you": 97.0,
+     "trade": 248.0,
      "week_add": -3.0,
-     "month_add": -1.0
+     "month_add": 0.0
     },
     {
      "name": "深圳市巨扬达科技有限公司",
@@ -3756,10 +3757,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "3181984429",
-     "you": 45.0,
+     "you": 46.0,
      "trade": 71.0,
      "week_add": 1.0,
-     "month_add": 4.0
+     "month_add": 5.0
     },
     {
      "name": "深圳市宝安区坤源商务中心",
@@ -3782,13 +3783,13 @@
      "key": "深圳市云大成科技有限公司#1",
      "xlsx_you": 23.0,
      "xlsx_trade": null,
-     "you": 27.0,
+     "you": 28.0,
      "trade": 42.0,
      "ali_id": "3201565797+2500000056257",
      "agg": 2,
      "src": "inv",
      "week_add": 3.0,
-     "month_add": 4.0
+     "month_add": 5.0
     },
     {
      "name": "深圳鑫大瀛科技有限公司",
@@ -3797,13 +3798,13 @@
      "key": "深圳鑫大瀛科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 19.0,
+     "you": 18.0,
      "trade": 22.0,
      "ali_id": "17380128239+2215203990270",
      "agg": 2,
      "src": "inv",
      "week_add": 0.0,
-     "month_add": -3.0
+     "month_add": -4.0
     },
     {
      "name": "东莞市点策自动化科技有限公司",
@@ -3856,10 +3857,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500001401388",
-     "you": 36.0,
+     "you": 33.0,
      "trade": 1556.0,
      "week_add": -5.0,
-     "month_add": -12.0
+     "month_add": -15.0
     },
     {
      "name": "深圳市广虹塑胶颜料有限公司",
@@ -3907,13 +3908,13 @@
      "key": "深圳市佳旺数码科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 226.0,
+     "you": 224.0,
      "trade": 397.0,
-     "ali_id": "2217584814483+2216545841610",
+     "ali_id": "2216545841610+2217584814483",
      "agg": 2,
      "src": "inv",
      "week_add": -13.0,
-     "month_add": -17.0
+     "month_add": -19.0
     },
     {
      "name": "深圳沃德福科技有限公司",
@@ -3924,10 +3925,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2214242848427",
-     "you": 167.0,
+     "you": 171.0,
      "trade": 985.0,
      "week_add": -1.0,
-     "month_add": 10.0
+     "month_add": 14.0
     },
     {
      "name": "深圳市菲灿科技有限公司",
@@ -3952,10 +3953,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2217686717396",
-     "you": 146.0,
+     "you": 148.0,
      "trade": 894.0,
      "week_add": -5.0,
-     "month_add": -11.0
+     "month_add": -9.0
     },
     {
      "name": "深圳狮王科技有限公司",
@@ -3965,7 +3966,7 @@
      "xlsx_you": null,
      "xlsx_trade": null,
      "you": 108.0,
-     "trade": 428.0,
+     "trade": 429.0,
      "ali_id": "3081019954+2495745529",
      "agg": 2,
      "src": "inv",
@@ -3995,10 +3996,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2214323569659",
-     "you": 59.0,
+     "you": 57.0,
      "trade": 288.0,
      "week_add": -7.0,
-     "month_add": -12.0
+     "month_add": -14.0
     },
     {
      "name": "深圳天星翼科技有限公司",
@@ -4010,7 +4011,7 @@
      "src": "inv",
      "ali_id": "2214304335194",
      "you": 23.0,
-     "trade": 1975.0,
+     "trade": 1967.0,
      "week_add": 3.0,
      "month_add": 4.0
     },
@@ -4023,18 +4024,18 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "3094118035",
-     "you": 48.0,
+     "you": 47.0,
      "trade": 286.0,
      "week_add": -1.0,
-     "month_add": -2.0
+     "month_add": -3.0
     }
    ],
-   "you": 1449.0,
-   "trade": 9135.0,
+   "you": 1451.0,
+   "trade": 9125.0,
    "count": 23,
    "week_add": -13.0,
    "week_add_excluded": 1,
-   "month_add": -14.0,
+   "month_add": -12.0,
    "month_add_excluded": 1
   },
   {
@@ -4048,13 +4049,13 @@
      "key": "深圳市陆洋电子科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 372.0,
-     "trade": 1896.0,
-     "ali_id": "2214736723804+2214476747408",
+     "you": 373.0,
+     "trade": 1911.0,
+     "ali_id": "2214476747408+2214736723804",
      "agg": 2,
      "src": "inv",
      "week_add": -4.0,
-     "month_add": 44.0
+     "month_add": 45.0
     },
     {
      "name": "深圳市精钻智能制造有限公司",
@@ -4066,7 +4067,7 @@
      "src": "inv",
      "ali_id": "1704802800",
      "you": 9.0,
-     "trade": 853.0,
+     "trade": 852.0,
      "week_add": 1.0,
      "month_add": -4.0
     },
@@ -4080,7 +4081,7 @@
      "src": "inv",
      "ali_id": "3428049694",
      "you": 1.0,
-     "trade": 614.0,
+     "trade": 612.0,
      "week_add": 0.0,
      "month_add": 0.0
     },
@@ -4093,10 +4094,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2212452369450",
-     "you": 23.0,
+     "you": 21.0,
      "trade": 399.0,
      "week_add": -18.0,
-     "month_add": -18.0
+     "month_add": -20.0
     },
     {
      "name": "深圳市芯家科技有限公司",
@@ -4121,10 +4122,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "3261820787",
-     "you": 127.0,
+     "you": 128.0,
      "trade": 141.0,
      "week_add": 3.0,
-     "month_add": -1.0
+     "month_add": 0.0
     },
     {
      "name": "深圳市博创域视讯科技有限公司",
@@ -4191,10 +4192,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2206795175447",
-     "you": 174.0,
+     "you": 175.0,
      "trade": 577.0,
      "week_add": -3.0,
-     "month_add": 5.0
+     "month_add": 6.0
     },
     {
      "name": "深圳市小天使礼品创意有限公司",
@@ -4206,7 +4207,7 @@
      "src": "inv",
      "ali_id": "2209345113541",
      "you": 172.0,
-     "trade": 534.0,
+     "trade": 532.0,
      "week_add": 5.0,
      "month_add": 10.0
     },
@@ -4248,14 +4249,14 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2216244981641",
-     "you": 72.0,
+     "you": 71.0,
      "trade": 0.0,
      "week_add": -8.0,
-     "month_add": -4.0
+     "month_add": -5.0
     }
    ],
    "you": 1334.0,
-   "trade": 6294.0,
+   "trade": 6304.0,
    "count": 15,
    "week_add": -27.0,
    "week_add_excluded": 0,
@@ -4273,13 +4274,13 @@
      "key": "深圳市胡子电子有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 217.0,
-     "trade": 201.0,
-     "ali_id": "2214619699999+2210864236819",
+     "you": 212.0,
+     "trade": 202.0,
+     "ali_id": "2210864236819+2214619699999",
      "agg": 2,
      "src": "inv",
      "week_add": -10.0,
-     "month_add": -8.0
+     "month_add": -13.0
     },
     {
      "name": "深圳隆印包装有限公司",
@@ -4288,13 +4289,13 @@
      "key": "深圳隆印包装有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 252.0,
-     "trade": 2104.0,
-     "ali_id": "2213006266614+1962590671",
+     "you": 247.0,
+     "trade": 2097.0,
+     "ali_id": "1962590671+2213006266614",
      "agg": 2,
      "src": "inv",
      "week_add": -20.0,
-     "month_add": -15.0
+     "month_add": -20.0
     },
     {
      "name": "深圳市瑞昌鑫鹏科技有限公司",
@@ -4305,10 +4306,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "17381265134",
-     "you": 199.0,
+     "you": 198.0,
      "trade": 444.0,
      "week_add": -1.0,
-     "month_add": 1.0
+     "month_add": 0.0
     },
     {
      "name": "深圳市斯特威科技电子有限公司",
@@ -4331,13 +4332,13 @@
      "key": "七虹科技(深圳)有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 222.0,
+     "you": 219.0,
      "trade": 138.0,
-     "ali_id": "2214786568475+2209279898487+2208655934258+2207222746410",
+     "ali_id": "2214786568475+2208655934258+2209279898487+2207222746410",
      "agg": 4,
      "src": "inv",
      "week_add": 2.0,
-     "month_add": 15.0
+     "month_add": 12.0
     },
     {
      "name": "深圳市赛酷电子有限公司",
@@ -4348,10 +4349,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2207277896917",
-     "you": 47.0,
+     "you": 46.0,
      "trade": 699.0,
      "week_add": -17.0,
-     "month_add": -22.0
+     "month_add": -23.0
     },
     {
      "name": "深圳丽曼工贸有限公司",
@@ -4361,8 +4362,8 @@
      "xlsx_you": null,
      "xlsx_trade": null,
      "you": 21.0,
-     "trade": 182.0,
-     "ali_id": "2206958004483+2212917885613",
+     "trade": 199.0,
+     "ali_id": "2212917885613+2206958004483",
      "agg": 2,
      "src": "inv",
      "week_add": -6.0,
@@ -4377,10 +4378,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2386807828",
-     "you": 82.0,
-     "trade": 243.0,
+     "you": 86.0,
+     "trade": 246.0,
      "week_add": 0.0,
-     "month_add": -9.0
+     "month_add": -5.0
     },
     {
      "name": "深圳市亚鸿达包装制品有限公司",
@@ -4405,18 +4406,18 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "17380075141",
-     "you": 51.0,
+     "you": 50.0,
      "trade": 0.0,
      "week_add": 2.0,
-     "month_add": 0.0
+     "month_add": -1.0
     }
    ],
-   "you": 1309.0,
-   "trade": 6106.0,
+   "you": 1297.0,
+   "trade": 6120.0,
    "count": 10,
    "week_add": -59.0,
    "week_add_excluded": 0,
-   "month_add": -64.0,
+   "month_add": -76.0,
    "month_add_excluded": 0
   },
   {
@@ -4433,7 +4434,7 @@
      "src": "inv",
      "ali_id": "2500002361229",
      "you": 7.0,
-     "trade": 357.0,
+     "trade": 362.0,
      "week_add": 1.0,
      "month_add": 2.0
     },
@@ -4488,10 +4489,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500000855544",
-     "you": 3.0,
+     "you": 2.0,
      "trade": 127.0,
      "week_add": -1.0,
-     "month_add": -1.0
+     "month_add": -2.0
     },
     {
      "name": "立川精密工业（东莞）有限公司",
@@ -4544,10 +4545,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500001250907",
-     "you": 65.0,
+     "you": 67.0,
      "trade": 333.0,
      "week_add": 1.0,
-     "month_add": -4.0
+     "month_add": -2.0
     },
     {
      "name": "东方丝路（深圳）科技有限公司",
@@ -4558,7 +4559,7 @@
      "xlsx_trade": null,
      "you": 1.0,
      "trade": 3.0,
-     "ali_id": "3963432038+2207711418170",
+     "ali_id": "2207711418170+3963432038",
      "agg": 2,
      "src": "inv",
      "week_add": 0.0,
@@ -4616,7 +4617,7 @@
      "xlsx_trade": null,
      "you": 165.0,
      "trade": 296.0,
-     "ali_id": "17380310637+2508554388+17381708419+2207699397386",
+     "ali_id": "2207699397386+17380310637+17381708419+2508554388",
      "agg": 4,
      "src": "inv",
      "week_add": 20.0,
@@ -4629,13 +4630,13 @@
      "key": "深圳市友宏科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 120.0,
+     "you": 119.0,
      "trade": 381.0,
-     "ali_id": "2210057646050+2207573308592+1095227604683+2201943829386",
+     "ali_id": "2210057646050+2207573308592+2201943829386+1095227604683",
      "agg": 4,
      "src": "inv",
      "week_add": 12.0,
-     "month_add": 10.0
+     "month_add": 9.0
     },
     {
      "name": "深圳诚小朴科技有限公司",
@@ -4690,10 +4691,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "1095246950623",
-     "you": 91.0,
+     "you": 90.0,
      "trade": 1062.0,
      "week_add": 4.0,
-     "month_add": 11.0
+     "month_add": 10.0
     },
     {
      "name": "深圳市润景三合科技有限公司",
@@ -4715,10 +4716,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500000835459",
-     "you": 41.0,
-     "trade": 1055.0,
+     "you": 43.0,
+     "trade": 1061.0,
      "week_add": -2.0,
-     "month_add": 1.0
+     "month_add": 3.0
     },
     {
      "name": "深圳市加雪龙科技有限公司",
@@ -4729,18 +4730,18 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2397781573",
-     "you": 74.0,
-     "trade": 475.0,
+     "you": 75.0,
+     "trade": 481.0,
      "week_add": -2.0,
-     "month_add": -2.0
+     "month_add": -1.0
     }
    ],
-   "you": 1201.0,
-   "trade": 7232.0,
+   "you": 1203.0,
+   "trade": 7249.0,
    "count": 22,
    "week_add": 8.0,
    "week_add_excluded": 1,
-   "month_add": 19.0,
+   "month_add": 21.0,
    "month_add_excluded": 1
   },
   {
@@ -4771,10 +4772,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500000314777",
-     "you": 4.0,
-     "trade": 1310.0,
+     "you": 5.0,
+     "trade": 1302.0,
      "week_add": 1.0,
-     "month_add": 2.0
+     "month_add": 3.0
     },
     {
      "name": "深圳市华誉智科电子有限公司",
@@ -4785,10 +4786,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500000183189",
-     "you": 19.0,
-     "trade": 249.0,
+     "you": 22.0,
+     "trade": 247.0,
      "week_add": -2.0,
-     "month_add": -2.0
+     "month_add": 1.0
     },
     {
      "name": "深圳市硕易杰科技有限公司",
@@ -4813,10 +4814,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500000721550",
-     "you": 0.0,
+     "you": 1.0,
      "trade": 115.0,
      "week_add": 0.0,
-     "month_add": 0.0
+     "month_add": 1.0
     },
     {
      "name": "法利莱（深圳）集装箱模块化建筑科技有限公司",
@@ -4827,10 +4828,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500001785993",
-     "you": 25.0,
+     "you": 26.0,
      "trade": 137.0,
      "week_add": -1.0,
-     "month_add": 1.0
+     "month_add": 2.0
     },
     {
      "name": "深圳市新宝瑞电子有限公司",
@@ -4839,13 +4840,13 @@
      "key": "深圳市新宝瑞电子有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 198.0,
+     "you": 189.0,
      "trade": 451.0,
      "ali_id": "2201505799150+2211858834631",
      "agg": 2,
      "src": "inv",
      "week_add": -8.0,
-     "month_add": -15.0
+     "month_add": -24.0
     },
     {
      "name": "深圳市兴恒悦科技有限公司",
@@ -4856,10 +4857,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "4030705232",
-     "you": 179.0,
+     "you": 180.0,
      "trade": 305.0,
      "week_add": 17.0,
-     "month_add": 23.0
+     "month_add": 24.0
     },
     {
      "name": "深圳市印守客贸易有限责任公司",
@@ -4868,13 +4869,13 @@
      "key": "深圳市印守客贸易有限责任公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 69.0,
-     "trade": 958.0,
-     "ali_id": "2213278154474+2206572917776",
+     "you": 81.0,
+     "trade": 960.0,
+     "ali_id": "2206572917776+2213278154474",
      "agg": 2,
      "src": "inv",
      "week_add": 11.0,
-     "month_add": 0.0
+     "month_add": 12.0
     },
     {
      "name": "深圳福仁科技有限公司",
@@ -4883,13 +4884,13 @@
      "key": "深圳福仁科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 139.0,
-     "trade": 2713.0,
-     "ali_id": "2849757011+3322237869",
+     "you": 135.0,
+     "trade": 2712.0,
+     "ali_id": "3322237869+2849757011",
      "agg": 2,
      "src": "inv",
      "week_add": 4.0,
-     "month_add": 7.0
+     "month_add": 3.0
     },
     {
      "name": "深圳市科斯普实业有限公司",
@@ -4901,7 +4902,7 @@
      "src": "inv",
      "ali_id": "2208335670757",
      "you": 38.0,
-     "trade": 2230.0,
+     "trade": 2228.0,
      "week_add": -1.0,
      "month_add": -3.0
     },
@@ -4915,7 +4916,7 @@
      "src": "inv",
      "ali_id": "2500000774334",
      "you": 2.0,
-     "trade": 266.0,
+     "trade": 265.0,
      "week_add": -1.0,
      "month_add": -1.0
     },
@@ -4928,10 +4929,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2206817925909",
-     "you": 63.0,
-     "trade": 655.0,
+     "you": 61.0,
+     "trade": 657.0,
      "week_add": -1.0,
-     "month_add": -9.0
+     "month_add": -11.0
     },
     {
      "name": "深圳市秀琳科技有限公司",
@@ -4948,12 +4949,12 @@
      "month_add": -5.0
     }
    ],
-   "you": 814.0,
-   "trade": 9788.0,
+   "you": 818.0,
+   "trade": 9778.0,
    "count": 14,
    "week_add": 18.0,
    "week_add_excluded": 0,
-   "month_add": -1.0,
+   "month_add": 3.0,
    "month_add_excluded": 0
   },
   {
@@ -4970,7 +4971,7 @@
      "src": "inv",
      "ali_id": "2218640995720",
      "you": 8.0,
-     "trade": 85.0,
+     "trade": 83.0,
      "week_add": -1.0,
      "month_add": -1.0
     },
@@ -4981,13 +4982,13 @@
      "key": "深圳市领能科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 325.0,
+     "you": 324.0,
      "trade": 76.0,
      "ali_id": "2214138366750+4270766082+2500000459266",
      "agg": 3,
      "src": "inv",
      "week_add": 0.0,
-     "month_add": 0.0
+     "month_add": -1.0
     },
     {
      "name": "深圳市友晖电子科技有限公司",
@@ -4998,10 +4999,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2575974626",
-     "you": 90.0,
+     "you": 89.0,
      "trade": 564.0,
      "week_add": -33.0,
-     "month_add": -64.0
+     "month_add": -65.0
     },
     {
      "name": "深圳市劲雯国际贸易有限公司",
@@ -5012,10 +5013,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2216380792293",
-     "you": 151.0,
+     "you": 150.0,
      "trade": 605.0,
      "week_add": 2.0,
-     "month_add": 0.0
+     "month_add": -1.0
     },
     {
      "name": "深圳艾迪逊实业有限公司",
@@ -5027,7 +5028,7 @@
      "src": "inv",
      "ali_id": "2211875601108",
      "you": 87.0,
-     "trade": 946.0,
+     "trade": 947.0,
      "week_add": -8.0,
      "month_add": -13.0
     },
@@ -5041,7 +5042,7 @@
      "src": "inv",
      "ali_id": "2214072727675",
      "you": 30.0,
-     "trade": 121.0,
+     "trade": 125.0,
      "week_add": 0.0,
      "month_add": -1.0
     },
@@ -5054,18 +5055,18 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2210281983110",
-     "you": 42.0,
-     "trade": 57.0,
+     "you": 40.0,
+     "trade": 60.0,
      "week_add": 2.0,
-     "month_add": -2.0
+     "month_add": -4.0
     }
    ],
-   "you": 733.0,
-   "trade": 2454.0,
+   "you": 728.0,
+   "trade": 2460.0,
    "count": 7,
    "week_add": -38.0,
    "week_add_excluded": 0,
-   "month_add": -81.0,
+   "month_add": -86.0,
    "month_add_excluded": 0
   },
   {
@@ -5079,13 +5080,13 @@
      "key": "深圳市安睿信科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 128.0,
+     "you": 126.0,
      "trade": 819.0,
-     "ali_id": "2213733905460+1894477637",
+     "ali_id": "1894477637+2213733905460",
      "agg": 2,
      "src": "inv",
      "week_add": -5.0,
-     "month_add": -11.0
+     "month_add": -13.0
     },
     {
      "name": "深圳市爱芯品科技有限公司",
@@ -5097,7 +5098,7 @@
      "src": "inv",
      "ali_id": "2217900476346",
      "you": 33.0,
-     "trade": 1029.0,
+     "trade": 1032.0,
      "week_add": 3.0,
      "month_add": 8.0
     },
@@ -5110,10 +5111,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "3834123915",
-     "you": 35.0,
+     "you": 34.0,
      "trade": 437.0,
      "week_add": 0.0,
-     "month_add": -1.0
+     "month_add": -2.0
     },
     {
      "name": "深圳市永成胶粘科技有限公司",
@@ -5138,10 +5139,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "4008924296",
-     "you": 6.0,
+     "you": 7.0,
      "trade": 362.0,
      "week_add": -6.0,
-     "month_add": -10.0
+     "month_add": -9.0
     },
     {
      "name": "深圳市宝安区松岗顺利线业加工厂",
@@ -5238,7 +5239,7 @@
      "src": "inv",
      "ali_id": "1750426595",
      "you": 9.0,
-     "trade": 76.0,
+     "trade": 83.0,
      "week_add": 1.0,
      "month_add": 3.0
     },
@@ -5262,10 +5263,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500001446312",
-     "you": 159.0,
+     "you": 158.0,
      "trade": 304.0,
      "week_add": -4.0,
-     "month_add": -9.0
+     "month_add": -10.0
     },
     {
      "name": "深圳市微安达技术有限公司",
@@ -5276,10 +5277,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2218665893043",
-     "you": 3.0,
+     "you": 2.0,
      "trade": 3.0,
      "week_add": 0.0,
-     "month_add": -1.0
+     "month_add": -2.0
     },
     {
      "name": "深圳市乐盾防护用品有限公司",
@@ -5290,7 +5291,7 @@
      "xlsx_trade": null,
      "you": 7.0,
      "trade": 156.0,
-     "ali_id": "2218790215182+2500001821775",
+     "ali_id": "2500001821775+2218790215182",
      "agg": 2,
      "src": "inv",
      "week_add": 0.0,
@@ -5306,7 +5307,7 @@
      "src": "inv",
      "ali_id": "2218247093450",
      "you": 128.0,
-     "trade": 2131.0,
+     "trade": 2130.0,
      "week_add": -2.0,
      "month_add": 0.0
     },
@@ -5317,21 +5318,21 @@
      "key": "深圳市卓昂科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 69.0,
-     "trade": 325.0,
-     "ali_id": "2379523999+2500000471798",
+     "you": 68.0,
+     "trade": 329.0,
+     "ali_id": "2500000471798+2379523999",
      "agg": 2,
      "src": "inv",
      "week_add": -6.0,
-     "month_add": -3.0
+     "month_add": -4.0
     }
    ],
-   "you": 724.0,
-   "trade": 7218.0,
+   "you": 719.0,
+   "trade": 7231.0,
    "count": 18,
    "week_add": -26.0,
    "week_add_excluded": 1,
-   "month_add": -48.0,
+   "month_add": -53.0,
    "month_add_excluded": 1
   },
   {
@@ -5361,10 +5362,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500000292918",
-     "you": 30.0,
+     "you": 32.0,
      "trade": 154.0,
      "week_add": -2.0,
-     "month_add": -7.0
+     "month_add": -5.0
     },
     {
      "name": "深圳市旺泰佳农业开发有限公司平湖鹅公岭分公司",
@@ -5428,11 +5429,11 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2215543414928",
-     "you": 71.0,
-     "trade": 488.0,
+     "you": 73.0,
+     "trade": 489.0,
      "owner": "李彬",
      "week_add": 5.0,
-     "month_add": 8.0
+     "month_add": 10.0
     },
     {
      "name": "深圳市护将联驰科技有限公司",
@@ -5441,13 +5442,13 @@
      "key": "深圳市护将联驰科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 207.0,
+     "you": 209.0,
      "trade": 661.0,
      "ali_id": "2216560273568+2207543016581",
      "agg": 2,
      "src": "inv",
      "week_add": 5.0,
-     "month_add": -15.0
+     "month_add": -13.0
     },
     {
      "name": "深圳市嘉乐视科技发展有限公司",
@@ -5458,7 +5459,7 @@
      "xlsx_trade": null,
      "you": null,
      "trade": null,
-     "ali_id": "2209789203665+1846402054",
+     "ali_id": "1846402054+2209789203665",
      "agg": 2,
      "src": "noval",
      "week_add": null,
@@ -5473,18 +5474,18 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "1715467719",
-     "you": 98.0,
-     "trade": 421.0,
+     "you": 100.0,
+     "trade": 416.0,
      "week_add": -17.0,
-     "month_add": -18.0
+     "month_add": -16.0
     }
    ],
-   "you": 428.0,
-   "trade": 1790.0,
+   "you": 436.0,
+   "trade": 1786.0,
    "count": 10,
    "week_add": -8.0,
    "week_add_excluded": 2,
-   "month_add": -30.0,
+   "month_add": -22.0,
    "month_add_excluded": 2
   },
   {
@@ -5511,10 +5512,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500001358082",
-     "you": 52.0,
+     "you": 51.0,
      "trade": 143.0,
      "week_add": -1.0,
-     "month_add": -3.0
+     "month_add": -4.0
     },
     {
      "name": "深圳市君瀚科技有限公司",
@@ -5540,7 +5541,7 @@
      "src": "inv",
      "ali_id": "2500001028606",
      "you": 41.0,
-     "trade": 177.0,
+     "trade": 178.0,
      "week_add": 0.0,
      "month_add": 4.0
     },
@@ -5581,10 +5582,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500000448981",
-     "you": 55.0,
+     "you": 56.0,
      "trade": 74.0,
      "week_add": 0.0,
-     "month_add": 0.0
+     "month_add": 1.0
     },
     {
      "name": "深圳市得兴玩具有限公司",
@@ -5595,10 +5596,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500001044925",
-     "you": 138.0,
-     "trade": 2388.0,
+     "you": 111.0,
+     "trade": 2409.0,
      "week_add": 6.0,
-     "month_add": -46.0
+     "month_add": -73.0
     },
     {
      "name": "深圳市比优特福科技有限公司",
@@ -5609,18 +5610,18 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500000433021",
-     "you": 103.0,
-     "trade": 1587.0,
+     "you": 102.0,
+     "trade": 1584.0,
      "week_add": 3.0,
-     "month_add": -4.0
+     "month_add": -5.0
     }
    ],
-   "you": 415.0,
-   "trade": 4382.0,
+   "you": 387.0,
+   "trade": 4401.0,
    "count": 9,
    "week_add": 10.0,
    "week_add_excluded": 1,
-   "month_add": -111.0,
+   "month_add": -139.0,
    "month_add_excluded": 1
   },
   {
@@ -5675,10 +5676,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500001549436",
-     "you": 35.0,
+     "you": 33.0,
      "trade": 259.0,
      "week_add": 2.0,
-     "month_add": 3.0
+     "month_add": 1.0
     },
     {
      "name": "深圳戴维南技术有限公司",
@@ -5703,10 +5704,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2218581891186",
-     "you": 8.0,
+     "you": 10.0,
      "trade": 19.0,
      "week_add": 0.0,
-     "month_add": -1.0
+     "month_add": 1.0
     },
     {
      "name": "煌奇科技（深圳）有限公司",
@@ -5743,21 +5744,21 @@
      "key": "深圳市巴菲包装科技有限公司#1",
      "xlsx_you": null,
      "xlsx_trade": null,
-     "you": 87.0,
-     "trade": 310.0,
-     "ali_id": "2200580776361+1636412128+17380435077",
+     "you": 89.0,
+     "trade": 306.0,
+     "ali_id": "2200580776361+17380435077+1636412128",
      "agg": 3,
      "src": "inv",
      "week_add": -2.0,
-     "month_add": -3.0
+     "month_add": -1.0
     }
    ],
-   "you": 154.0,
-   "trade": 621.0,
+   "you": 156.0,
+   "trade": 617.0,
    "count": 9,
    "week_add": 3.0,
    "week_add_excluded": 1,
-   "month_add": -1.0,
+   "month_add": 1.0,
    "month_add_excluded": 1
   },
   {
@@ -5815,10 +5816,10 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2500000588198",
-     "you": 66.0,
+     "you": 67.0,
      "trade": 32.0,
      "week_add": 7.0,
-     "month_add": 6.0
+     "month_add": 7.0
     },
     {
      "name": "广西金源生物化工实业有限公司",
@@ -5857,18 +5858,18 @@
      "xlsx_trade": null,
      "src": "inv",
      "ali_id": "2208361107562",
-     "you": 41.0,
+     "you": 37.0,
      "trade": 273.0,
      "week_add": -5.0,
-     "month_add": -6.0
+     "month_add": -10.0
     }
    ],
-   "you": 113.0,
+   "you": 110.0,
    "trade": 310.0,
    "count": 7,
    "week_add": 2.0,
    "week_add_excluded": 0,
-   "month_add": -1.0,
+   "month_add": -4.0,
    "month_add_excluded": 0
   },
   {
@@ -5910,13 +5911,13 @@
      "key": "深圳市嘉天宇电子有限公司#1",
      "xlsx_you": 45.0,
      "xlsx_trade": null,
-     "you": 49.0,
+     "you": 50.0,
      "trade": 85.0,
-     "ali_id": "2218532378586+17381402917",
+     "ali_id": "17381402917+2218532378586",
      "agg": 2,
      "src": "inv",
      "week_add": 0.0,
-     "month_add": 2.0
+     "month_add": 3.0
     },
     {
      "name": "易美电子实业（深圳）有限公司",
@@ -5944,12 +5945,12 @@
      "month_add": null
     }
    ],
-   "you": 100.0,
+   "you": 101.0,
    "trade": 168.0,
    "count": 5,
    "week_add": -4.0,
    "week_add_excluded": 1,
-   "month_add": 2.0,
+   "month_add": 3.0,
    "month_add_excluded": 1
   },
   {
@@ -5991,13 +5992,13 @@
      "src": "inv",
      "ali_id": "2215534365835",
      "you": 64.0,
-     "trade": 1254.0,
+     "trade": 1268.0,
      "week_add": -27.0,
      "month_add": -32.0
     }
    ],
    "you": 85.0,
-   "trade": 1552.0,
+   "trade": 1566.0,
    "count": 3,
    "week_add": -28.0,
    "week_add_excluded": 1,
@@ -6007,29 +6008,29 @@
  ],
  "home": {
   "goods": {
-   "current": 105058.0,
+   "current": 105112.0,
    "target": 144921.0,
-   "pct": 72.49328944735409,
+   "pct": 72.53055112785587,
    "structure": [
     {
      "name": "在线品数",
-     "count": 1939790.0,
+     "count": 1944601.0,
      "unit": "个",
-     "pct": 5.41594708705582,
+     "pct": 5.40532479413515,
      "pct_label": "优爆品占比"
     },
     {
      "name": "当前有优爆品的客户数",
-     "count": 1790.0,
+     "count": 1791.0,
      "unit": "家",
-     "pct": 88.35143139190524,
+     "pct": 88.35717809570795,
      "pct_label": "占服务中客户"
     }
    ],
-   "date": "2026-11-17",
-   "p4p_products": 30554.0,
-   "p4p_pct": 29.082982733347297
+   "date": "2026-11-18",
+   "p4p_products": 30523.0,
+   "p4p_pct": 29.038549356876477
   },
-  "update": "2026-11-19 09:17"
+  "update": "2026-11-20 10:15"
  }
 }
