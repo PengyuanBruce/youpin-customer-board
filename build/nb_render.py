@@ -86,7 +86,8 @@ footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);color:v
 @media (max-width:640px){
   h1{font-size:24px}
   .wrap{padding:0 12px}
-  nav .wrap{padding:0 12px}
+  nav .wrap{padding:6px 12px;flex-wrap:wrap;overflow:visible;row-gap:2px}
+  nav a{padding:7px 9px;font-size:12px}
   th,td{padding:9px 10px;font-size:12.5px}
   .bar{width:38px}
   .secsub{width:100%;margin-left:0}
