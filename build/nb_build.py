@@ -54,6 +54,56 @@ def load_value(fname):
     return d, v
 
 
+def parse_file(fname, idx):
+    """按给定文件名与列索引解析，返回 (ds, {name: {...}})。"""
+    d, v = load_value(fname)
+    if not v:
+        return None, {}
+    rows = v.get("values") or []
+    out = {}
+    ds = None
+    for r in rows:
+        name = norm(r[idx["name"]].get("v"))
+        if not name:
+            continue
+        pct = num(r[idx["pct"]].get("v"))
+        if pct is not None and pct <= 1.5:
+            pct *= 100
+        out[name] = {
+            "count": num(r[idx["count"]].get("v")),
+            "target": num(r[idx["target"]].get("v")),
+            "pct": pct,
+            "p4p": num(r[idx["p4p"]].get("v")),
+        }
+        if ds is None and "ds" in idx:
+            ds = r[idx["ds"]].get("v")
+    if isinstance(ds, str):
+        ds = ds.strip().split(" ")[0].replace("-", "").replace("/", "")
+        if len(ds) >= 8 and ds[:8].isdigit():
+            ds = f"{ds[:4]}-{ds[4:6]}-{ds[6:8]}"
+    if ds is None:
+        ds = (d.get("meta") or {}).get("ds")
+    return ds, out
+
+
+def seed_history(h):
+    """把 compass_raw 里的 hist-* 历史快照灌进本地历史库（只补不覆盖已有日期）。"""
+    import glob
+    pats = [("hist-youpin3-sales-*.json", "you_sales", C.FILES["you_sales"][1]),
+            ("hist-youpin3-kefu-*.json", "you_kefu", C.FILES["you_kefu"][1]),
+            ("hist-hot-sales-*.json", "hot_sales", C.FILES["hot_sales"][1]),
+            ("hist-hot-kefu-*.json", "hot_kefu", C.FILES["hot_kefu"][1])]
+    seeded = []
+    for pat, key, idx in pats:
+        for p in sorted(glob.glob(os.path.join(C.RAW_DIR, pat))):
+            ds, data = parse_file(os.path.basename(p), idx)
+            if not ds or not data:
+                continue
+            record(h, ds, key, data)
+            seeded.append(f"{key}@{ds}")
+    return seeded
+
+
 def parse_section(key):
     """返回 (ds, {name: {count,target,pct,p4p}})。pct 统一换算成百分数。"""
     fname, idx = C.FILES[key]
@@ -211,7 +261,10 @@ def build_section(no, sid, title, ds, roster, data, order, delta_c, delta_p, win
 
 def main():
     h = load_history()
+    seeded = seed_history(h)
     warnings = []
+    if seeded:
+        print("历史基线已灌入：", "、".join(seeded))
 
     you_s_ds, you_s = parse_section("you_sales")
     you_k_ds, you_k = parse_section("you_kefu")
