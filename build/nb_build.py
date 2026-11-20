@@ -44,6 +44,17 @@ def pct_of(count, target):
     return count / target * 100
 
 
+def week_sort_key(item):
+    """按周增长降序；无基线（None）一律置底，且保持原相对顺序。"""
+    w = item.get("week")
+    return (1, 0) if w is None else (0, -w)
+
+
+def sort_by_week(rows):
+    rows.sort(key=week_sort_key)
+    return rows
+
+
 def load_value(fname):
     p = os.path.join(C.RAW_DIR, fname)
     if not os.path.exists(p):
@@ -303,10 +314,13 @@ def main():
         sub["team"] = team
         team_blocks.append(sub)
 
+    sort_by_week(s1_rows)
+    sort_by_week(team_blocks)
     sec1 = {
         "no": "Ⅰ", "id": "you-sales", "title": "优爆品 · 拍档销售",
         "ds": you_s_ds, "week_window": yw, "rows": s1_rows, "teams": team_blocks,
-        "note": "优爆品目标/数/完成率/推P 取自优品3.0「拍档销售」表；周增长 = 上周一~周五净增。",
+        "note": "优爆品目标/数/完成率/推P 取自优品3.0「拍档销售」表；周增长 = 上周一~周五净增；按周增长降序排列。",
+        "sort": "week",
     }
 
     # ---- Ⅱ 优爆品 · 拍档客服 ----
@@ -317,11 +331,14 @@ def main():
         s2_rows.append(r)
         if r["missing"]:
             warnings.append(f"优爆品-客服：{n} 在源文件中没有数据")
+    kefu_roll = dict(team_rollup(C.KEFU, s2_rows), team="客服合计")
+    sort_by_week(s2_rows)
     sec2 = {
         "no": "Ⅱ", "id": "you-kefu", "title": "优爆品 · 拍档客服",
         "ds": you_k_ds, "week_window": kw, "rows": s2_rows,
-        "teams": [dict(team_rollup(C.KEFU, s2_rows), team="客服合计")],
-        "note": "取自优品3.0「拍档客服」表；季度目标与完成率同表。",
+        "teams": [kefu_roll],
+        "note": "取自优品3.0「拍档客服」表；季度目标与完成率同表；按周增长降序排列。",
+        "sort": "week",
     }
 
     # ---- Ⅲ 市场热卖品 · 拍档销售 ----
@@ -340,10 +357,13 @@ def main():
         sub = team_rollup([r["name"] for r in sub_rows], sub_rows)
         sub["team"] = team
         blocks3.append(sub)
+    sort_by_week(s3_rows)
+    sort_by_week(blocks3)
     sec3 = {
         "no": "Ⅲ", "id": "hot-sales", "title": "市场热卖品 · 拍档销售",
         "ds": hot_s_ds, "week_window": sw, "rows": s3_rows, "teams": blocks3,
-        "note": "热卖品数 = 当季度定招品数；推P = 曾经是市场热卖且当前是定招品且在 p4p 推广中的商品数。",
+        "note": "热卖品数 = 当季度定招品数；推P = 曾经是市场热卖且当前是定招品且在 p4p 推广中的商品数；按周增长降序（基线未补齐者置底）。",
+        "sort": "week",
     }
 
     # ---- Ⅳ 市场热卖品 · 拍档客服 ----
@@ -354,11 +374,14 @@ def main():
         s4_rows.append(r)
         if r["missing"]:
             warnings.append(f"市场热卖-客服：{n} 在源文件中没有数据")
+    hot_kefu_roll = dict(team_rollup(C.HOT_KEFU, s4_rows), team="客服合计")
+    sort_by_week(s4_rows)
     sec4 = {
         "no": "Ⅳ", "id": "hot-kefu", "title": "市场热卖品 · 拍档客服",
         "ds": hot_k_ds, "week_window": kw2, "rows": s4_rows,
-        "teams": [dict(team_rollup(C.HOT_KEFU, s4_rows), team="客服合计")],
-        "note": "取数口径同 Ⅲ，维度为拍档客服。",
+        "teams": [hot_kefu_roll],
+        "note": "取数口径同 Ⅲ，维度为拍档客服；按周增长降序（基线未补齐者置底）。",
+        "sort": "week",
     }
 
     board = {
