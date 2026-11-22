@@ -169,11 +169,29 @@ def record(h, ds, key, data):
         slot[name] = {"count": m["count"], "p4p": m["p4p"]}
 
 
-def last_week_window(ds):
-    """上周一~周五 与基线（上周日）。ds 为字符串 YYYY-MM-DD。"""
-    d = datetime.strptime(ds, "%Y-%m-%d").date()
+def week_anchor(today=None):
+    """窗口锚点 = 最近一个已完成的工作周周一。
+
+    数据日按 T+2 滞后，若按数据日回溯会把窗口整体推前一周（周末看屏
+    仍停在上上周）。改为按运行日：周六/周日及周一~周五都锁定「最近
+    已走完的周一~周五」，周一自动与周末结果一致，不会抖动。
+    """
+    d = today or date.today()
     this_monday = d - timedelta(days=d.weekday())
-    mon = this_monday - timedelta(days=7)
+    return this_monday if d.weekday() >= 5 else this_monday - timedelta(days=7)
+
+
+def last_week_window(ds):
+    """最近完成工作周 周一~周五 与基线（周一前一天）。
+
+    ds 仅用于「数据日完全缺失」时的兜底，正常以运行日为准。
+    """
+    if ds:
+        try:
+            datetime.strptime(ds, "%Y-%m-%d")
+        except ValueError:
+            ds = None
+    mon = week_anchor()
     fri = mon + timedelta(days=4)
     base = mon - timedelta(days=1)
     return mon, fri, base
@@ -392,7 +410,7 @@ def main():
             "you_ds": you_s_ds,
             "hot_sales_ds": hot_s_ds,
             "hot_kefu_ds": hot_k_ds,
-            "week_rule": "周增长 = 上周一~周五净增（按数据日回溯；两端快照缺一即 --）",
+            "week_rule": "周增长 = 最近一个已完成工作周（周一~周五）净增，周六起切换新一周；两端快照缺一即 --",
             "sources": [
                 "优品3.0 · 拍档销售", "优品3.0 · 拍档客服",
                 "市场热卖定招 · 拍档销售", "市场热卖定招 · 拍档客服",
