@@ -54,6 +54,20 @@ section{margin:34px 0 0;scroll-margin-top:56px}
 .secsub{font-size:12px;color:var(--ink3);margin-left:auto}
 .card{background:linear-gradient(180deg,var(--panel) 0%,var(--bg2) 100%);border:1px solid var(--line);
   border-radius:12px;overflow:hidden;box-shadow:0 10px 30px -18px #000}
+/* 2026-11-26 顶部「公司级 · 优品3.0总览」数据块 */
+.cobar{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:0 0 26px}
+.cotile{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.cotile .k{color:var(--ink3);font-size:12px;letter-spacing:.04em}
+.cotile .v{font-size:26px;font-weight:600;margin-top:6px;font-variant-numeric:tabular-nums}
+.cotile .v small{font-size:13px;color:var(--ink3);font-weight:400;margin-left:4px}
+.cotile .s{color:var(--ink3);font-size:12px;margin-top:4px}
+.cotile.hl{border-color:#2c6a4f;background:linear-gradient(180deg,#12291f,#0e1c18)}
+.cotile.hl .v{color:#3ddc97}
+.cotile.hl .v.neg{color:#ff6b6b}
+.cosetitle{display:flex;align-items:baseline;gap:10px;margin:0 0 12px}
+.cosetitle b{font-size:15px;letter-spacing:.04em}
+.cosetitle span{color:var(--ink3);font-size:12px}
+@media(max-width:900px){.cobar{grid-template-columns:repeat(2,1fr)}}
 .scroll{overflow-x:auto}
 table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;min-width:720px}
 th,td{padding:10px 12px;text-align:right;white-space:nowrap;font-size:13.5px}
@@ -135,8 +149,9 @@ document.getElementById('meta').innerHTML = [
 ].join('');
 
 /* 导航 */
-document.getElementById('nav').innerHTML = B.sections
-  .map(s=>`<a href="#${s.id}">${s.no} ${s.title}</a>`).join('');
+document.getElementById('nav').innerHTML =
+  (B.company ? '<a href="#company">公司级总览</a>' : '') +
+  B.sections.map(s=>`<a href="#${s.id}">${s.no} ${s.title}</a>`).join('');
 
 function colHead(kind){
   if(kind==='you-sales') return ['团队','拍档销售','优爆品目标','优爆品数','优爆品季度完成率','优爆品推P数','优爆品周增长','优爆品推P周增长'];
@@ -171,8 +186,37 @@ function rollCells(t){
     <td class="num">${fmtDelta(t.p4p_week)}</td></tr>`;
 }
 
+// 2026-11-26 用户要求：整个公司的优爆品数据放在四个板块最上面
+function companyBlock(c){
+  if(!c) return '';
+  const d = c.day_add;
+  const dTxt = d==null ? '--' : (d>0?'+':'') + fmtInt(d);
+  return `<section id="company">
+    <div class="cosetitle"><b>公司级 · 优品3.0 总览</b>
+      <span>数据日期 ${c.ds||'--'}（平台 T+2）</span></div>
+    <div class="cobar">
+      <div class="cotile"><div class="k">当前优爆品数</div><div class="v">${fmtInt(c.current)}<small>个</small></div></div>
+      <div class="cotile hl"><div class="k">每日优爆品新增</div>
+        <div class="v ${d<0?'neg':''}">${dTxt}<small>个</small></div>
+        <div class="s">较 ${dshort(c.day_add_base)||'--'} 的数据日</div></div>
+      <div class="cotile"><div class="k">当季度累计目标</div><div class="v">${fmtInt(c.target)}<small>个</small></div></div>
+      <div class="cotile"><div class="k">当季度累计目标达成率</div><div class="v">${fmtPct(c.pct)}</div></div>
+      <div class="cotile"><div class="k">p4p 推广中优爆品数</div><div class="v">${fmtInt(c.p4p)}<small>个</small></div>
+        <div class="s">占优爆品 ${fmtPct(c.p4p_pct)}</div></div>
+    </div>
+    <div class="cobar" style="grid-template-columns:repeat(4,1fr)">
+      <div class="cotile"><div class="k">在线品数</div><div class="v">${fmtInt(c.online)}<small>个</small></div></div>
+      <div class="cotile"><div class="k">优爆品占比</div><div class="v">${fmtPct(c.online_pct)}</div>
+        <div class="s">优爆品数 ÷ 在线品数</div></div>
+      <div class="cotile"><div class="k">当前有优爆品的客户</div><div class="v">${fmtInt(c.customers)}<small>家</small></div></div>
+      <div class="cotile"><div class="k">占服务中客户</div><div class="v">${fmtPct(c.customers_pct)}</div>
+        <div class="s">服务中客户 ${fmtInt(c.serving)} 家</div></div>
+    </div>
+  </section>`;
+}
+
 const app = document.getElementById('app');
-app.innerHTML = B.sections.map(s=>{
+app.innerHTML = companyBlock(B.company) + B.sections.map(s=>{
   const withTeam = s.id==='you-sales';
   const heads = colHead(s.id);
   const win = s.week_window || {};
