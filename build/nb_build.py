@@ -266,6 +266,48 @@ def company_target(read_ds=None):
     return num(cell.get("v") if isinstance(cell, dict) else cell)
 
 
+def company_block(h):
+    """顶部「公司级 · 优品3.0总览」数据块 + 每日优爆品新增（2026-11-26 用户要求）。
+
+    公司卡 31 列且列名全空，按下标取（实测）：4 服务中客户数、5 有优爆品客户数、
+    6 占比、7 当前优爆品数、8 在线品数、9 优爆品占比、10 当季度累计目标、11 达成率、
+    27 p4p 推广中、28 p4p 推广比例。每日新增 = 当日合计 − 上一数据日合计（客服口径即公司口径）。
+    """
+    d, v = load_value("youpin3-company.json")
+    rows = (v or {}).get("values") or []
+    if not rows:
+        return None
+    r = rows[0]
+
+    def g(i):
+        cell = r[i] if i < len(r) else None
+        return num(cell.get("v") if isinstance(cell, dict) else cell)
+
+    ds = str((r[0].get("v") if isinstance(r[0], dict) else r[0]) or "")[:10]
+    cur = g(7)
+    prev_ds = None
+    prev_total = None
+    for k in sorted(h.keys()):
+        if k < ds and (h.get(k) or {}).get("you_kefu"):
+            prev_ds, prev_total = k, sum((x.get("count") or 0) for x in h[k]["you_kefu"].values())
+    day_add = round(cur - prev_total, 1) if (cur is not None and prev_total is not None) else None
+    return {
+        "ds": ds,
+        "current": cur,
+        "target": g(10),
+        "pct": (g(11) or 0) * 100 if g(11) is not None else None,
+        "p4p": g(27),
+        "p4p_pct": (g(28) or 0) * 100 if g(28) is not None else None,
+        "online": g(8),
+        "online_pct": (g(9) or 0) * 100 if g(9) is not None else None,
+        "customers": g(5),
+        "customers_pct": (g(6) or 0) * 100 if g(6) is not None else None,
+        "serving": g(4),
+        "day_add": day_add,
+        "day_add_base": prev_ds,
+    }
+
+
 def person_row(name, m, delta_c, delta_p, carry_map=None):
     """carry_map 只给「优爆品」维度用：承接值是优爆品目标，不能套到热卖目标上。"""
     m = m or {}
@@ -500,6 +542,7 @@ def main():
             ],
             "warnings": sorted(set(warnings)),
         },
+        "company": company_block(h),
         "sections": [sec1, sec2, sec3, sec4],
     }
 
