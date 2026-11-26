@@ -234,13 +234,41 @@ def week_delta(h, ds, key, field):
 
 
 # ---------------- 组装 ----------------
-def person_row(name, m, delta_c, delta_p):
+def company_target(read_ds=None):
+    """公司口径季度目标（优品3.0 拍档公司卡「当季度累计目标」）。
+
+    该卡 31 列但**列名全为空**，且列序与客服表不同（目标在下标 10，不是 16）：
+    7=当前优爆品数、10=当季度累计目标、11=达成率（2026-11-26 实测）。
+    优先按列名取，取不到再回落到固定下标。
+    """
+    d, v = load_value("youpin3-company.json")
+    if not v:
+        return None
+    labels = [c.get("name") if isinstance(c, dict) else c for c in (v.get("columns") or [])]
+    rows = v.get("values") or []
+    if not rows:
+        return None
+    ti = 10
+    if "当季度累计目标" in labels:
+        ti = labels.index("当季度累计目标")
+    cell = rows[0][ti]
+    return num(cell.get("v") if isinstance(cell, dict) else cell)
+
+
+def person_row(name, m, delta_c, delta_p, carry_map=None):
+    """carry_map 只给「优爆品」维度用：承接值是优爆品目标，不能套到热卖目标上。"""
     m = m or {}
+    target = m.get("target")
+    carry = False
+    if target is None and carry_map and name in carry_map:
+        target = carry_map[name]
+        carry = True
     return {
         "name": name,
         "count": m.get("count"),
-        "target": m.get("target"),
-        "pct": m.get("pct") if m.get("pct") is not None else pct_of(m.get("count"), m.get("target")),
+        "target": target,
+        "carry": carry,
+        "pct": m.get("pct") if m.get("pct") is not None else pct_of(m.get("count"), target),
         "p4p": m.get("p4p"),
         "week": delta_c.get(name) if delta_c else None,
         "p4p_week": delta_p.get(name) if delta_p else None,
@@ -363,12 +391,19 @@ def main():
     # ---- Ⅱ 优爆品 · 拍档客服 ----
     s2_rows = []
     for n in C.KEFU:
-        r = person_row(n, you_k.get(n), kc, kp)
+        r = person_row(n, you_k.get(n), kc, kp, carry_map=C.CARRY_TARGETS)
         r["team"] = "拍档客服"
         s2_rows.append(r)
         if r["missing"]:
             warnings.append(f"优爆品-客服：{n} 在源文件中没有数据")
     kefu_roll = dict(team_rollup(C.KEFU, s2_rows), team="客服合计")
+    # 合计目标取「拍档公司」卡口径：平台把个别人目标置空（汤青芬）后，
+    #   逐人相加会漏掉未下发/未分配的部分（2026-11-26 用户指出 134,903 不对）。
+    ct = company_target()
+    if ct:
+        kefu_roll["target"] = ct
+        kefu_roll["pct"] = pct_of(kefu_roll.get("count"), ct)
+        kefu_roll["unalloc"] = round(ct - sum((r.get("target") or 0) for r in s2_rows), 1)
     _w, _pw = rollup_week_totals(h, "you_kefu", kw)
     if _w is not None:
         kefu_roll["week"], kefu_roll["p4p_week"] = _w, _pw
@@ -377,7 +412,9 @@ def main():
         "no": "Ⅱ", "id": "you-kefu", "title": "优爆品 · 拍档客服",
         "ds": you_k_ds, "week_window": kw, "rows": s2_rows,
         "teams": [kefu_roll],
-        "note": "取自优品3.0「拍档客服」表；季度目标与完成率同表；按周增长降序排列。",
+        "note": ("取自优品3.0「拍档客服」表；按周增长降序排列。"
+                 "合计目标取「拍档公司」卡 144,921（含未下发/未分配部分）；"
+                 "汤青芬目标平台自 11-23 起置空，沿用 11-20 的 5,415。"),
         "sort": "week",
     }
 
