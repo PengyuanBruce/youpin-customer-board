@@ -26,7 +26,11 @@ KEFU = ["陈宇", "曹丽", "方琼", "罗洋清", "李岩", "谭美玲", "庞�
 HOT_SALES_ORDER = ["汤子豪", "漆螯童", "李怡萍", "邓晓东",
                    "牛群", "程碧瑶", "陈建国", "王子豪", "夏锐", "高国权", "谢承杰",
                    "王金国", "郭龙耀", "库亚涛", "李彬", "蒋汶桃", "张伟志", "何尧玲",
-                   "舒媛丹", "李金城", "王钢"]
+                   "舒媛丹", "李金城", "王钢"] + ["王凡", "罗金填", "文一锦"]
+
+# 不归属任何团队的销售（2026-11-26 用户要求）：只把数据并进 Ⅰ/Ⅲ 两张表，
+#   团队列显示「—」，不参与任何战队的合计/排序分组，排在表尾。
+EXTRA_SALES = ["王凡", "罗金填", "文一锦"]
 
 # Ⅳ 市场热卖品 · 拍档客服（11 人，沿用客服名单）
 HOT_KEFU = list(KEFU)
@@ -38,13 +42,14 @@ CARRY_TARGETS = {"汤青芬": 5415.0}
 
 
 def team_of(name):
+    """团队归属；不属于任何战队的人返回「—」（2026-11-26：王凡/罗金填/文一锦）。"""
     for team, members in TEAMS:
         if name in members:
             return team
-    return ""
+    return "—"
 
 
-SALES_ORDER = [n for _, members in TEAMS for n in members]
+SALES_ORDER = [n for _, members in TEAMS for n in members] + EXTRA_SALES
 
 # ---------------- 列映射（源文件列索引） ----------------
 # youpin3-sales-full.json：29 列
