@@ -275,6 +275,25 @@ def team_rollup(members, rows):
     }
 
 
+def rollup_week_totals(h, key, win):
+    """合计行的周增长 = 窗口末日合计 − 基线日合计（含两天里出现过的人）。
+
+    逐人 delta 相加会漏掉「基线日有数、窗口内已被改派走」的人，合计会虚高
+    （2026-11-26 实测 Ⅳ 客服合计虚高 349、Ⅱ 同样受影响）。
+    """
+    if not win or not win.get("base") or not win.get("end"):
+        return None, None
+    b = (h.get(win["base"]) or {}).get(key) or {}
+    e = (h.get(win["end"]) or {}).get(key) or {}
+    if not b or not e:
+        return None, None
+    bc = sum((v.get("count") or 0) for v in b.values())
+    ec = sum((v.get("count") or 0) for v in e.values())
+    bp = sum((v.get("p4p") or 0) for v in b.values())
+    ep = sum((v.get("p4p") or 0) for v in e.values())
+    return ec - bc, ep - bp
+
+
 def build_section(no, sid, title, ds, roster, data, order, delta_c, delta_p, win, note):
     rows = [person_row(n, data.get(n), delta_c, delta_p) for n in order]
     return {
@@ -350,6 +369,9 @@ def main():
         if r["missing"]:
             warnings.append(f"优爆品-客服：{n} 在源文件中没有数据")
     kefu_roll = dict(team_rollup(C.KEFU, s2_rows), team="客服合计")
+    _w, _pw = rollup_week_totals(h, "you_kefu", kw)
+    if _w is not None:
+        kefu_roll["week"], kefu_roll["p4p_week"] = _w, _pw
     sort_by_week(s2_rows)
     sec2 = {
         "no": "Ⅱ", "id": "you-kefu", "title": "优爆品 · 拍档客服",
@@ -393,6 +415,9 @@ def main():
         if r["missing"]:
             warnings.append(f"市场热卖-客服：{n} 在源文件中没有数据")
     hot_kefu_roll = dict(team_rollup(C.HOT_KEFU, s4_rows), team="客服合计")
+    _w4, _pw4 = rollup_week_totals(h, "hot_kefu", kw2)
+    if _w4 is not None:
+        hot_kefu_roll["week"], hot_kefu_roll["p4p_week"] = _w4, _pw4
     sort_by_week(s4_rows)
     sec4 = {
         "no": "Ⅳ", "id": "hot-kefu", "title": "市场热卖品 · 拍档客服",
