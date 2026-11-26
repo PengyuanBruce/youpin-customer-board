@@ -55,6 +55,17 @@ def sort_by_week(rows):
     return rows
 
 
+def extras_last(rows):
+    """不归属任何团队的人固定排在表尾，不参与周增长排序（2026-11-26 用户要求）。"""
+    extras = getattr(C, "EXTRA_SALES", [])
+    if not extras:
+        return rows
+    keep = [r for r in rows if r.get("name") not in extras]
+    tail = [r for r in rows if r.get("name") in extras]
+    rows[:] = keep + tail
+    return rows
+
+
 def load_value(fname):
     p = os.path.join(C.RAW_DIR, fname)
     if not os.path.exists(p):
@@ -379,7 +390,16 @@ def main():
         sub["team"] = team
         team_blocks.append(sub)
 
+    # 不归属任何战队的人（2026-11-26）：数据进表，团队列「—」，不参与任何战队合计
+    for n in getattr(C, "EXTRA_SALES", []):
+        r = person_row(n, you_s.get(n), yc, yp)
+        r["team"] = C.team_of(n)
+        s1_rows.append(r)
+        if r["missing"]:
+            warnings.append(f"优爆品-销售：{n} 在源文件中没有数据")
+
     sort_by_week(s1_rows)
+    extras_last(s1_rows)
     sort_by_week(team_blocks)
     sec1 = {
         "no": "Ⅰ", "id": "you-sales", "title": "优爆品 · 拍档销售",
@@ -435,6 +455,7 @@ def main():
         sub["team"] = team
         blocks3.append(sub)
     sort_by_week(s3_rows)
+    extras_last(s3_rows)
     sort_by_week(blocks3)
     sec3 = {
         "no": "Ⅲ", "id": "hot-sales", "title": "市场热卖品 · 拍档销售",
