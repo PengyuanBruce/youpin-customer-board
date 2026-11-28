@@ -509,7 +509,7 @@ def main():
     # ---- Ⅳ 市场热卖品 · 拍档客服 ----
     s4_rows = []
     for n in C.HOT_KEFU:
-        r = person_row(n, hot_k.get(n), kkc, kkp)
+        r = person_row(n, hot_k.get(n), kkc, kkp, carry_map=C.HOT_CARRY_TARGETS)
         r["team"] = "拍档客服"
         s4_rows.append(r)
         if r["missing"]:
